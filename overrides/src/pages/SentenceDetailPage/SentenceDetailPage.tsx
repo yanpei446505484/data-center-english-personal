@@ -502,9 +502,21 @@ export default function SentenceDetailPage() {
                               const [en, cn] = Array.isArray(example)
                                 ? [example[0] || '', example[1] || '']
                                 : [example.en, example.cn];
+                              const exampleKey = `word-example-${wi}-${ei}`;
                               return (
                                 <div key={ei} className="pl-3 border-l-2 border-border/40">
-                                  <p className="text-sm text-foreground">{en}</p>
+                                  <div className="flex items-start gap-2">
+                                    <p className="text-sm text-foreground flex-1">{en}</p>
+                                    <button
+                                      type="button"
+                                      onClick={() => playMiniTTS(en, exampleKey)}
+                                      className="shrink-0 rounded-md p-1 text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+                                      title="朗读英文例句"
+                                      aria-label={`朗读例句：${en}`}
+                                    >
+                                      <Volume2 className={`size-3.5 ${miniPlaying === exampleKey ? 'text-primary animate-pulse' : ''}`} />
+                                    </button>
+                                  </div>
                                   <p className="text-xs text-muted-foreground">{cn}</p>
                                 </div>
                               );
@@ -615,7 +627,18 @@ export default function SentenceDetailPage() {
                     key={ei}
                     className="rounded-lg border border-border/30 bg-accent/20 px-4 py-3 space-y-1"
                   >
-                    <p className="text-sm font-medium text-foreground">{ex.en}</p>
+                    <div className="flex items-start gap-2">
+                      <p className="text-sm font-medium text-foreground flex-1">{ex.en}</p>
+                      <button
+                        type="button"
+                        onClick={() => playMiniTTS(ex.en, `pattern-example-${ei}`)}
+                        className="shrink-0 rounded-md p-1.5 text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+                        title="朗读英文例句"
+                        aria-label={`朗读例句：${ex.en}`}
+                      >
+                        <Volume2 className={`size-4 ${miniPlaying === `pattern-example-${ei}` ? 'text-primary animate-pulse' : ''}`} />
+                      </button>
+                    </div>
                     <p className="text-xs text-muted-foreground">{ex.cn}</p>
                     {ex.words && ex.words.length > 0 && (
                       <div className="flex flex-wrap gap-1.5 mt-1.5">
