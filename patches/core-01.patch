@@ -1,0 +1,101 @@
+diff --git a/src/data/dailyOffice48a.ts b/src/data/dailyOffice48a.ts
+index 65ab67c..c0f88ef 100644
+--- a/src/data/dailyOffice48a.ts
++++ b/src/data/dailyOffice48a.ts
+@@ -135,7 +135,7 @@ export const MOCK_SENTENCES_DAILYOFFICE48A: ISentence[] = [
+     id: 2565,
+     speaker: 'Engineer',
+     en: 'The package was delivered to the warehouse.',
+-    cn: '快递已经送到仓库了。',
++    cn: '包裹已经送至仓库。',
+     ipa: '/ðə ˈpækɪdʒ wɒz dɪˈlɪvərd tuː ðə ˈwɛəhaʊs/',
+     tags: ['第2565句', '快递收货', '★★★★'],
+     when: '快递送到时收件人不在工位，前台或物流部门将包裹转送到仓库。',
+@@ -167,7 +167,7 @@ export const MOCK_SENTENCES_DAILYOFFICE48A: ISentence[] = [
+     id: 2566,
+     speaker: 'Engineer',
+     en: 'Please move these boxes to the storage room.',
+-    cn: '请把这些箱子搬到仓库。',
++    cn: '请把这些箱子搬到储藏室。',
+     ipa: '/pliːz muːv ðiːz ˈbɒksɪz tuː ðə ˈstɔːrɪdʒ ruːm/',
+     tags: ['第2566句', '快递收货', '★★★★'],
+     when: '收到多个箱子后需要搬运到存储区域存放。',
+@@ -570,7 +570,7 @@ export const MOCK_SENTENCES_DAILYOFFICE48A: ISentence[] = [
+     id: 2579,
+     speaker: 'Engineer',
+     en: 'The minimum stock level has been reached.',
+-    cn: '库存已经达到最低数量。',
++    cn: '库存已经降至最低库存水平。',
+     ipa: '/ðə ˈmɪnɪməm stɒk ˈlɛvəl hæz biːn riːtʃt/',
+     tags: ['第2579句', '仓库管理', '★★★★'],
+     when: '系统告警或人工盘点发现某物料库存量降至安全库存线以下。',
+diff --git a/src/data/dailyOffice48b.ts b/src/data/dailyOffice48b.ts
+index 4e565cb..f601543 100644
+--- a/src/data/dailyOffice48b.ts
++++ b/src/data/dailyOffice48b.ts
+@@ -533,7 +533,7 @@ export const MOCK_SENTENCES_DAILYOFFICE48B: ISentence[] = [
+     id: 2598,
+     speaker: 'Engineer',
+     en: "I'll keep you updated.",
+-    cn: '我会及时向你更新进展。',
++    cn: '我会持续向你通报最新进展。',
+     ipa: '/aɪl kiːp juː ˌʌpˈdeɪtɪd/',
+     tags: ['第2598句', '办公室礼貌用语', '★★★★'],
+     when: '告知同事你会持续跟进某事并定期更新进展。',
+diff --git a/src/data/dcManager34a.ts b/src/data/dcManager34a.ts
+index 6e1fe66..346eb8b 100644
+--- a/src/data/dcManager34a.ts
++++ b/src/data/dcManager34a.ts
+@@ -70,8 +70,8 @@ export const MOCK_SENTENCES_DCMANAGER34A: ISentence[] = [
+   {
+     id: 2003,
+     speaker: 'Manager',
+-    en: 'Customer service is our top priority.',
+-    cn: '客户服务始终是我们的首要任务。',
++    en: 'Providing excellent customer service is also a top priority.',
++    cn: '提供优质客户服务也是我们的重点任务。',
+     ipa: '/ˈkʌstəmər ˈsɜːrvɪs ɪz aʊər tɒp praɪˈɒrɪti/',
+     tags: ['第2003句', '早晨工作安排', '★★★★★'],
+     when: '强调客户服务在数据中心运营中的核心地位，引导团队关注客户需求。',
+@@ -454,7 +454,7 @@ export const MOCK_SENTENCES_DCMANAGER34A: ISentence[] = [
+     id: 2015,
+     speaker: 'Manager',
+     en: 'Please assign one engineer to supervise the contractors.',
+-    cn: '请安排一名工程师负责施工监督。',
++    cn: '请安排一名工程师监督承包商作业。',
+     ipa: '/pliːz əˈsaɪn wʌn ˌɛndʒɪˈnɪr tuː ˈsuːpərvaɪz ðə kənˈtræktərz/',
+     tags: ['第2015句', '人员管理', '★★★★★'],
+     when: '管理者要求安排专人负责外来施工人员的现场监督。',
+@@ -485,8 +485,8 @@ export const MOCK_SENTENCES_DCMANAGER34A: ISentence[] = [
+   {
+     id: 2016,
+     speaker: 'Manager',
+-    en: 'Please assign another engineer to monitor the control room.',
+-    cn: '请安排另一名工程师负责监控室。',
++    en: 'Please assign another engineer to monitor operations in the control room.',
++    cn: '请安排另一名工程师负责监控室值守。',
+     ipa: '/pliːz əˈsaɪn əˈnʌðər ˌɛndʒɪˈnɪr tuː ˈmɒnɪtər ðə kənˈtroʊl ruːm/',
+     tags: ['第2016句', '人员管理', '★★★★★'],
+     when: '管理者要求额外安排一名工程师专职值守监控室。',
+diff --git a/src/data/dcManager34b.ts b/src/data/dcManager34b.ts
+index eb681d6..0dc0e70 100644
+--- a/src/data/dcManager34b.ts
++++ b/src/data/dcManager34b.ts
+@@ -231,7 +231,7 @@ export const MOCK_SENTENCES_DCMANAGER34B: ISentence[] = [
+     id: 2028,
+     speaker: 'Manager',
+     en: 'Make sure all documents are properly filed.',
+-    cn: '请确保所有文件归档完整。',
++    cn: '请确保所有文件均已妥善归档。',
+     ipa: '/meɪk ʃʊr ɔːl ˈdɑkjəmənts ɑːr ˈprɑpərli faɪld/',
+     tags: ['第2028句', '工作质量', '★★★★★'],
+     when: '数据中心经理提醒团队文件必须按规范归档，便于查找和审计。',
+@@ -420,7 +420,7 @@ export const MOCK_SENTENCES_DCMANAGER34B: ISentence[] = [
+   {
+     id: 2034,
+     speaker: 'Manager',
+-    en: 'Customer satisfaction is our responsibility.',
++    en: 'Ensuring customer satisfaction is our responsibility.',
+     cn: '客户满意是我们的责任。',
+     ipa: '/ˈkʌstəmər ˌsætɪsˈfækʃən ɪz aʊər rɪˌspɑːnsəˈbɪləti/',
+     tags: ['第2034句', '管理要求', '★★★★★'],
