@@ -1,0 +1,310 @@
+diff --git a/src/data/sentencePart25a.ts b/src/data/sentencePart25a.ts
+index 78328f4..927cd9e 100644
+--- a/src/data/sentencePart25a.ts
++++ b/src/data/sentencePart25a.ts
+@@ -36,7 +36,7 @@ export const MOCK_SENTENCES_PART25A: ISentence[] = [
+   },
+   {
+     id: 1642,
+-    en: "Chilled Water Pump No.1 is operating normally.",
++    en: "Chilled Water Pump No. 1 is operating normally.",
+     cn: "1号冷冻水泵运行正常。",
+     ipa: "/tʃɪld ˈwɔːtər pʌmp ˌnʌmˈwʌn ɪz ˈɒpəreɪtɪŋ ˈnɔːrməli/",
+     tags: ["第1642句", "冷冻水泵状态", "★★★★★"],
+@@ -64,7 +64,7 @@ export const MOCK_SENTENCES_PART25A: ISentence[] = [
+   },
+   {
+     id: 1643,
+-    en: "Chilled Water Pump No.2 is on standby.",
++    en: "Chilled Water Pump No. 2 is on standby.",
+     cn: "2号冷冻水泵处于备用状态。",
+     ipa: "/tʃɪld ˈwɔːtər pʌmp ˌnʌmˈtuː ɪz ɒn ˈstændbaɪ/",
+     tags: ["第1643句", "备用状态", "★★★★★"],
+@@ -121,7 +121,7 @@ export const MOCK_SENTENCES_PART25A: ISentence[] = [
+   },
+   {
+     id: 1645,
+-    en: "Condenser Water Pump No.1 is operating normally.",
++    en: "Condenser Water Pump No. 1 is operating normally.",
+     cn: "1号冷却水泵运行正常。",
+     ipa: "/kənˈdɛnsər ˈwɔːtər pʌmp ˌnʌmˈwʌn ɪz ˈɒpəreɪtɪŋ ˈnɔːrməli/",
+     tags: ["第1645句", "冷却水泵状态", "★★★★★"],
+@@ -149,7 +149,7 @@ export const MOCK_SENTENCES_PART25A: ISentence[] = [
+   },
+   {
+     id: 1646,
+-    en: "Condenser Water Pump No.2 is on standby.",
++    en: "Condenser Water Pump No. 2 is on standby.",
+     cn: "2号冷却水泵处于备用状态。",
+     ipa: "/kənˈdɛnsər ˈwɔːtər pʌmp ˌnʌmˈtuː ɪz ɒn ˈstændbaɪ/",
+     tags: ["第1646句", "备用状态", "★★★★★"],
+@@ -517,7 +517,7 @@ export const MOCK_SENTENCES_PART25A: ISentence[] = [
+   },
+   {
+     id: 1659,
+-    en: "The pump bearings are operating normally.",
++    en: "The pump bearings are in good condition.",
+     cn: "水泵轴承运行正常。",
+     ipa: "/ðə pʌmp ˈbɛərɪŋz ɑːr ˈɒpəreɪtɪŋ ˈnɔːrməli/",
+     tags: ["第1659句", "轴承正常", "★★★★★"],
+diff --git a/src/data/sentencePart25b.ts b/src/data/sentencePart25b.ts
+index fab65b1..1f5428f 100644
+--- a/src/data/sentencePart25b.ts
++++ b/src/data/sentencePart25b.ts
+@@ -64,7 +64,7 @@ export const MOCK_SENTENCES_PART25B: ISentence[] = [
+   },
+   {
+     id: 1663,
+-    en: "Please stop Pump No.1.",
++    en: "Please stop Pump No. 1.",
+     cn: "请停止1号水泵。",
+     ipa: "/pliːz stɒp pʌmp ˌnʌmˈwʌn/",
+     tags: ["第1663句", "停止水泵", "★★★★★"],
+@@ -93,7 +93,7 @@ export const MOCK_SENTENCES_PART25B: ISentence[] = [
+   },
+   {
+     id: 1664,
+-    en: "Pump No.1 has stopped successfully.",
++    en: "Pump No. 1 has stopped successfully.",
+     cn: "1号水泵已经成功停止。",
+     ipa: "/pʌmp ˌnʌmˈwʌn hæz stɒpt səkˈsɛsfəli/",
+     tags: ["第1664句", "停止成功", "★★★★★"],
+@@ -121,7 +121,7 @@ export const MOCK_SENTENCES_PART25B: ISentence[] = [
+   },
+   {
+     id: 1665,
+-    en: "Please transfer the load to Pump No.2.",
++    en: "Please transfer the load to Pump No. 2.",
+     cn: "请将负载切换到2号水泵。",
+     ipa: "/pliːz trænsˈfɜːr ðə loʊd tuː pʌmp ˌnʌmˈtuː/",
+     tags: ["第1665句", "负载切换", "★★★★★"],
+@@ -415,7 +415,7 @@ export const MOCK_SENTENCES_PART25B: ISentence[] = [
+   {
+     id: 1675,
+     en: "Please investigate the alarm immediately.",
+-    cn: "请立即调查告警原因。",
++    cn: "请立即排查告警原因。",
+     ipa: "/pliːz ɪnˈvɛstɪɡeɪt ðə əˈlɑːrm ɪˈmiːdiətli/",
+     tags: ["第1675句", "立即调查", "★★★★★"],
+     when: "检测到告警后，需要立即调查告警原因。investigate 强调系统地调查和分析。",
+@@ -474,7 +474,7 @@ export const MOCK_SENTENCES_PART25B: ISentence[] = [
+   {
+     id: 1677,
+     en: "The alarm has been cleared successfully.",
+-    cn: "告警已经恢复。",
++    cn: "告警已成功清除。",
+     ipa: "/ðə əˈlɑːrm hæz biːn klɪərd səkˈsɛsfəli/",
+     tags: ["第1677句", "告警恢复", "★★★★★"],
+     when: "确认告警已经成功恢复。cleared 表示告警已经消除，系统恢复正常。",
+diff --git a/src/data/sentencePart26a.ts b/src/data/sentencePart26a.ts
+index 732ec15..3c5a0c1 100644
+--- a/src/data/sentencePart26a.ts
++++ b/src/data/sentencePart26a.ts
+@@ -192,7 +192,7 @@ export const MOCK_SENTENCES_PART26A: ISentence[] = [
+   {
+     id: 1687,
+     en: "Please check the heat detectors.",
+-    cn: "请检查温度探测器。",
++    cn: "请检查感温探测器。",
+     ipa: "/pliːz tʃɛk ðə hiːt dɪˈtɛktərz/",
+     tags: ["第1687句", "温度探测器", "★★★★★"],
+     when: "温度探测器是火灾探测的第二道防线，检测到温度异常升高时报警。交接时检查所有温度探测器状态。",
+@@ -377,7 +377,7 @@ export const MOCK_SENTENCES_PART26A: ISentence[] = [
+   {
+     id: 1693,
+     en: "Please verify the emergency broadcast system.",
+-    cn: "请确认消防广播系统。",
++    cn: "请确认消防广播系统状态。",
+     ipa: "/pliːz ˈvɛrɪfaɪ ðə ɪˈmɜːrdʒənsi ˈbrɔːdkæst ˈsɪstəm/",
+     tags: ["第1693句", "消防广播", "★★★★★"],
+     when: "消防广播系统在火灾发生时播放疏散指令，引导人员安全撤离。交接时确认消防广播系统正常。",
+@@ -593,7 +593,7 @@ export const MOCK_SENTENCES_PART26A: ISentence[] = [
+   {
+     id: 1700,
+     en: "The clean agent cylinders are fully charged.",
+-    cn: "气体灭火钢瓶压力正常。",
++    cn: "气体灭火钢瓶已充装至规定容量。",
+     ipa: "/ðə kliːn ˈeɪdʒənt ˈsɪlɪndərz ɑːr ˈfʊli tʃɑːrdʒd/",
+     tags: ["第1700句", "钢瓶压力", "★★★★★"],
+     when: "确认气体灭火钢瓶压力正常（充满状态），确保火灾时有足够的灭火剂。",
+diff --git a/src/data/sentencePart26b.ts b/src/data/sentencePart26b.ts
+index dbae104..61f708d 100644
+--- a/src/data/sentencePart26b.ts
++++ b/src/data/sentencePart26b.ts
+@@ -66,7 +66,7 @@ export const MOCK_SENTENCES_PART26B: ISentence[] = [
+   },
+   {
+     id: 1703,
+-    en: "Please verify the discharge panel.",
++    en: "Please verify the fire suppression control panel.",
+     cn: "请检查灭火控制盘。",
+     ipa: "/pliːz ˈvɛrɪfaɪ ðə dɪsˈtʃɑːrdʒ ˈpænəl/",
+     tags: ["第1703句", "灭火控制盘", "★★★★★"],
+@@ -276,7 +276,7 @@ export const MOCK_SENTENCES_PART26B: ISentence[] = [
+   {
+     id: 1710,
+     en: "Please verify whether it is a real fire or a false alarm.",
+-    cn: "请确认是真火警还是误报警。",
++    cn: "请确认是实际火情还是误报。",
+     ipa: "/pliːz ˈvɛrɪfaɪ ˈwɛðər ɪt ɪz ə riːəl ˈfaɪər ɔːr ə fɔːls əˈlɑːrm/",
+     tags: ["第1710句", "确认真假火警", "★★★★★"],
+     when: "火灾报警后，必须立即派人到现场确认是真火警还是误报警。这是应急响应的关键步骤。",
+@@ -365,7 +365,7 @@ export const MOCK_SENTENCES_PART26B: ISentence[] = [
+   {
+     id: 1713,
+     en: "The alarm was caused by maintenance work.",
+-    cn: "该报警由维护施工引起。",
++    cn: "该报警由维护作业引起。",
+     ipa: "/ði əˈlɑːrm wɒz kɔːzd baɪ ˈmeɪntənəns wɜːrk/",
+     tags: ["第1713句", "维护施工引起", "★★★★★"],
+     when: "确认报警原因是维护施工（如焊接、切割、灰尘等）引起的误报警。这是常见的误报原因之一。",
+@@ -425,7 +425,7 @@ export const MOCK_SENTENCES_PART26B: ISentence[] = [
+   {
+     id: 1715,
+     en: "All fire alarms have been cleared.",
+-    cn: "所有消防告警已经恢复。",
++    cn: "所有消防告警均已清除。",
+     ipa: "/ɔːl ˈfaɪər əˈlɑːrmz hæv biːn klɪərd/",
+     tags: ["第1715句", "告警恢复", "★★★★★"],
+     when: "所有消防告警已经清除，系统恢复正常监控状态。cleared 表示清除/恢复。",
+@@ -543,7 +543,7 @@ export const MOCK_SENTENCES_PART26B: ISentence[] = [
+   {
+     id: 1719,
+     en: "The fire protection system is ready for normal operation.",
+-    cn: "消防系统已经恢复正常运行。",
++    cn: "消防系统已具备正常运行条件。",
+     ipa: "/ðə ˈfaɪər prəˈtɛkʃən ˈsɪstəm ɪz ˈrɛdi fɔːr ˈnɔːrməl ˌɒpəˈreɪʃən/",
+     tags: ["第1719句", "系统恢复正常", "★★★★★"],
+     when: "消防系统巡检和维护完成后，系统已经恢复到正常运行状态，可以正常工作。",
+diff --git a/src/data/sentencePart27a.ts b/src/data/sentencePart27a.ts
+index 851270e..d9a7522 100644
+--- a/src/data/sentencePart27a.ts
++++ b/src/data/sentencePart27a.ts
+@@ -362,7 +362,7 @@ export const MOCK_SENTENCES_PART27A: ISentence[] = [
+   {
+     id: 1733,
+     en: "Access has been granted.",
+-    cn: "门禁已授权。",
++    cn: "已准予进入。",
+     ipa: "/ˈæksɛs hæz biːn ˈɡræntɪd/",
+     tags: ["第1733句", "门禁授权", "★★★★★"],
+     when: "刷卡成功后，系统提示门禁已授权，可以进入。这是门禁系统的标准提示音。",
+@@ -391,7 +391,7 @@ export const MOCK_SENTENCES_PART27A: ISentence[] = [
+   {
+     id: 1734,
+     en: "Access has been denied.",
+-    cn: "门禁被拒绝。",
++    cn: "进入请求已被拒绝。",
+     ipa: "/ˈæksɛs hæz biːn dɪˈnaɪd/",
+     tags: ["第1734句", "门禁拒绝", "★★★★★"],
+     when: "刷卡后系统拒绝授权，无法进入。可能原因包括权限不足、卡片过期、区域限制等。",
+diff --git a/src/data/sentencePart27b.ts b/src/data/sentencePart27b.ts
+index 825d536..23b15a2 100644
+--- a/src/data/sentencePart27b.ts
++++ b/src/data/sentencePart27b.ts
+@@ -416,7 +416,7 @@ export const MOCK_SENTENCES_PART27B: ISentence[] = [
+   {
+     id: 1755,
+     en: "Please investigate the alarm immediately.",
+-    cn: "请立即调查告警原因。",
++    cn: "请立即排查告警原因。",
+     ipa: "/pliːz ɪnˈvɛstɪɡeɪt ðə əˈlɑːrm ɪˈmiːdiətli/",
+     tags: ["第1755句", "告警处理", "★★★★★"],
+     when: "检测到安防告警后，必须立即调查原因，确认是否为真实安全事件。",
+@@ -445,7 +445,7 @@ export const MOCK_SENTENCES_PART27B: ISentence[] = [
+   {
+     id: 1756,
+     en: "The security alarm has been cleared.",
+-    cn: "安防告警已经恢复。",
++    cn: "安防告警已清除。",
+     ipa: "/ðə sɪˈkjʊrɪti əˈlɑːrm hæz biːn klɪərd/",
+     tags: ["第1756句", "告警恢复", "★★★★★"],
+     when: "告警调查完成后，确认问题解决，告警状态恢复为正常。",
+diff --git a/src/data/sentencePart28a.ts b/src/data/sentencePart28a.ts
+index 12ff081..af57802 100644
+--- a/src/data/sentencePart28a.ts
++++ b/src/data/sentencePart28a.ts
+@@ -400,7 +400,7 @@ export const MOCK_SENTENCES_PART28A: ISentence[] = [
+   },
+   {
+     id: 1774,
+-    en: "All network ports are operating normally.",
++    en: "All network ports are functioning correctly.",
+     cn: "所有网络端口运行正常。",
+     ipa: "/ɔːl ˈnɛtwɜːrk pɔːrts ɑːr ˈɒpəreɪtɪŋ ˈnɔːrməli/",
+     tags: ["第1774句", "网络端口状态", "★★★★★"],
+@@ -521,7 +521,7 @@ export const MOCK_SENTENCES_PART28A: ISentence[] = [
+   {
+     id: 1778,
+     en: "All network racks are secure.",
+-    cn: "所有网络机柜状态正常。",
++    cn: "所有网络机柜均已锁闭并固定牢靠。",
+     ipa: "/ɔːl ˈnɛtwɜːrk ræks ɑːr sɪˈkjʊr/",
+     tags: ["第1778句", "网络机柜状态", "★★★★"],
+     when: "确认所有网络机柜状态正常。secure 表示机柜安全、门锁正常。",
+diff --git a/src/data/sentencePart28b.ts b/src/data/sentencePart28b.ts
+index 28482a4..9753ec0 100644
+--- a/src/data/sentencePart28b.ts
++++ b/src/data/sentencePart28b.ts
+@@ -431,7 +431,7 @@ export const MOCK_SENTENCES_PART28B: ISentence[] = [
+   {
+     id: 1795,
+     en: "All network alarms have been cleared.",
+-    cn: "所有网络告警已经恢复。",
++    cn: "所有网络告警均已清除。",
+     ipa: "/ɔːl ˈnɛtwɜːrk əˈlɑːrmz hæv biːn klɪrd/",
+     tags: ["第1795句", "告警恢复", "★★★★★"],
+     when: "确认所有网络相关告警已全部清除，网络系统恢复正常运行状态。",
+@@ -581,7 +581,7 @@ export const MOCK_SENTENCES_PART28B: ISentence[] = [
+   {
+     id: 1800,
+     en: "The network system is ready for normal operation.",
+-    cn: "网络系统已经恢复正常运行。",
++    cn: "网络系统已具备正常运行条件。",
+     ipa: "/ðə ˈnɛtwɜːrk ˈsɪstəm ɪz ˈrɛdi fər ˈnɔːrməl ˌɒpəˈreɪʃən/",
+     tags: ["第1800句", "系统就绪", "★★★★★"],
+     when: "确认网络系统已完全恢复，可以正常承载业务。这是网络交接的最终确认。",
+diff --git a/src/data/smallTalk49a.ts b/src/data/smallTalk49a.ts
+index 936ba29..2a60d4d 100644
+--- a/src/data/smallTalk49a.ts
++++ b/src/data/smallTalk49a.ts
+@@ -231,7 +231,7 @@ export const MOCK_SENTENCES_SMALLTALK49A: ISentence[] = [
+     id: 2608,
+     speaker: 'Engineer',
+     en: "I'm glad today is a little quieter.",
+-    cn: '今天总算安静一点了。',
++    cn: '今天总算清闲一点了。',
+     ipa: '/aɪm ɡlæd təˈdeɪ ɪz ə ˈlɪtl ˈkwaɪətər/',
+     tags: ['第2608句', '上班见面', '★★★★'],
+     when: '经历了忙碌的夜班后，发现白班相对平静时表达欣慰。',
+diff --git a/src/data/smallTalk50a.ts b/src/data/smallTalk50a.ts
+index 3ee9bd7..346a2b1 100644
+--- a/src/data/smallTalk50a.ts
++++ b/src/data/smallTalk50a.ts
+@@ -38,7 +38,7 @@ export const MOCK_SENTENCES_SMALLTALK50A: ISentence[] = [
+     id: 2642,
+     speaker: 'Engineer',
+     en: 'Did you do anything interesting over the weekend?',
+-    cn: '周末有什么有趣的事情吗？',
++    cn: '你周末做了什么有趣的事情吗？',
+     ipa: '/dɪd juː duː ˈɛniθɪŋ ˈɪntrəstɪŋ ˈoʊvər ðə ˌwiːkˈɛnd/',
+     tags: ['第2642句', '周末', '★★★'],
+     when: '进一步追问同事周末是否做了什么有趣的事，展开对话。',
+@@ -419,7 +419,7 @@ export const MOCK_SENTENCES_SMALLTALK50A: ISentence[] = [
+     id: 2654,
+     speaker: 'Engineer',
+     en: 'I got stuck in traffic this morning.',
+-    cn: '今天早上堵车了。',
++    cn: '我今天早上遇上堵车了。',
+     ipa: '/aɪ ɡɒt stʌk ɪn ˈtræfɪk ðɪs ˈmɔːrnɪŋ/',
+     tags: ['第2654句', '早上聊天', '★★★★'],
+     when: '解释自己迟到的原因，是因为路上堵车了。',
+@@ -547,7 +547,7 @@ export const MOCK_SENTENCES_SMALLTALK50A: ISentence[] = [
+     id: 2658,
+     speaker: 'Engineer',
+     en: 'Hopefully today will be a quiet day.',
+-    cn: '希望今天能轻松一点。',
++    cn: '希望今天能清闲一点。',
+     ipa: '/ˈhoʊpfəli təˈdeɪ wɪl biː ə ˈkwaɪət deɪ/',
+     tags: ['第2658句', '早上聊天', '★★★'],
+     when: '开始工作前表达希望今天不要太忙的心愿。',
