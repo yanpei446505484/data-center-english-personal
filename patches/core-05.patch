@@ -1,0 +1,674 @@
+diff --git a/src/data/sentencePart11a.ts b/src/data/sentencePart11a.ts
+index 656fe56..b06c414 100644
+--- a/src/data/sentencePart11a.ts
++++ b/src/data/sentencePart11a.ts
+@@ -336,8 +336,8 @@ export const MOCK_SENTENCES_PART11A: ISentence[] = [
+   },
+   {
+     id: 313,
+-    en: "Please open the fire protection room.",
+-    cn: "打开消防间。",
++    en: "Please open the fire equipment room view.",
++    cn: "请打开消防设备间页面。",
+     ipa: "/pliːz ˈoʊ.pən ðə faɪər prəˈtɛk.ʃən ruːm/",
+     tags: ["第313句", "BMS房间导航", "★★★★"],
+     when: "打开消防间视图。消防间放置消防系统控制设备，包括气体灭火系统和消防水泵控制面板。",
+@@ -362,8 +362,8 @@ export const MOCK_SENTENCES_PART11A: ISentence[] = [
+   },
+   {
+     id: 314,
+-    en: "Please open the control room.",
+-    cn: "打开监控中心。",
++    en: "Please open the control center view.",
++    cn: "请打开监控中心页面。",
+     ipa: "/pliːz ˈoʊ.pən ðə kənˈtroʊl ruːm/",
+     tags: ["第314句", "BMS房间导航", "★★★★"],
+     when: "打开监控中心视图。控制室/监控中心是值班工程师的工作场所，包含BMS工作站、CCTV监控屏和通讯设备。",
+@@ -467,7 +467,7 @@ export const MOCK_SENTENCES_PART11A: ISentence[] = [
+   {
+     id: 318,
+     en: "Please locate UPS-01.",
+-    cn: "请定位UPS01。",
++    cn: "请定位UPS-01。",
+     ipa: "/pliːz loʊˈkeɪt ˌjuː.piːˈɛs zɪr.oʊ wʌn/",
+     tags: ["第318句", "BMS设备定位", "★★★★★"],
+     when: "房间打开后，进入设备级别导航。locate = 在BMS系统中定位到某个具体设备，查看其详细参数和状态。",
+diff --git a/src/data/sentencePart11b.ts b/src/data/sentencePart11b.ts
+index b14fa38..ce67543 100644
+--- a/src/data/sentencePart11b.ts
++++ b/src/data/sentencePart11b.ts
+@@ -181,7 +181,7 @@ export const MOCK_SENTENCES_PART11B: ISentence[] = [
+   {
+     id: 332,
+     en: "Sort by severity.",
+-    cn: "按严重等级排序。",
++    cn: "按告警级别排序。",
+     ipa: "/sɔːrt baɪ sɪˈvɛr.ɪ.ti/",
+     tags: ["第332句", "BMS告警排序", "★★★★★"],
+     when: "按严重等级排序后，Critical 告警排在最前面，可以优先处理最严重的问题。",
+diff --git a/src/data/sentencePart12a.ts b/src/data/sentencePart12a.ts
+index 4c4599c..8bf7bc0 100644
+--- a/src/data/sentencePart12a.ts
++++ b/src/data/sentencePart12a.ts
+@@ -148,7 +148,7 @@ export const MOCK_SENTENCES_PART12A: ISentence[] = [
+   {
+     id: 356,
+     en: "Locate PDU-1A.",
+-    cn: "定位PDU1A。",
++    cn: "定位PDU-1A。",
+     ipa: "/loʊˈkeɪt piː diː juː wʌn eɪ/",
+     tags: ["第356句", "DCIM定位", "★★★★★"],
+     when: "PDU（Power Distribution Unit）是机柜内的配电单元。A路和B路各一个PDU，实现双路供电冗余。",
+@@ -177,7 +177,7 @@ export const MOCK_SENTENCES_PART12A: ISentence[] = [
+   {
+     id: 357,
+     en: "Locate PDU-1B.",
+-    cn: "定位PDU1B。",
++    cn: "定位PDU-1B。",
+     ipa: "/loʊˈkeɪt piː diː juː wʌn biː/",
+     tags: ["第357句", "DCIM定位", "★★★★"],
+     when: "B路PDU定位。与A路PDU配对，共同保障机柜供电冗余。",
+@@ -201,7 +201,7 @@ export const MOCK_SENTENCES_PART12A: ISentence[] = [
+   {
+     id: 358,
+     en: "PDU-1A feeds the left side of the rack.",
+-    cn: "PDU1A给机柜左侧供电。",
++    cn: "PDU-1A为机柜左侧供电。",
+     ipa: "/piː diː juː wʌn eɪ fiːdz ðə lɛft saɪd ʌv ðə ræk/",
+     tags: ["第358句", "PDU功能", "★★★★"],
+     when: "说明A路PDU的供电范围，帮助理解机柜内部供电布局。",
+@@ -229,7 +229,7 @@ export const MOCK_SENTENCES_PART12A: ISentence[] = [
+   {
+     id: 359,
+     en: "PDU-1B feeds the right side of the rack.",
+-    cn: "PDU1B给机柜右侧供电。",
++    cn: "PDU-1B为机柜右侧供电。",
+     ipa: "/piː diː juː wʌn biː fiːdz ðə raɪt saɪd ʌv ðə ræk/",
+     tags: ["第359句", "PDU功能", "★★★★"],
+     when: "说明B路PDU的供电范围，与A路对称。",
+@@ -283,7 +283,7 @@ export const MOCK_SENTENCES_PART12A: ISentence[] = [
+   {
+     id: 361,
+     en: "Locate Busway A.",
+-    cn: "定位A母线。",
++    cn: "定位A路母线槽。",
+     ipa: "/loʊˈkeɪt bʌs.weɪ eɪ/",
+     tags: ["第361句", "DCIM定位", "★★★★★"],
+     when: "Busway（母线槽）是从变压器到PDU之间的大容量电力传输通道。A路和B路各一条母线。",
+@@ -311,7 +311,7 @@ export const MOCK_SENTENCES_PART12A: ISentence[] = [
+   {
+     id: 362,
+     en: "Locate Busway B.",
+-    cn: "定位B母线。",
++    cn: "定位B路母线槽。",
+     ipa: "/loʊˈkeɪt bʌs.weɪ biː/",
+     tags: ["第362句", "DCIM定位", "★★★★"],
+     when: "B路母线定位，与A路配对实现双路供电。",
+@@ -335,7 +335,7 @@ export const MOCK_SENTENCES_PART12A: ISentence[] = [
+   {
+     id: 363,
+     en: "Busway A runs along the north side of the data hall.",
+-    cn: "A母线沿机房北侧走线。",
++    cn: "A路母线槽沿数据大厅北侧敷设。",
+     ipa: "/bʌs.weɪ eɪ rʌnz əˈlɒŋ ðə nɔːrθ saɪd ʌv ðə ˈdeɪ.tə hɔːl/",
+     tags: ["第363句", "母线走线", "★★★★"],
+     when: "描述A母线的走线路径，帮助运维人员在现场快速找到母线位置。",
+@@ -364,7 +364,7 @@ export const MOCK_SENTENCES_PART12A: ISentence[] = [
+   {
+     id: 364,
+     en: "Busway B runs along the south side of the data hall.",
+-    cn: "B母线沿机房南侧走线。",
++    cn: "B路母线槽沿数据大厅南侧敷设。",
+     ipa: "/bʌs.weɪ biː rʌnz əˈlɒŋ ðə saʊθ saɪd ʌv ðə ˈdeɪ.tə hɔːl/",
+     tags: ["第364句", "母线走线", "★★★★"],
+     when: "B母线走线方向与A母线对称，实现物理隔离。",
+@@ -388,7 +388,7 @@ export const MOCK_SENTENCES_PART12A: ISentence[] = [
+   {
+     id: 365,
+     en: "Please check the busway temperature reading.",
+-    cn: "请检查母线温度读数。",
++    cn: "请检查母线槽温度读数。",
+     ipa: "/pliːz tʃɛk ðə bʌs.weɪ ˈtɛm.pər.ə.tʃər ˈriː.dɪŋ/",
+     tags: ["第365句", "母线监测", "★★★★★"],
+     when: "母线温度是关键监测指标。温度过高可能意味着过载或接头松动。",
+@@ -416,7 +416,7 @@ export const MOCK_SENTENCES_PART12A: ISentence[] = [
+   {
+     id: 366,
+     en: "Locate ATS-02.",
+-    cn: "定位ATS02。",
++    cn: "定位ATS-02。",
+     ipa: "/loʊˈkeɪt eɪ tiː ɛs zɪro tuː/",
+     tags: ["第366句", "DCIM定位", "★★★★★"],
+     when: "ATS（Automatic Transfer Switch）是自动转换开关，在市电和发电机之间自动切换。",
+@@ -445,7 +445,7 @@ export const MOCK_SENTENCES_PART12A: ISentence[] = [
+   {
+     id: 367,
+     en: "Locate STS-01.",
+-    cn: "定位STS01。",
++    cn: "定位STS-01。",
+     ipa: "/loʊˈkeɪt ɛs tiː ɛs zɪro wʌn/",
+     tags: ["第367句", "DCIM定位", "★★★★★"],
+     when: "STS（Static Transfer Switch）是静态转换开关，在UPS-A和UPS-B之间无间断切换。",
+@@ -556,7 +556,7 @@ export const MOCK_SENTENCES_PART12A: ISentence[] = [
+   {
+     id: 371,
+     en: "Locate CRAH-12.",
+-    cn: "定位12号风墙。",
++    cn: "定位12号CRAH机组。",
+     ipa: "/loʊˈkeɪt kræh twɛlv/",
+     tags: ["第371句", "DCIM定位", "★★★★★"],
+     when: "CRAH（Computer Room Air Handler）是精密空调/风墙，负责机房冷却。",
+diff --git a/src/data/sentencePart12b.ts b/src/data/sentencePart12b.ts
+index 4decdfc..3c2ab89 100644
+--- a/src/data/sentencePart12b.ts
++++ b/src/data/sentencePart12b.ts
+@@ -125,7 +125,7 @@ export const MOCK_SENTENCES_PART12B: ISentence[] = [
+   {
+     id: 380,
+     en: "Locate the underfloor air supply grille.",
+-    cn: "定位地板下送风口。",
++    cn: "定位架空地板送风口。",
+     ipa: "/loʊˈkeɪt ðə ˈʌn.dər.flɔːr eər səˈplaɪ ɡrɪl/",
+     tags: ["第380句", "DCIM定位", "★★★★"],
+     when: "在DCIM中定位地板送风口。架空地板下的送风口（穿孔地板/格栅）是冷风从CRAC送入冷通道的关键通道。",
+@@ -155,7 +155,7 @@ export const MOCK_SENTENCES_PART12B: ISentence[] = [
+   {
+     id: 381,
+     en: "Locate the fire suppression gas cylinder.",
+-    cn: "定位消防灭火气瓶。",
++    cn: "定位气体灭火系统钢瓶。",
+     ipa: "/loʊˈkeɪt ðə faɪər səˈprɛʃ.ən ɡæs ˈsɪl.ɪn.dər/",
+     tags: ["第381句", "DCIM定位", "★★★★"],
+     when: "在DCIM中定位消防气瓶。数据中心使用气体灭火系统（非水喷淋），气瓶组通常位于专用的气瓶间内。",
+@@ -274,7 +274,7 @@ export const MOCK_SENTENCES_PART12B: ISentence[] = [
+   {
+     id: 385,
+     en: "Locate the main distribution board on Level 2.",
+-    cn: "定位二楼的主配电箱。",
++    cn: "定位二楼的主配电柜。",
+     ipa: "/loʊˈkeɪt ðə meɪn ˌdɪs.trɪˈbjuː.ʃən bɔːrd ɑːn ˈlɛv.əl tuː/",
+     tags: ["第385句", "DCIM定位", "★★★★"],
+     when: "在DCIM中定位配电箱（Distribution Board/DB）。配电箱是低压配电的末端分配设备，为照明、空调、插座等非IT负载供电。",
+@@ -332,7 +332,7 @@ export const MOCK_SENTENCES_PART12B: ISentence[] = [
+   {
+     id: 387,
+     en: "Locate the surge protection device.",
+-    cn: "定位防雷器（浪涌保护器）。",
++    cn: "定位浪涌保护器（SPD）。",
+     ipa: "/loʊˈkeɪt ðə sɜːrdʒ prəˈtɛk.ʃən dɪˈvaɪs/",
+     tags: ["第387句", "DCIM定位", "★★★"],
+     when: "在DCIM中定位防雷器（SPD）。防雷器保护设备免受雷击和电网浪涌的损害，马来西亚雷暴频繁，SPD尤为重要。",
+@@ -571,7 +571,7 @@ export const MOCK_SENTENCES_PART12B: ISentence[] = [
+   {
+     id: 395,
+     en: "Locate the overhead busway above Row 3.",
+-    cn: "定位第3列机柜上方的母线槽。",
++    cn: "定位第3排机柜上方的母线槽。",
+     ipa: "/loʊˈkeɪt ðə ˈoʊ.vər.hɛd ˈbʌs.weɪ əˈbʌv roʊ θriː/",
+     tags: ["第395句", "DCIM定位", "★★★★"],
+     when: "在DCIM中定位母线槽（Busway）。母线槽是替代传统电缆的大电流配电方式，安装在机柜列上方，通过插接箱为每个机柜供电。",
+@@ -601,7 +601,7 @@ export const MOCK_SENTENCES_PART12B: ISentence[] = [
+   {
+     id: 396,
+     en: "Locate the raised floor tile with airflow damper.",
+-    cn: "定位带风阀的架空地板。",
++    cn: "定位带风量调节阀的架空地板送风板。",
+     ipa: "/loʊˈkeɪt ðə reɪzd flɔːr taɪl wɪð ˈeər.floʊ ˈdæm.pər/",
+     tags: ["第396句", "DCIM定位", "★★★"],
+     when: "在DCIM中定位带风阀的穿孔地板。风阀可调节送风量，精确控制每个机柜的冷风供应。",
+@@ -690,7 +690,7 @@ export const MOCK_SENTENCES_PART12B: ISentence[] = [
+   {
+     id: 399,
+     en: "Locate the network patch panel in the meet-me room.",
+-    cn: "定位汇聚间的网络配线架。",
++    cn: "定位运营商接入间（MMR）的网络配线架。",
+     ipa: "/loʊˈkeɪt ðə ˈnɛt.wɜːrk pætʃ ˈpæn.əl ɪn ðə miːt miː ruːm/",
+     tags: ["第399句", "DCIM定位", "★★★★"],
+     when: "在DCIM中定位网络配线架。配线架是网络连接的核心节点，所有网络线缆在此汇聚和分配。",
+@@ -719,18 +719,18 @@ export const MOCK_SENTENCES_PART12B: ISentence[] = [
+   },
+   {
+     id: 400,
+-    en: "Now let's move on to the MOP execution procedures.",
+-    cn: "现在我们进入MOP执行操作流程。",
+-    ipa: "/naʊ lɛts muːv ɑːn tuː ðə mɑːp ˌɛk.sɪˈkjuː.ʃən prəˈsiː.dʒərz/",
++    en: "Now let's move on to MOP execution.",
++    cn: "现在我们进入MOP执行流程。",
++    ipa: "/naʊ lɛts muːv ɑːn tuː mɑːp ˌɛk.sɪˈkjuː.ʃən/",
+     tags: ["第400句", "转场句", "★★★★★"],
+-    when: "DCIM定位部分结束，转入下一部分：MOP（维护操作方案）执行操作流程。这是一个重要的转场句。",
++    when: "DCIM定位部分结束，转入下一部分：MOP（维护操作方案）执行流程。这是一个重要的转场句。",
+     words: [
+       { w: "move on", ipa: "/muːv ɑːn/", pos: "动词短语", cn: "继续前进；转到下一个", memory: "① move = 移动；② on = 继续。\nmove on = 继续前进/转到下一个话题。\n交接中常用的转场表达：Now let's move on to... = 现在我们转到…", phonics: "move 读 /muːv/，on 读 /ɑːn/。", collocations: [["move on to", "转到"], ["move forward", "向前推进"], ["move ahead", "提前进行"]], examples: [["Let's move on to the next topic.", "让我们转到下一个话题。"], ["We can move on once this is resolved.", "这个问题解决后我们可以继续。"]] },
+       { w: "MOP", ipa: "/mɑːp/", pos: "缩写", cn: "维护操作方案", memory: "MOP = Method of Procedure = 维护操作方案。\nMOP是详细的标准操作文档，描述每一步操作的具体内容、风险提示、验证方法。\n执行MOP时必须逐步确认，不得跳过任何步骤。", phonics: "MOP 通常读作一个词：/mɑːp/（像 'mop' 拖把）。", collocations: [["MOP execution", "MOP执行"], ["MOP approval", "MOP审批"], ["MOP step", "MOP步骤"]], examples: [["Read the MOP before starting.", "开始前先阅读MOP。"], ["The MOP has 15 steps.", "MOP有15个步骤。"]] },
+       { w: "execution", ipa: "/ˌɛk.sɪˈkjuː.ʃən/", pos: "名词", cn: "执行", memory: "① execute = 执行；② execution = 执行/实施。\nMOP execution = MOP执行（按照操作方案逐步执行每一步）。", phonics: "ex 读 /ɛk/，e 读 /sɪ/，cu 读 /kjuː/，tion 读 /ʃən/。重音在第三音节。", collocations: [["MOP execution", "MOP执行"], ["execution plan", "执行计划"], ["execution time", "执行时间"]], examples: [["Start the MOP execution.", "开始执行MOP。"], ["Record the execution time for each step.", "记录每一步的执行时间。"]] },
+     ],
+     phrases: [
+-      { p: "move on to the MOP execution procedures", ipa: "/muːv ɑːn tuː ðə mɑːp ˌɛk.sɪˈkjuː.ʃən prəˈsiː.dʒərz/", cn: "进入MOP执行操作流程", why: "move on to + 下一个话题 = 转到…，是交接中标准的转场表达。MOP执行是数据中心日常维护的核心流程。" },
++      { p: "move on to MOP execution", ipa: "/muːv ɑːn tuː mɑːp ˌɛk.sɪˈkjuː.ʃən/", cn: "进入MOP执行流程", why: "move on to + 下一个话题 = 转到…，是交接中标准的转场表达。MOP执行是数据中心日常维护的核心流程。" },
+     ],
+     grammar: [
+       { q: "交接中常用的转场表达有哪些？", a: "① Now let's move on to... = 现在我们转到…\n② Next, let's review... = 接下来，让我们检查…\n③ Now we'll proceed to... = 现在我们将进入…\n④ Let's turn our attention to... = 让我们把注意力转到…\n⑤ Moving on to the next section... = 进入下一部分…\n⑥ That covers [topic]. Now let's look at... = [话题]就到这里。现在让我们看看…\n这些表达在每次话题切换时使用，让交接更有条理。" },
+@@ -742,7 +742,7 @@ export const MOCK_SENTENCES_PART12B: ISentence[] = [
+       { en: "Now let's move on to the weather report.", cn: "现在我们进入天气报告。", words: [{ w: "report", ipa: "/rɪˈpɔːrt/", cn: "报告", phonics: "re 读 /rɪ/，port 读 /pɔːrt/" }] },
+     ],
+     thinking: "DCIM定位部分回顾（351-400句）：\n① 设备定位：机柜、PDU、母线、ATS、STS、电池组、风墙/CRAH\n② 传感器定位：漏水、烟感、温湿度、VESDA\n③ 基础设施定位：通道封闭、配电柜、列间空调、地板送风\n④ 安全系统定位：消防气瓶、应急照明、门禁、CCTV\n⑤ 支持系统定位：BMS服务器、母线槽、KVM、配线架\n\n下一部分：MOP执行（401-450句），学习如何按步骤执行维护操作方案。",
+-    pronunciation: "move on 连读：/muːv ɑːn/。\nexecution 重音在第三音节：/ˌɛk.sɪˈkjuː.ʃən/。\nMOP 读 /mɑːp/。\n节奏：Now LET'S ｜ MOVE ON ｜ to the MOP ｜ ex-e-CU-tion pro-CE-dures.",
++    pronunciation: "move on 连读：/muːv ɑːn/。\nexecution 重音在第三音节：/ˌɛk.sɪˈkjuː.ʃən/。\nMOP 读 /mɑːp/。\n节奏：Now LET'S ｜ MOVE ON ｜ to MOP ｜ ex-e-CU-tion.",
+     quiz: [
+       { q: "现在我们进入EOP审查，怎么说？", a: "Now let's move on to the EOP review." },
+       { q: "交接中常用的转场表达有哪些？", a: "① Now let's move on to...（转到…）② Next, let's review...（接下来检查…）③ Now we'll proceed to...（进入…）④ Let's turn our attention to...（把注意力转到…）⑤ That covers [topic]. Now let's look at...（[话题]到这里，现在看看…）" },
+diff --git a/src/data/sentencePart13a.ts b/src/data/sentencePart13a.ts
+index 445837f..ea473b7 100644
+--- a/src/data/sentencePart13a.ts
++++ b/src/data/sentencePart13a.ts
+@@ -65,7 +65,7 @@ export const MOCK_SENTENCES_PART13A: ISentence[] = [
+   {
+     id: 403,
+     en: "Please perform Step Two.",
+-    cn: "执行第二步。",
++    cn: "请执行第二步。",
+     ipa: "/pliːz pərˈfɔːrm stɛp tuː/",
+     tags: ["第403句", "MOP执行", "★★★★★"],
+     when: "阅读完第二步内容后，值班经理指示操作员执行该步骤。perform 比 do 更正式，强调按规范执行。",
+@@ -419,7 +419,7 @@ export const MOCK_SENTENCES_PART13A: ISentence[] = [
+   {
+     id: 415,
+     en: "Resume the MOP.",
+-    cn: "恢复MOP。",
++    cn: "继续执行MOP。",
+     ipa: "/rɪˈzuːm ðə ˌɛm oʊ ˈpiː/",
+     tags: ["第415句", "MOP执行", "★★★★★"],
+     when: "暂停原因解决后，值班经理确认安全，下达恢复指令。Resume 表示从暂停处继续执行。",
+@@ -448,7 +448,7 @@ export const MOCK_SENTENCES_PART13A: ISentence[] = [
+   {
+     id: 416,
+     en: "Repeat the previous step.",
+-    cn: "重复上一操作。",
++    cn: "重复上一步。",
+     ipa: "/rɪˈpiːt ðə ˈpriː.vi.əs stɛp/",
+     tags: ["第416句", "MOP执行", "★★★★"],
+     when: "上一步操作结果不确定或有疑问，需要重新执行一次以确保正确。Repeat 表示重新执行同一步骤。",
+@@ -508,7 +508,7 @@ export const MOCK_SENTENCES_PART13A: ISentence[] = [
+   {
+     id: 418,
+     en: "Rollback immediately.",
+-    cn: "立即回退。",
++    cn: "立即执行回退。",
+     ipa: "/ˈroʊl.bæk ɪˈmiː.di.ət.li/",
+     tags: ["第418句", "MOP执行", "★★★★★"],
+     when: "操作过程中发现严重问题，需要立即将系统恢复到操作前的状态。Rollback 是紧急回退指令，必须立即执行。",
+diff --git a/src/data/sentencePart13b.ts b/src/data/sentencePart13b.ts
+index 68b0b3c..65f24e0 100644
+--- a/src/data/sentencePart13b.ts
++++ b/src/data/sentencePart13b.ts
+@@ -65,7 +65,7 @@ export const MOCK_SENTENCES_PART13B: ISentence[] = [
+   {
+     id: 428,
+     en: "Please sign the confirmation.",
+-    cn: "请签字确认。",
++    cn: "请在确认栏签字。",
+     ipa: "/pliːz saɪn ðə ˌkɒn.fərˈmeɪ.ʃən/",
+     tags: ["第428句", "MOP签字确认", "★★★★★"],
+     when: "MOP每完成一个关键步骤，执行人和监护人都需要签字确认，确保操作可追溯。",
+@@ -183,8 +183,8 @@ export const MOCK_SENTENCES_PART13B: ISentence[] = [
+   },
+   {
+     id: 432,
+-    en: "Has the LOTO been applied?",
+-    cn: "LOTO锁定挂牌已经执行了吗？",
++    en: "Has lockout/tagout (LOTO) been applied?",
++    cn: "锁定挂牌（LOTO）措施已经落实了吗？",
+     ipa: "/hæz ðə ˌɛl.oʊ.tiːˈoʊ biːn əˈplaɪd/",
+     tags: ["第432句", "MOP-LOTO确认", "★★★★★"],
+     when: "LOTO（Lock Out Tag Out，锁定挂牌）是MOP执行前最重要的安全程序，必须确认已执行。",
+@@ -568,7 +568,7 @@ export const MOCK_SENTENCES_PART13B: ISentence[] = [
+   {
+     id: 445,
+     en: "All operators have been briefed on the changes.",
+-    cn: "所有操作员都已了解变更内容。",
++    cn: "所有操作员都已接受变更交底。",
+     ipa: "/ɔːl ˈɑː.pə.reɪ.tərz hæv biːn briːft ɑːn ðə ˈtʃeɪn.dʒɪz/",
+     tags: ["第445句", "MOP变更通知", "★★★★"],
+     when: "MOP更新后，需要通知所有相关操作员了解变更内容，确保下次操作使用最新程序。",
+@@ -715,7 +715,7 @@ export const MOCK_SENTENCES_PART13B: ISentence[] = [
+   {
+     id: 450,
+     en: "Now let's move on to emergency procedures.",
+-    cn: "现在我们开始进入应急操作程序。",
++    cn: "现在我们进入应急操作程序。",
+     ipa: "/naʊ lɛts muːv ɑːn tuː ɪˈmɜːr.dʒən.si prəˈsiː.dʒərz/",
+     tags: ["第450句", "MOP转场EOP", "★★★★★"],
+     when: "MOP执行部分全部完成，转入下一环节——EOP应急操作程序。这是转场句。",
+diff --git a/src/data/sentencePart14a.ts b/src/data/sentencePart14a.ts
+index cc350e5..2d04b4d 100644
+--- a/src/data/sentencePart14a.ts
++++ b/src/data/sentencePart14a.ts
+@@ -5,8 +5,8 @@ import type { ISentence } from './sentenceLearning';
+ export const MOCK_SENTENCES_PART14A: ISentence[] = [
+   {
+     id: 451,
+-    en: "Power failure detected.",
+-    cn: "发现停电。",
++    en: "A power failure has been detected.",
++    cn: "检测到供电中断。",
+     ipa: "/ˈpaʊ.ər ˈfeɪl.jər dɪˈtɛk.tɪd/",
+     tags: ["第451句", "EOP应急", "★★★★★"],
+     when: "进入EOP应急演练环节。停电是数据中心最严重的应急事件之一，需要立即启动应急操作程序。本句是EOP的第一个场景触发词。",
+@@ -36,7 +36,7 @@ export const MOCK_SENTENCES_PART14A: ISentence[] = [
+   {
+     id: 452,
+     en: "UPS failure detected.",
+-    cn: "UPS故障。",
++    cn: "检测到UPS故障。",
+     ipa: "/ˌjuː.piːˈɛs ˈfeɪl.jər dɪˈtɛk.tɪd/",
+     tags: ["第452句", "EOP应急", "★★★★★"],
+     when: "停电后UPS是第二道防线，如果UPS也故障，IT负载将直接断电。这是极其严重的双重故障场景。",
+@@ -85,7 +85,7 @@ export const MOCK_SENTENCES_PART14A: ISentence[] = [
+       { en: "The pump failed to start.", cn: "水泵启动失败。", words: [{ w: "pump", ipa: "/pʌmp/", cn: "泵", phonics: "pump 读 /pʌmp/" }, { w: "start", ipa: "/stɑːrt/", cn: "开始", phonics: "start 读 /stɑːrt/" }] },
+       { en: "The breaker failed to close.", cn: "断路器合闸失败。", words: [{ w: "breaker", ipa: "/ˈbreɪkər/", cn: "断路器", phonics: "break 读 /breɪk/，er 读 /ər/" }] },
+     ],
+-    thinking: "发电机启动失败的应急措施：\n① 尝试手动启动发电机\n② 如果手动启动也失败，检查燃油供应、启动电池、控制面板\n③ 计算UPS电池剩余时间（通常15-30分钟满载）\n④ 通知发电机供应商紧急到场\n⑤ 准备负载削减计划（关闭非关键负载延长电池时间）\n发电机启动失败时，UPS电池时间是唯一的倒计时。",
++    thinking: "发电机启动失败的应急措施：\n① 尝试手动启动发电机\n② 如果手动启动也失败，检查燃油供应、启动电池、控制面板\n③ 计算UPS电池剩余时间（通常15-30分钟满载）\n④ 通知发电机供应商紧急到场\n⑤ 准备负荷削减计划（关闭非关键负载延长电池时间）\n发电机启动失败时，UPS电池时间是唯一的倒计时。",
+     pronunciation: "generator 重音在第一音节：/ˈdʒɛn.ə.reɪ.tər/。\nfailed 的 ai 读 /eɪ/：/feɪld/。\nstart 的 ar 读 /ɑːr/：/stɑːrt/。\n节奏：GEN-er-a-tor ｜ FAILED to START.",
+     quiz: [
+       { q: "ATS切换失败，怎么说？", a: "The ATS failed to transfer." },
+@@ -94,8 +94,8 @@ export const MOCK_SENTENCES_PART14A: ISentence[] = [
+   },
+   {
+     id: 454,
+-    en: "Transformer protection has tripped.",
+-    cn: "变压器保护动作。",
++    en: "The transformer protection relay has operated.",
++    cn: "变压器保护已动作。",
+     ipa: "/trænsˈfɔːr.mər prəˈtɛk.ʃən hæz trɪpt/",
+     tags: ["第454句", "EOP应急", "★★★★★"],
+     when: "变压器保护动作意味着变压器因内部故障（过流、过温、瓦斯等）被保护装置自动切断，下游所有负载失去供电。",
+@@ -154,7 +154,7 @@ export const MOCK_SENTENCES_PART14A: ISentence[] = [
+   },
+   {
+     id: 456,
+-    en: "CRAC has stopped.",
++    en: "The CRAC unit has stopped.",
+     cn: "精密空调停止运行。",
+     ipa: "/ˌsiː.ɑːr.eɪˈsiː hæz stɒpt/",
+     tags: ["第456句", "EOP应急", "★★★★★"],
+@@ -175,7 +175,7 @@ export const MOCK_SENTENCES_PART14A: ISentence[] = [
+       { en: "The cooling tower fan has stopped.", cn: "冷却塔风机已停止。", words: [{ w: "cooling", ipa: "/ˈkuːlɪŋ/", cn: "冷却", phonics: "cool 读 /kuːl/，ing 读 /ɪŋ/" }] },
+       { en: "The chilled water pump has stopped.", cn: "冷冻水泵已停止。", words: [{ w: "water", ipa: "/ˈwɔːtər/", cn: "水", phonics: "wa 读 /wɔː/，ter 读 /tər/" }, { w: "pump", ipa: "/pʌmp/", cn: "泵", phonics: "pump 读 /pʌmp/" }] },
+     ],
+-    thinking: "精密空调停止的应急措施：\n① 确认哪台CRAC停止（编号）\n② 检查停止原因（高压/低压/过流/漏水/手动关机）\n③ 如果剩余CRAC无法维持温度，启动备用CRAC\n④ 监控机房温度上升速率（通常满载时每5分钟升1-2°C）\n⑤ 如果温度超过阈值（通常28°C），准备IT负载削减\n机房温度上升比停电慢，但同样危险。",
++    thinking: "精密空调停止的应急措施：\n① 确认哪台CRAC停止（编号）\n② 检查停止原因（高压/低压/过流/漏水/手动关机）\n③ 如果剩余CRAC无法维持温度，启动备用CRAC\n④ 监控机房温度上升速率（通常满载时每5分钟升1-2°C）\n⑤ 如果温度超过阈值（通常28°C），准备IT负荷削减\n机房温度上升比停电慢，但同样危险。",
+     pronunciation: "CRAC 读字母音：/ˌsiː.ɑːr.eɪˈsiː/。\nstopped 读 /stɒpt/，注意 p 和 t 连读。\n节奏：C-R-A-C ｜ has STOPPED.",
+     quiz: [
+       { q: "冷却塔风机停了，怎么说？", a: "The cooling tower fan has stopped." },
+@@ -214,10 +214,10 @@ export const MOCK_SENTENCES_PART14A: ISentence[] = [
+   {
+     id: 458,
+     en: "Fire alarm activated.",
+-    cn: "消防报警启动。",
++    cn: "消防报警已触发。",
+     ipa: "/ˈfaɪ.ər əˈlɑːrm ˈæk.tɪ.veɪ.tɪd/",
+     tags: ["第458句", "EOP应急", "★★★★★"],
+-    when: "消防报警是数据中心最紧急的事件之一，可能意味着火灾正在发生。消防报警启动后需要立即确认是否为真实火灾，并启动疏散程序。",
++    when: "消防报警是数据中心最紧急的事件之一，可能意味着火灾正在发生。消防报警已触发后需要立即确认是否为真实火灾，并启动疏散程序。",
+     words: [
+       { w: "fire alarm", ipa: "/ˈfaɪ.ər əˈlɑːrm/", pos: "名词", cn: "消防报警；火警", memory: "① fire = 火灾/火；② alarm = 报警/警报。\nfire alarm = 消防报警系统/火警告警。\n数据中心消防系统包括：烟感探测器、温感探测器、手动报警按钮、气体灭火系统。", phonics: "fire 读 /ˈfaɪ.ər/，alarm 读 /əˈlɑːrm/。", collocations: [["fire alarm", "消防报警"], ["fire alarm panel", "消防报警主机"], ["fire alarm test", "消防报警测试"]], examples: [["The fire alarm was activated.", "消防报警已启动。"], ["It was a false fire alarm.", "是一次误报。"]] },
+       { w: "activated", ipa: "/ˈæk.tɪ.veɪ.tɪd/", pos: "动词(过去分词)", cn: "被激活；启动", memory: "① active = 活跃的/活动的；② activate = 激活/启动。\nfire alarm activated = 消防报警已被激活（系统检测到火灾信号并触发告警）。", phonics: "ac 读 /æk/，ti 读 /tɪ/，va 读 /veɪ/，ted 读 /tɪd/，重音在第一音节。", collocations: [["alarm activated", "告警已启动"], ["system activated", "系统已启动"], ["EOP activated", "EOP已启动"]], examples: [["The gas suppression system was activated.", "气体灭火系统已启动。"], ["The EOP has been activated.", "应急操作程序已启动。"]] },
+@@ -230,14 +230,14 @@ export const MOCK_SENTENCES_PART14A: ISentence[] = [
+     ],
+     pattern: "Fire alarm + activated/triggered",
+     patternExamples: [
+-      { en: "Fire alarm activated in Building B5.", cn: "B5楼消防报警启动。", words: [{ w: "fire", ipa: "/faɪər/", cn: "消防", phonics: "fire 读 /faɪər/" }, { w: "alarm", ipa: "/əˈlɑːrm/", cn: "告警", phonics: "a 读 /ə/，larm 读 /lɑːrm/" }, { w: "building", ipa: "/ˈbɪldɪŋ/", cn: "建筑", phonics: "build 读 /bɪld/，ing 读 /ɪŋ/" }] },
++      { en: "Fire alarm activated in Building B5.", cn: "B5楼消防报警已触发。", words: [{ w: "fire", ipa: "/faɪər/", cn: "消防", phonics: "fire 读 /faɪər/" }, { w: "alarm", ipa: "/əˈlɑːrm/", cn: "告警", phonics: "a 读 /ə/，larm 读 /lɑːrm/" }, { w: "building", ipa: "/ˈbɪldɪŋ/", cn: "建筑", phonics: "build 读 /bɪld/，ing 读 /ɪŋ/" }] },
+       { en: "Fire alarm triggered by smoke detector.", cn: "消防报警由烟感探测器触发。", words: [{ w: "fire", ipa: "/faɪər/", cn: "消防", phonics: "fire 读 /faɪər/" }, { w: "alarm", ipa: "/əˈlɑːrm/", cn: "告警", phonics: "a 读 /ə/，larm 读 /lɑːrm/" }, { w: "smoke", ipa: "/smoʊk/", cn: "烟雾", phonics: "smoke 读 /smoʊk/" }] },
+       { en: "False fire alarm activated.", cn: "消防误报启动。", words: [{ w: "fire", ipa: "/faɪər/", cn: "消防", phonics: "fire 读 /faɪər/" }, { w: "alarm", ipa: "/əˈlɑːrm/", cn: "告警", phonics: "a 读 /ə/，larm 读 /lɑːrm/" }] },
+     ],
+     thinking: "消防报警应急措施：\n① 确认报警区域和探测器位置（哪个区域、哪个探测器）\n② 派人到现场确认是否为真实火灾（携带对讲机和灭火器）\n③ 如果是真实火灾，立即拨打消防电话并启动疏散程序\n④ 如果是误报，确认原因后复位消防系统\n⑤ 如果气体灭火系统已启动，严禁进入该区域（气体对人体有害）\n消防报警宁可误报不可漏报，每次都要认真确认。",
+     pronunciation: "fire 读 /ˈfaɪ.ər/，不是 /faɪr/。\nalarm 的 a 读 /ə/，larm 读 /lɑːrm/。\nactivated 重音在第一音节：/ˈæk.tɪ.veɪ.tɪd/。\n节奏：FIRE a-LARM ｜ AC-ti-va-ted.",
+     quiz: [
+-      { q: "B5楼消防报警启动了，怎么说？", a: "Fire alarm activated in Building B5." },
++      { q: "B5楼消防报警已触发了，怎么说？", a: "Fire alarm activated in Building B5." },
+       { q: "气体灭火系统启动后能进入该区域吗？", a: "严禁进入。数据中心通常使用惰性气体（如IG541/N2）或化学气体（如FM200/NOVEC1230）灭火。虽然部分气体对人体相对安全，但高浓度下仍有窒息风险，且灭火过程中可能有烟雾和碎片。必须等消防队确认安全后才能进入。" },
+     ],
+   },
+@@ -255,7 +255,7 @@ export const MOCK_SENTENCES_PART14A: ISentence[] = [
+       { p: "smoke detected", ipa: "/smoʊk dɪˈtɛk.tɪd/", cn: "发现烟雾", why: "smoke + detected = 烟雾被检测到。比 fire alarm activated 更具体，明确检测到烟雾而非仅仅是告警系统动作。" },
+     ],
+     grammar: [
+-      { q: "smoke detected 和 fire alarm activated 有什么区别？", a: "smoke detected = 检测到烟雾（烟感探测器触发，火灾可能性高）\nfire alarm activated = 消防报警启动（可能是烟感、温感、手动按钮等多种触发方式）\nsmoke detected 更具体，明确有烟雾；fire alarm activated 可能是其他原因（如温感、手动按钮）。\n如果烟感探测器触发，通常同时报告 smoke detected 和 fire alarm activated。" },
++      { q: "smoke detected 和 fire alarm activated 有什么区别？", a: "smoke detected = 检测到烟雾（烟感探测器触发，火灾可能性高）\nfire alarm activated = 消防报警已触发（可能是烟感、温感、手动按钮等多种触发方式）\nsmoke detected 更具体，明确有烟雾；fire alarm activated 可能是其他原因（如温感、手动按钮）。\n如果烟感探测器触发，通常同时报告 smoke detected 和 fire alarm activated。" },
+     ],
+     pattern: "Smoke + detected/found/observed",
+     patternExamples: [
+@@ -272,8 +272,8 @@ export const MOCK_SENTENCES_PART14A: ISentence[] = [
+   },
+   {
+     id: 460,
+-    en: "Emergency response has started.",
+-    cn: "开始执行EOP。",
++    en: "The emergency response has started.",
++    cn: "应急响应已启动。",
+     ipa: "/ɪˈmɜːr.dʒən.si rɪˈspɒns hæz ˈstɑːr.tɪd/",
+     tags: ["第460句", "EOP启动", "★★★★★"],
+     when: "确认应急事件后，正式启动应急操作程序（EOP）。本句是从'发现事件'到'执行应急措施'的转折点。",
+@@ -291,7 +291,7 @@ export const MOCK_SENTENCES_PART14A: ISentence[] = [
+     patternExamples: [
+       { en: "Emergency procedure has started.", cn: "应急程序已启动。", words: [{ w: "emergency", ipa: "/ɪˈmɜːrdʒənsi/", cn: "紧急", phonics: "e 读 /ɪ/，mergency 读 /mɜːrdʒənsi/" }, { w: "procedure", ipa: "/prəˈsiːdʒər/", cn: "流程", phonics: "pro 读 /prə/，cedure 读 /siːdʒər/" }, { w: "started", ipa: "/stɑːrt/", cn: "开始", phonics: "start 读 /stɑːrt/" }] },
+       { en: "Evacuation has started.", cn: "疏散已开始。", words: [{ w: "started", ipa: "/stɑːrt/", cn: "开始", phonics: "start 读 /stɑːrt/" }] },
+-      { en: "Load shedding has started.", cn: "负载削减已开始。", words: [{ w: "load", ipa: "/loʊd/", cn: "负载", phonics: "load 读 /loʊd/" }, { w: "started", ipa: "/stɑːrt/", cn: "开始", phonics: "start 读 /stɑːrt/" }] },
++      { en: "Load shedding has started.", cn: "负荷削减已开始。", words: [{ w: "load", ipa: "/loʊd/", cn: "负载", phonics: "load 读 /loʊd/" }, { w: "started", ipa: "/stɑːrt/", cn: "开始", phonics: "start 读 /stɑːrt/" }] },
+     ],
+     thinking: "EOP启动后的标准流程：\n① 确认事件类型和严重程度\n② 启动对应的EOP章节\n③ 通知应急响应团队（Incident Manager + 值班经理 + 相关专业人员）\n④ 执行EOP中的具体操作步骤\n⑤ 持续监控事件进展和应急措施效果\n⑥ 记录所有操作和时间节点\nEOP不是一个人的事，是团队协作。",
+     pronunciation: "emergency 重音在第二音节：/ɪˈmɜːr.dʒən.si/。\nresponse 重音在第二音节：/rɪˈspɒns/。\nstarted 读 /ˈstɑːr.tɪd/。\n节奏：e-MER-gen-cy ｜ re-SPONSE ｜ has STAR-ted.",
+@@ -302,7 +302,7 @@ export const MOCK_SENTENCES_PART14A: ISentence[] = [
+   },
+   {
+     id: 461,
+-    en: "Call the Incident Manager.",
++    en: "Call the Duty Manager.",
+     cn: "通知值班经理。",
+     ipa: "/kɔːl ðə ˈɪn.sɪ.dənt ˈmæn.ɪ.dʒər/",
+     tags: ["第461句", "EOP通知", "★★★★★"],
+@@ -509,7 +509,7 @@ export const MOCK_SENTENCES_PART14A: ISentence[] = [
+   {
+     id: 468,
+     en: "Review the emergency contact list.",
+-    cn: "检查应急联系清单。",
++    cn: "核对应急联系清单。",
+     ipa: "/rɪˈvjuː ðə ɪˈmɜːr.dʒən.si ˈkɒn.tækt lɪst/",
+     tags: ["第468句", "EOP准备", "★★★★"],
+     when: "应急联系清单包含所有关键联系人的电话号码，包括内部（值班经理、工程师）和外部（消防、电力公司、供应商）。确保电话号码最新有效。",
+@@ -539,7 +539,7 @@ export const MOCK_SENTENCES_PART14A: ISentence[] = [
+   {
+     id: 469,
+     en: "Establish a communication channel.",
+-    cn: "建立通讯通道。",
++    cn: "建立应急通信频道。",
+     ipa: "/ɪˈstæb.lɪʃ ə ˌkɒm.juˈnɪ.keɪ.ʃən ˈtʃæn.əl/",
+     tags: ["第469句", "EOP通讯", "★★★★"],
+     when: "应急响应需要可靠的通讯通道，确保团队成员之间、与外部之间能够实时沟通。通常使用对讲机专用频道。",
+@@ -599,7 +599,7 @@ export const MOCK_SENTENCES_PART14A: ISentence[] = [
+   {
+     id: 471,
+     en: "Record all actions and timestamps.",
+-    cn: "记录所有操作和时间戳。",
++    cn: "记录所有行动及对应时间。",
+     ipa: "/rɪˈkɔːrd ɔːl ˈæk.ʃənz ænd ˈtaɪm.stæmps/",
+     tags: ["第471句", "EOP记录", "★★★★★"],
+     when: "应急响应中每一步操作都必须详细记录，包括做了什么、什么时间做的、谁做的。这些记录是事后分析和改进的基础。",
+@@ -629,30 +629,30 @@ export const MOCK_SENTENCES_PART14A: ISentence[] = [
+   {
+     id: 472,
+     en: "Prepare for load shedding if necessary.",
+-    cn: "必要时准备负载削减。",
++    cn: "必要时准备削减负荷。",
+     ipa: "/prɪˈpeər fɔːr loʊd ˈʃɛd.ɪŋ ɪf ˈnɛs.ə.sər.i/",
+     tags: ["第472句", "EOP负载管理", "★★★★★"],
+     when: "当UPS电池即将耗尽或发电机无法启动时，需要削减非关键负载以延长电池供电时间，保护关键IT设备。",
+     words: [
+-      { w: "load shedding", ipa: "/loʊd ˈʃɛd.ɪŋ/", pos: "名词", cn: "负载削减；甩负荷", memory: "① load = 负载/负荷；② shedding = 削减/去除（shed = 脱落/去除）。\nload shedding = 有计划地关闭部分非关键负载，以保护关键负载。\n这是电力系统中的标准术语，在数据中心应急场景中至关重要。", phonics: "load 读 /loʊd/，shedding 读 /ˈʃɛd.ɪŋ/。", collocations: [["load shedding", "负载削减"], ["load shedding plan", "负载削减计划"], ["emergency load shedding", "应急负载削减"]], examples: [["Load shedding is necessary to protect critical loads.", "负载削减是保护关键负载的必要措施。"], ["Execute the load shedding plan.", "执行负载削减计划。"]] },
++      { w: "load shedding", ipa: "/loʊd ˈʃɛd.ɪŋ/", pos: "名词", cn: "负荷削减；甩负荷", memory: "① load = 负载/负荷；② shedding = 削减/去除（shed = 脱落/去除）。\nload shedding = 有计划地关闭部分非关键负载，以保护关键负载。\n这是电力系统中的标准术语，在数据中心应急场景中至关重要。", phonics: "load 读 /loʊd/，shedding 读 /ˈʃɛd.ɪŋ/。", collocations: [["load shedding", "负荷削减"], ["load shedding plan", "负荷削减计划"], ["emergency load shedding", "应急负荷削减"]], examples: [["Load shedding is necessary to protect critical loads.", "负荷削减是保护关键负载的必要措施。"], ["Execute the load shedding plan.", "执行负荷削减计划。"]] },
+     ],
+     phrases: [
+-      { p: "load shedding", ipa: "/loʊd ˈʃɛd.ɪŋ/", cn: "负载削减", why: "load + shedding = 负载削减。这是数据中心应急中的关键操作，通过关闭非关键负载来延长UPS电池供电时间。" },
++      { p: "load shedding", ipa: "/loʊd ˈʃɛd.ɪŋ/", cn: "负荷削减", why: "load + shedding = 负荷削减。这是数据中心应急中的关键操作，通过关闭非关键负载来延长UPS电池供电时间。" },
+     ],
+     grammar: [
+-      { q: "load shedding 和 power cut 有什么区别？", a: "load shedding = 负载削减（有计划的、选择性的关闭部分负载）\npower cut = 停电（无计划的、全面的断电）\n✅ Load shedding protects critical systems.（负载削减保护关键系统 → 主动选择关闭非关键设备）\n✅ Power cut affects everything.（停电影响所有设备 → 被动的全面断电）\nload shedding 是主动的、有选择性的保护措施。" },
++      { q: "load shedding 和 power cut 有什么区别？", a: "load shedding = 负荷削减（有计划的、选择性的关闭部分负载）\npower cut = 停电（无计划的、全面的断电）\n✅ Load shedding protects critical systems.（负荷削减保护关键系统 → 主动选择关闭非关键设备）\n✅ Power cut affects everything.（停电影响所有设备 → 被动的全面断电）\nload shedding 是主动的、有选择性的保护措施。" },
+     ],
+     pattern: "Prepare for/Execute + load shedding",
+     patternExamples: [
+-      { en: "Execute load shedding immediately.", cn: "立即执行负载削减。", words: [{ w: "load", ipa: "/loʊd/", cn: "负载", phonics: "load 读 /loʊd/" }, { w: "immediately", ipa: "/ɪˈmiːdiətli/", cn: "立即", phonics: "im 读 /ɪ/，mediately 读 /miːdiətli/" }] },
+-      { en: "Prepare the load shedding priority list.", cn: "准备负载削减优先级清单。", words: [{ w: "load", ipa: "/loʊd/", cn: "负载", phonics: "load 读 /loʊd/" }] },
+-      { en: "Load shedding has been completed.", cn: "负载削减已完成。", words: [{ w: "load", ipa: "/loʊd/", cn: "负载", phonics: "load 读 /loʊd/" }] },
++      { en: "Execute load shedding immediately.", cn: "立即执行负荷削减。", words: [{ w: "load", ipa: "/loʊd/", cn: "负载", phonics: "load 读 /loʊd/" }, { w: "immediately", ipa: "/ɪˈmiːdiətli/", cn: "立即", phonics: "im 读 /ɪ/，mediately 读 /miːdiətli/" }] },
++      { en: "Prepare the load shedding priority list.", cn: "准备负荷削减优先级清单。", words: [{ w: "load", ipa: "/loʊd/", cn: "负载", phonics: "load 读 /loʊd/" }] },
++      { en: "Load shedding has been completed.", cn: "负荷削减已完成。", words: [{ w: "load", ipa: "/loʊd/", cn: "负载", phonics: "load 读 /loʊd/" }] },
+     ],
+-    thinking: "负载削减原则：\n① 优先级：先关闭非关键负载（办公区、非生产系统），最后才关闭生产系统\n② 提前规划：事先制定负载削减优先级清单\n③ 通知客户：关闭客户设备前必须获得客户同意（除非紧急到无法等待）\n④ 记录：每次负载削减都要记录关闭了哪些设备、什么时间关闭的\n⑤ 恢复：电源恢复后按优先级逐步恢复负载\n负载削减是最后手段，目的是保护最重要的设备。",
++    thinking: "负荷削减原则：\n① 优先级：先关闭非关键负载（办公区、非生产系统），最后才关闭生产系统\n② 提前规划：事先制定负荷削减优先级清单\n③ 通知客户：关闭客户设备前必须获得客户同意（除非紧急到无法等待）\n④ 记录：每次负荷削减都要记录关闭了哪些设备、什么时间关闭的\n⑤ 恢复：电源恢复后按优先级逐步恢复负载\n负荷削减是最后手段，目的是保护最重要的设备。",
+     pronunciation: "load 读 /loʊd/，不是 /luːd/。\nshedding 读 /ˈʃɛd.ɪŋ/，sh 读 /ʃ/。\nnecessary 读 /ˈnɛs.ə.sər.i/。\n节奏：pre-PARE ｜ for LOAD SHED-ding ｜ if NEC-es-sa-ry.",
+     quiz: [
+-      { q: "立即执行负载削减，怎么说？", a: "Execute load shedding immediately." },
+-      { q: "负载削减时应该先关闭什么？", a: "先关闭非关键负载：① 办公区空调/照明 ② 非生产测试系统 ③ 非关键网络设备 ④ 备用冗余设备。最后才关闭生产系统。事先制定优先级清单，应急时按计划执行，避免慌乱中关错设备。" },
++      { q: "立即执行负荷削减，怎么说？", a: "Execute load shedding immediately." },
++      { q: "负荷削减时应该先关闭什么？", a: "先关闭非关键负载：① 办公区空调/照明 ② 非生产测试系统 ③ 非关键网络设备 ④ 备用冗余设备。最后才关闭生产系统。事先制定优先级清单，应急时按计划执行，避免慌乱中关错设备。" },
+     ],
+   },
+   {
+diff --git a/src/data/sentencePart14b.ts b/src/data/sentencePart14b.ts
+index ae2bf6c..f697fe0 100644
+--- a/src/data/sentencePart14b.ts
++++ b/src/data/sentencePart14b.ts
+@@ -36,7 +36,7 @@ export const MOCK_SENTENCES_PART14B: ISentence[] = [
+   {
+     id: 477,
+     en: "Transfer the load to UPS B.",
+-    cn: "切换到B路UPS。",
++    cn: "将负载切换至B路UPS。",
+     ipa: "/ˈtræns.fər ðə loʊd tuː ˌjuː.piːˈɛs ˌbiː/",
+     tags: ["第477句", "UPS切换", "★★★★★"],
+     when: "准备好后，执行负载切换指令。将负载从故障的A路UPS切换到正常的B路UPS，确保IT设备不断电。",
+@@ -64,7 +64,7 @@ export const MOCK_SENTENCES_PART14B: ISentence[] = [
+   },
+   {
+     id: 478,
+-    en: "Start Generator No.2.",
++    en: "Start Generator No. 2.",
+     cn: "启动2号柴油发电机。",
+     ipa: "/stɑːrt ˈdʒɛn.ə.reɪ.tər ˌnʌm.bər tuː/",
+     tags: ["第478句", "发电机启动", "★★★★★"],
+@@ -140,32 +140,32 @@ export const MOCK_SENTENCES_PART14B: ISentence[] = [
+     pattern: "Check the + 应急系统",
+     patternExamples: [
+       { en: "Check the emergency power system.", cn: "检查应急供电系统。", words: [{ w: "check", ipa: "/tʃɛk/", cn: "检查", phonics: "ch 读 /tʃ/，eck 读 /ɛk/" }, { w: "emergency", ipa: "/ɪˈmɜːrdʒənsi/", cn: "紧急", phonics: "e 读 /ɪ/，mergency 读 /mɜːrdʒənsi/" }, { w: "power", ipa: "/ˈpaʊər/", cn: "电力", phonics: "pow 读 /paʊ/，er 读 /ər/" }] },
+-      { en: "Check the fire suppression system.", cn: "检查消防灭火系统。", words: [{ w: "check", ipa: "/tʃɛk/", cn: "检查", phonics: "ch 读 /tʃ/，eck 读 /ɛk/" }, { w: "fire", ipa: "/faɪər/", cn: "消防", phonics: "fire 读 /faɪər/" }, { w: "system", ipa: "/ˈsɪstəm/", cn: "系统", phonics: "sys 读 /sɪs/，tem 读 /təm/" }] },
++      { en: "Check the fire suppression system.", cn: "检查气体灭火系统。", words: [{ w: "check", ipa: "/tʃɛk/", cn: "检查", phonics: "ch 读 /tʃ/，eck 读 /ɛk/" }, { w: "fire", ipa: "/faɪər/", cn: "消防", phonics: "fire 读 /faɪər/" }, { w: "system", ipa: "/ˈsɪstəm/", cn: "系统", phonics: "sys 读 /sɪs/，tem 读 /təm/" }] },
+       { en: "Check the evacuation alarm.", cn: "检查疏散警报。", words: [{ w: "check", ipa: "/tʃɛk/", cn: "检查", phonics: "ch 读 /tʃ/，eck 读 /ɛk/" }, { w: "alarm", ipa: "/əˈlɑːrm/", cn: "告警", phonics: "a 读 /ə/，larm 读 /lɑːrm/" }] },
+     ],
+     thinking: "应急照明是安全基础设施：\n① 停电时自动启动（battery powered）\n② 持续时间通常1-3小时\n③ 覆盖区域：机房、走廊、楼梯、出口\n④ 定期检查：每月测试一次\n应急照明不正常 = 人员安全风险，必须立即修复。",
+     pronunciation: "emergency 重音在第二音节：/ɪˈmɜːr.dʒən.si/。\nlighting 读 /ˈlaɪ.tɪŋ/，不是 /ˈlaɪt.nɪŋ/（那是 lightning 闪电）。\n节奏：CHECK ｜ the e-MER-gen-cy ｜ LIGHT-ing ｜ SYS-tem.",
+     quiz: [
+-      { q: "检查消防灭火系统，怎么说？", a: "Check the fire suppression system." },
++      { q: "检查气体灭火系统，怎么说？", a: "Check the fire suppression system." },
+       { q: "lighting 和 lightning 怎么区分？", a: "lighting = 照明（/ˈlaɪ.tɪŋ/，照明系统）；lightning = 闪电（/ˈlaɪt.nɪŋ/，自然现象）。数据中心语境用 lighting。" },
+     ],
+   },
+   {
+     id: 481,
+     en: "Activate the fire suppression system.",
+-    cn: "启动消防灭火系统。",
++    cn: "启动气体灭火系统。",
+     ipa: "/ˈæk.tɪ.veɪt ðə faɪər səˈprɛʃ.ən ˈsɪs.təm/",
+     tags: ["第481句", "消防灭火", "★★★★★"],
+-    when: "发现火灾或烟雾时，需要启动消防灭火系统。数据中心通常使用气体灭火（如FM-200或Novec 1230），不使用水喷淋，避免损坏IT设备。",
++    when: "发现火灾或烟雾时，需要启动气体灭火系统。数据中心通常使用气体灭火（如FM-200或Novec 1230），不使用水喷淋，避免损坏IT设备。",
+     words: [
+       { w: "activate", ipa: "/ˈæk.tɪ.veɪt/", pos: "动词", cn: "启动；激活", memory: "① active = 活跃的/活动的；② activate = 使激活/启动。\nactivate 比 start 更正式，常用于系统/设备的启动。\n对比：start = 启动（通用）；activate = 激活/启动（正式）。", phonics: "ac 读 /æk/，ti 读 /tɪ/，vate 读 /veɪt/，重音在第一音节。", collocations: [["activate the system", "启动系统"], ["activate the alarm", "启动警报"], ["manually activate", "手动启动"]], examples: [["Activate the suppression system.", "启动灭火系统。"], ["The alarm was activated automatically.", "警报自动启动了。"]] },
+       { w: "suppression", ipa: "/səˈprɛʃ.ən/", pos: "名词", cn: "灭火；抑制", memory: "① suppress = 压制/抑制；② suppression = 灭火/抑制（名词）。\nfire suppression = 消防灭火（数据中心专用术语）。\n数据中心的 fire suppression 通常指气体灭火系统，不是水喷淋。", phonics: "sup 读 /sə/，pres 读 /prɛʃ/，sion 读 /ən/，重音在第二音节。", collocations: [["fire suppression", "消防灭火"], ["gas suppression", "气体灭火"], ["suppression system", "灭火系统"]], examples: [["The fire suppression system activated.", "灭火系统启动了。"], ["Check the suppression agent level.", "检查灭火剂液位。"]] },
+     ],
+     phrases: [
+-      { p: "fire suppression system", ipa: "/faɪər səˈprɛʃ.ən ˈsɪs.təm/", cn: "消防灭火系统", why: "fire + suppression + system = 消防灭火系统。数据中心使用气体灭火（FM-200/Novec 1230/Inergen），不使用水，避免损坏IT设备。" },
++      { p: "fire suppression system", ipa: "/faɪər səˈprɛʃ.ən ˈsɪs.təm/", cn: "气体灭火系统", why: "fire + suppression + system = 气体灭火系统。数据中心使用气体灭火（FM-200/Novec 1230/Inergen），不使用水，避免损坏IT设备。" },
+     ],
+     grammar: [
+-      { q: "activate 和 start 在消防系统语境中有什么区别？", a: "activate = 激活/启动（正式用语，常用于消防/安全系统）\nstart = 启动（通用，常用于发电机/泵等机械设备）\n✅ Activate the fire suppression system.（启动消防灭火系统 → 正式）\n✅ Start the fire pump.（启动消防泵 → 机械设备）\n消防系统用 activate，机械设备用 start。" },
++      { q: "activate 和 start 在消防系统语境中有什么区别？", a: "activate = 激活/启动（正式用语，常用于消防/安全系统）\nstart = 启动（通用，常用于发电机/泵等机械设备）\n✅ Activate the fire suppression system.（启动气体灭火系统 → 正式）\n✅ Start the fire pump.（启动消防泵 → 机械设备）\n消防系统用 activate，机械设备用 start。" },
+     ],
+     pattern: "Activate the + 安全系统",
+     patternExamples: [
+@@ -173,7 +173,7 @@ export const MOCK_SENTENCES_PART14B: ISentence[] = [
+       { en: "Activate the emergency shutdown.", cn: "启动紧急关机。", words: [{ w: "emergency", ipa: "/ɪˈmɜːrdʒənsi/", cn: "紧急", phonics: "e 读 /ɪ/，mergency 读 /mɜːrdʒənsi/" }] },
+       { en: "Activate the smoke extraction system.", cn: "启动排烟系统。", words: [{ w: "smoke", ipa: "/smoʊk/", cn: "烟雾", phonics: "smoke 读 /smoʊk/" }, { w: "system", ipa: "/ˈsɪstəm/", cn: "系统", phonics: "sys 读 /sɪs/，tem 读 /təm/" }] },
+     ],
+-    thinking: "数据中心消防灭火系统：\n① 探测：烟感（smoke detector）+ 温感（heat detector）\n② 预警：报警 → 人员疏散 → 延时30秒\n③ 释放：气体灭火剂释放 → 灭火\n④ 事后：通风排烟 → 检查设备 → 恢复运行\n⚠️ 气体释放前必须确认人员已全部疏散！\n⚠️ 气体灭火剂对人体有害，释放时严禁人员在现场。",
++    thinking: "数据中心气体灭火系统：\n① 探测：烟感（smoke detector）+ 温感（heat detector）\n② 预警：报警 → 人员疏散 → 延时30秒\n③ 释放：气体灭火剂释放 → 灭火\n④ 事后：通风排烟 → 检查设备 → 恢复运行\n⚠️ 气体释放前必须确认人员已全部疏散！\n⚠️ 气体灭火剂对人体有害，释放时严禁人员在现场。",
+     pronunciation: "activate 重音在第一音节：/ˈæk.tɪ.veɪt/。\nsuppression 重音在第二音节：/səˈprɛʃ.ən/。\n节奏：AC-ti-vate ｜ the FIRE ｜ sup-PRES-sion ｜ SYS-tem.",
+     quiz: [
+       { q: "启动疏散警报，怎么说？", a: "Activate the evacuation alarm." },
+@@ -509,7 +509,7 @@ export const MOCK_SENTENCES_PART14B: ISentence[] = [
+   {
+     id: 493,
+     en: "Update the emergency operating procedure.",
+-    cn: "更新应急操作程序。",
++    cn: "更新应急操作程序（EOP）。",
+     ipa: "/ˌʌpˈdeɪt ði ɪˈmɜːr.dʒən.si ˈɑː.pə.reɪ.tɪŋ ˈproʊ.sɪ.dʒər/",
+     tags: ["第493句", "程序更新", "★★★★"],
+     when: "根据事后回顾的经验教训，需要更新EOP（应急操作程序），使下次应急响应更加高效。",
+diff --git a/src/data/sentencePart15a.ts b/src/data/sentencePart15a.ts
+index 7dc34fd..d92733f 100644
+--- a/src/data/sentencePart15a.ts
++++ b/src/data/sentencePart15a.ts
+@@ -66,7 +66,7 @@ export const MOCK_SENTENCES_PART15A: ISentence[] = [
+   {
+     id: 1203,
+     en: "Can everyone hear me clearly?",
+-    cn: "大家都能清楚听到我的声音吗？",
++    cn: "大家都能听清我说话吗？",
+     ipa: "/kæn ˈɛv.ri.wʌn hɪr miː ˈklɪr.li/",
+     tags: ["第1203句", "通讯确认", "★★★★★"],
+     when: "开始正式内容前，确认所有与会者的通讯质量正常。这是电话会议的标准检查步骤，避免因通讯问题导致信息遗漏。",
+@@ -95,7 +95,7 @@ export const MOCK_SENTENCES_PART15A: ISentence[] = [
+   {
+     id: 1204,
+     en: "Please mute your microphone when you are not speaking.",
+-    cn: "不发言时请关闭麦克风。",
++    cn: "不发言时请将麦克风静音。",
+     ipa: "/pliːz mjuːt jɔːr ˈmaɪ.kroʊ.foʊn wɛn juː ɑːr nɑːt ˈspiː.kɪŋ/",
+     tags: ["第1204句", "会议礼仪", "★★★★★"],
+     when: "确认通讯正常后，提醒与会者遵守会议礼仪：不发言时保持静音，避免背景噪音干扰会议。",
+@@ -125,7 +125,7 @@ export const MOCK_SENTENCES_PART15A: ISentence[] = [
+   {
+     id: 1205,
+     en: "Let's begin with the current system status.",
+-    cn: "我们先介绍当前系统状态。",
++    cn: "我们先从当前系统状态开始。",
+     ipa: "/lɛts bɪˈɡɪn wɪð ðə ˈkʌr.ənt ˈsɪs.təm ˈsteɪ.təs/",
+     tags: ["第1205句", "会议流程", "★★★★★"],
+     when: "通讯确认和礼仪提醒完成后，正式进入会议内容。第一部分是系统状态汇报，这是客户最关心的内容。",
+diff --git a/src/data/sentencePart15b.ts b/src/data/sentencePart15b.ts
+index 8de59cf..e6741e0 100644
+--- a/src/data/sentencePart15b.ts
++++ b/src/data/sentencePart15b.ts
+@@ -35,8 +35,8 @@ export const MOCK_SENTENCES_PART15B: ISentence[] = [
+   },
+   {
+     id: 1217,
+-    en: "We do not expect this issue to happen again.",
+-    cn: "预计该问题不会再次发生。",
++    en: "Based on our current findings, we do not expect this issue to recur.",
++    cn: "根据目前的调查结果，预计该问题不会再次发生。",
+     ipa: "/wi duː nɑːt ɪkˈspɛkt ðɪs ˈɪʃ.uː tuː ˈhæp.ən əˈɡɛn/",
+     tags: ["第1217句", "电话会议", "★★★★★"],
+     when: "确认根因并采取纠正措施后，向客户保证问题不会复发。这是客户最关心的承诺之一。",
+@@ -336,7 +336,7 @@ export const MOCK_SENTENCES_PART15B: ISentence[] = [
+   {
+     id: 1227,
+     en: "Preventive actions are in progress.",
+-    cn: "预防措施正在进行中。",
++    cn: "预防措施正在落实中。",
+     ipa: "/prɪˈvɛn.tɪv ˈæk.ʃənz ɑːr ɪn ˈprɑː.ɡrɛs/",
+     tags: ["第1227句", "电话会议", "★★★★★"],
+     when: "告知客户预防措施还在进行中。预防措施通常需要更长时间（如增加冗余、修改架构），所以用 in progress。",
