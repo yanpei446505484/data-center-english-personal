@@ -29,6 +29,11 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Textarea } from '@/components/ui/textarea';
 import { Separator } from '@/components/ui/separator';
 import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -49,6 +54,7 @@ import {
   buildWordReferenceIndex,
   getCompletePhraseCards,
   getCompleteSentenceWords,
+  splitEnglishText,
 } from '@/lib/sentenceCards';
 
 const WORD_REFERENCE_INDEX = buildWordReferenceIndex(MOCK_SENTENCES);
@@ -622,36 +628,112 @@ export default function SentenceDetailPage() {
                 <CardTitle className="text-sm font-medium">句型例句</CardTitle>
               </CardHeader>
               <CardContent className="pt-0 space-y-3">
-                {sentence.patternExamples.map((ex, ei) => (
-                  <div
-                    key={ei}
-                    className="rounded-lg border border-border/30 bg-accent/20 px-4 py-3 space-y-1"
-                  >
-                    <div className="flex items-start gap-2">
-                      <p className="text-sm font-medium text-foreground flex-1">{ex.en}</p>
-                      <button
-                        type="button"
-                        onClick={() => playMiniTTS(ex.en, `pattern-example-${ei}`)}
-                        className="shrink-0 rounded-md p-1.5 text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors"
-                        title="朗读英文例句"
-                        aria-label={`朗读例句：${ex.en}`}
-                      >
-                        <Volume2 className={`size-4 ${miniPlaying === `pattern-example-${ei}` ? 'text-primary animate-pulse' : ''}`} />
-                      </button>
-                    </div>
-                    <p className="text-xs text-muted-foreground">{ex.cn}</p>
-                    {ex.words && ex.words.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5 mt-1.5">
-                        {ex.words.map((w, wi) => (
-                          <Badge key={wi} variant="outline" className="text-[10px] gap-1">
-                            <span className="font-medium">{w.w}</span>
-                            <span className="text-muted-foreground">{w.cn}</span>
-                          </Badge>
-                        ))}
+                {sentence.patternExamples.map((ex, ei) => {
+                  const exampleEn = Array.isArray(ex) ? ex[0] : ex.en;
+                  const exampleCn = Array.isArray(ex) ? ex[1] : ex.cn;
+                  const curatedWords = Array.isArray(ex) ? [] : (ex.words || []);
+                  const exampleWordCards = getCompleteSentenceWords(
+                    { ...sentence, en: exampleEn, words: curatedWords },
+                    WORD_REFERENCE_INDEX,
+                  );
+                  let wordCursor = 0;
+
+                  return (
+                    <div
+                      key={ei}
+                      className="rounded-lg border border-border/30 bg-accent/20 px-4 py-3 space-y-1"
+                    >
+                      <div className="flex items-start gap-2">
+                        <p className="text-sm font-medium text-foreground flex-1 leading-relaxed">
+                          {splitEnglishText(exampleEn).map((segment, segmentIndex) => {
+                            if (segment.kind === 'separator') {
+                              return <span key={segmentIndex}>{segment.text}</span>;
+                            }
+
+                            const word = exampleWordCards[wordCursor++];
+                            const cardKey = `pattern-word-${ei}-${segmentIndex}`;
+                            if (!word) return <span key={segmentIndex}>{segment.text}</span>;
+
+                            return (
+                              <Popover key={segmentIndex}>
+                                <PopoverTrigger asChild>
+                                  <button
+                                    type="button"
+                                    className="rounded-sm px-0.5 font-semibold text-foreground underline decoration-primary/40 decoration-2 underline-offset-4 hover:bg-primary/10 hover:text-primary transition-colors"
+                                    title={`查看单词卡：${word.w}`}
+                                  >
+                                    {segment.text}
+                                  </button>
+                                </PopoverTrigger>
+                                <PopoverContent align="start" className="w-72 p-0">
+                                  <div className="space-y-3 p-4">
+                                    <div className="flex items-center gap-2 flex-wrap">
+                                      <span className="text-lg font-bold text-foreground">{word.w}</span>
+                                      {word.ipa && (
+                                        <span className="text-xs font-mono text-muted-foreground">{word.ipa}</span>
+                                      )}
+                                      {word.pos && (
+                                        <Badge variant="outline" className="text-[10px] px-1.5 py-0">
+                                          {word.pos}
+                                        </Badge>
+                                      )}
+                                    </div>
+                                    <p className="text-sm text-foreground/80">{word.cn}</p>
+                                    <div className="flex gap-2 pt-1">
+                                      <Button
+                                        type="button"
+                                        size="sm"
+                                        variant="outline"
+                                        className="flex-1 h-8 text-xs"
+                                        onClick={() => playMiniTTS(word.w, cardKey)}
+                                      >
+                                        <Volume2 className={`size-3.5 mr-1.5 ${miniPlaying === cardKey ? 'text-primary animate-pulse' : ''}`} />
+                                        朗读
+                                      </Button>
+                                      <Button
+                                        type="button"
+                                        size="sm"
+                                        variant={isFavorited(word.w) ? 'secondary' : 'default'}
+                                        className="flex-1 h-8 text-xs"
+                                        onClick={() => {
+                                          if (isFavorited(word.w)) {
+                                            const favId = getFavoriteId(word.w);
+                                            if (favId) removeFavorite(favId);
+                                            toast.success(`已取消收藏: ${word.w}`);
+                                          } else {
+                                            const response = `**${word.w}** ${word.ipa || ''}\n\n${word.pos ? `*${word.pos}* ` : ''}${word.cn}`;
+                                            addFavorite(word.w, response);
+                                            toast.success(`已收藏单词: ${word.w}`);
+                                          }
+                                        }}
+                                      >
+                                        {isFavorited(word.w) ? (
+                                          <><BookmarkCheck className="size-3.5 mr-1.5" />已收藏</>
+                                        ) : (
+                                          <><Bookmark className="size-3.5 mr-1.5" />收藏</>
+                                        )}
+                                      </Button>
+                                    </div>
+                                  </div>
+                                </PopoverContent>
+                              </Popover>
+                            );
+                          })}
+                        </p>
+                        <button
+                          type="button"
+                          onClick={() => playMiniTTS(exampleEn, `pattern-example-${ei}`)}
+                          className="shrink-0 rounded-md p-1.5 text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+                          title="朗读英文例句"
+                          aria-label={`朗读例句：${exampleEn}`}
+                        >
+                          <Volume2 className={`size-4 ${miniPlaying === `pattern-example-${ei}` ? 'text-primary animate-pulse' : ''}`} />
+                        </button>
                       </div>
-                    )}
-                  </div>
-                ))}
+                      <p className="text-xs text-muted-foreground">{exampleCn}</p>
+                    </div>
+                  );
+                })}
               </CardContent>
             </Card>
           )}
