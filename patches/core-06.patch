@@ -1,0 +1,360 @@
+diff --git a/src/data/sentencePart15c.ts b/src/data/sentencePart15c.ts
+index 72321ba..6e057e9 100644
+--- a/src/data/sentencePart15c.ts
++++ b/src/data/sentencePart15c.ts
+@@ -153,7 +153,7 @@ export const MOCK_SENTENCES_PART15C: ISentence[] = [
+   {
+     id: 1236,
+     en: "The engineering team is on site now.",
+-    cn: "工程团队已经到达现场。",
++    cn: "工程团队目前在现场。",
+     ipa: "/ði ˌɛn.dʒɪˈnɪr.ɪŋ tiːm ɪz ɒn saɪt naʊ/",
+     tags: ["第1236句", "现场支持", "★★★★★"],
+     when: "汇报恢复行动时，说明已有专业团队在现场处理。on site = 在现场，给客户信心。",
+@@ -183,7 +183,7 @@ export const MOCK_SENTENCES_PART15C: ISentence[] = [
+   {
+     id: 1237,
+     en: "The vendor engineer has also arrived.",
+-    cn: "供应商工程师也已经到达现场。",
++    cn: "供应商工程师也已在现场。",
+     ipa: "/ðə ˈvɛn.dər ˌɛn.dʒɪˈnɪr hæz ˈɔːl.soʊ əˈraɪvd/",
+     tags: ["第1237句", "供应商到场", "★★★★★"],
+     when: "补充说明供应商工程师也已到达。also = 也，表示除了内部工程团队外，供应商专家也已到场。",
+diff --git a/src/data/sentencePart15d.ts b/src/data/sentencePart15d.ts
+index 5675f19..402e77f 100644
+--- a/src/data/sentencePart15d.ts
++++ b/src/data/sentencePart15d.ts
+@@ -35,8 +35,8 @@ export const MOCK_SENTENCES_PART15D: ISentence[] = [
+   },
+   {
+     id: 1247,
+-    en: "The DCIM dashboard is normal now.",
+-    cn: "DCIM监控页面目前正常。",
++    en: "The DCIM dashboard shows normal status.",
++    cn: "DCIM监控页面显示状态正常。",
+     ipa: "/ðə ˌdiː ˌsiː ˌaɪ ˈɛm ˈdæʃ.bɔːrd ɪz ˈnɔːr.məl naʊ/",
+     tags: ["第1247句", "客户电话会议", "★★★★★"],
+     when: "继BMS之后，汇报DCIM系统状态。DCIM = Data Center Infrastructure Management（数据中心基础设施管理），监控IT设备层面的状态。",
+@@ -97,7 +97,7 @@ export const MOCK_SENTENCES_PART15D: ISentence[] = [
+   {
+     id: 1249,
+     en: "The IT load remains unchanged.",
+-    cn: "IT负载保持稳定。",
++    cn: "IT负载保持不变。",
+     ipa: "/ðə ˌaɪ ˈtiː loʊd rɪˈmeɪnz ˌʌnˈtʃeɪndʒd/",
+     tags: ["第1249句", "客户电话会议", "★★★★★"],
+     when: "汇报IT负载状态。IT负载指服务器、存储、网络等IT设备的总功耗，是数据中心运营的核心指标之一。",
+@@ -158,7 +158,7 @@ export const MOCK_SENTENCES_PART15D: ISentence[] = [
+   {
+     id: 1251,
+     en: "The customer has acknowledged the update.",
+-    cn: "客户已经确认本次更新。",
++    cn: "客户已经确认收到本次更新。",
+     ipa: "/ðə ˈkʌs.tə.mər hæz əkˈnɒl.ɪdʒd ðə ˈʌp.deɪt/",
+     tags: ["第1251句", "客户电话会议", "★★★★★"],
+     when: "客户在电话会议中确认已收到并理解更新内容。acknowledge 表示'确认收到'，是商务沟通中的关键节点。",
+@@ -429,7 +429,7 @@ export const MOCK_SENTENCES_PART15D: ISentence[] = [
+   {
+     id: 1260,
+     en: "Have a great day, everyone.",
+-    cn: "祝大家今天工作顺利。",
++    cn: "祝大家今天愉快。",
+     ipa: "/hæv ə ɡreɪt deɪ ˈɛv.ri.wʌn/",
+     tags: ["第1260句", "客户电话会议", "★★★★★"],
+     when: "会议正式结束后的友好告别语。这是商务沟通的标准礼貌用语，展示专业素养和友好态度。",
+diff --git a/src/data/sentencePart16c.ts b/src/data/sentencePart16c.ts
+index 3323db9..ada51b4 100644
+--- a/src/data/sentencePart16c.ts
++++ b/src/data/sentencePart16c.ts
+@@ -249,8 +249,8 @@ export const MOCK_SENTENCES_PART16C: ISentence[] = [
+   },
+   {
+     id: 1289,
+-    en: "Has the toolbox meeting been completed?",
+-    cn: "班前安全会议完成了吗？",
++    en: "Has the toolbox talk been completed?",
++    cn: "班前安全交底完成了吗？",
+     ipa: "/hæz ðə ˈtuːl.bɒks ˈmiː.tɪŋ biːn kəmˈpliː.tɪd/",
+     tags: ["第1289句", "施工现场指挥", "★★★★★"],
+     when: "开工前必须召开班前安全会议（toolbox meeting），向所有施工人员讲解安全注意事项、作业内容和应急措施。",
+@@ -369,7 +369,7 @@ export const MOCK_SENTENCES_PART16C: ISentence[] = [
+   },
+   {
+     id: 1293,
+-    en: "Please verify the calibration certificate.",
++    en: "Please verify that the calibration certificate is valid.",
+     cn: "请确认校准证书有效。",
+     ipa: "/pliːz ˈvɛr.ɪ.faɪ ðə ˌkæl.ɪˈbreɪ.ʃən ˈsɜːr.tɪ.fɪ.kət/",
+     tags: ["第1293句", "施工现场指挥", "★★★★★"],
+@@ -399,7 +399,7 @@ export const MOCK_SENTENCES_PART16C: ISentence[] = [
+   },
+   {
+     id: 1294,
+-    en: "Please check the insulation gloves.",
++    en: "Please check the insulating gloves.",
+     cn: "请检查绝缘手套。",
+     ipa: "/pliːz tʃɛk ðə ɪnˈsjuː.leɪ.ʃən ɡlʌvz/",
+     tags: ["第1294句", "施工现场指挥", "★★★★★"],
+@@ -459,7 +459,7 @@ export const MOCK_SENTENCES_PART16C: ISentence[] = [
+   },
+   {
+     id: 1296,
+-    en: "Please verify the voltage detector.",
++    en: "Please verify that the voltage detector is working properly.",
+     cn: "请确认验电器正常。",
+     ipa: "/pliːz ˈvɛr.ɪ.faɪ ðə ˈvoʊl.tɪdʒ dɪˈtɛk.tər/",
+     tags: ["第1296句", "施工现场指挥", "★★★★★"],
+@@ -549,8 +549,8 @@ export const MOCK_SENTENCES_PART16C: ISentence[] = [
+   },
+   {
+     id: 1299,
+-    en: "Please confirm there is no voltage before touching the equipment.",
+-    cn: "接触设备前请确认已经没有电压。",
++    en: "Please verify the absence of voltage before touching the equipment.",
++    cn: "接触设备前请验明确无电压。",
+     ipa: "/pliːz kənˈfɜːrm ðɛr ɪz noʊ ˈvoʊl.tɪdʒ bɪˈfɔːr ˈtʌtʃ.ɪŋ ðə ɪˈkwɪp.mənt/",
+     tags: ["第1299句", "施工现场指挥", "★★★★★"],
+     when: "确认所有隔离点后，必须用验电器确认设备无电压，然后才能接触设备。这是电气安全的最后一步。",
+diff --git a/src/data/sentencePart16d.ts b/src/data/sentencePart16d.ts
+index d56e18a..a607b8d 100644
+--- a/src/data/sentencePart16d.ts
++++ b/src/data/sentencePart16d.ts
+@@ -6,7 +6,7 @@ export const MOCK_SENTENCES_PART16D: ISentence[] = [
+   {
+     id: 1301,
+     en: "You may start the work now.",
+-    cn: "现在可以开始施工了。",
++    cn: "现在可以开始作业了。",
+     ipa: "/juː meɪ stɑːrt ðə wɜːrk naʊ/",
+     tags: ["第1301句", "施工指挥", "★★★★★"],
+     when: "所有准备工作完成后（PTW已签发、安全交底完成、工具检查完毕、隔离点确认），值班经理或施工负责人发出开工指令。这是从准备阶段转入施工阶段的标志性语句。",
+@@ -36,7 +36,7 @@ export const MOCK_SENTENCES_PART16D: ISentence[] = [
+   {
+     id: 1302,
+     en: "Please follow the approved procedure.",
+-    cn: "请按照批准的流程施工。",
++    cn: "请按照批准的流程作业。",
+     ipa: "/pliːz ˈfɑː.loʊ ðə əˈpruːvd prəˈsiː.dʒər/",
+     tags: ["第1302句", "施工指挥", "★★★★★"],
+     when: "开工后，施工负责人提醒所有人必须严格按照已批准的MOP/SOP执行，不能擅自更改流程。approved procedure 指经过审批的标准化操作流程。",
+@@ -215,7 +215,7 @@ export const MOCK_SENTENCES_PART16D: ISentence[] = [
+   {
+     id: 1308,
+     en: "Please store all removed parts properly.",
+-    cn: "请妥善放置拆下来的零部件。",
++    cn: "请妥善存放拆下来的零部件。",
+     ipa: "/pliːz stɔːr ɔːl rɪˈmuːvd pɑːrts ˈprɑː.pər.li/",
+     tags: ["第1308句", "施工指挥", "★★★★★"],
+     when: "施工过程中会拆卸一些零部件（螺丝、面板、模块等），这些零部件需要妥善存放，防止丢失、损坏或混淆。properly 强调按照规范存放。",
+@@ -245,7 +245,7 @@ export const MOCK_SENTENCES_PART16D: ISentence[] = [
+   {
+     id: 1309,
+     en: "Please label all disconnected cables.",
+-    cn: "请给所有拆开的电缆做好标签。",
++    cn: "请给所有已断开的电缆做好标签。",
+     ipa: "/pliːz ˈleɪ.bəl ɔːl ˌdɪs.kəˈnɛk.tɪd ˈkeɪ.bəlz/",
+     tags: ["第1309句", "施工指挥", "★★★★★"],
+     when: "施工中经常需要拆卸电缆（维修、更换、改造），拆开的电缆必须贴标签，标明来源、去向、用途，防止恢复时接错。这是电气施工的关键规范。",
+@@ -274,8 +274,8 @@ export const MOCK_SENTENCES_PART16D: ISentence[] = [
+   },
+   {
+     id: 1310,
+-    en: "Please protect the surrounding equipment.",
+-    cn: "请保护周围设备，避免受到影响。",
++    en: "Please protect the surrounding equipment from damage.",
++    cn: "请保护周围设备，防止受损。",
+     ipa: "/pliːz prəˈtɛkt ðə səˈraʊn.dɪŋ ɪˈkwɪp.mənt/",
+     tags: ["第1310句", "施工指挥", "★★★★★"],
+     when: "施工可能对周围设备造成影响（灰尘、振动、液体溅洒、工具掉落等），负责人需要提醒施工人员注意保护周围设备，避免施工造成二次损坏。",
+@@ -305,7 +305,7 @@ export const MOCK_SENTENCES_PART16D: ISentence[] = [
+   {
+     id: 1311,
+     en: "Please route the cable through the cable tray.",
+-    cn: "请将电缆敷设到桥架内。",
++    cn: "请将电缆沿桥架敷设。",
+     ipa: "/pliːz ruːt ðə ˈkeɪ.bəl θruː ðə ˈkeɪ.bəl treɪ/",
+     tags: ["第1311句", "施工指挥", "★★★★★"],
+     when: "电缆敷设是电气施工的常见作业，电缆必须通过桥架（cable tray）敷设，不能随意悬挂或放在地上。route 指规划电缆的敷设路径。",
+@@ -424,7 +424,7 @@ export const MOCK_SENTENCES_PART16D: ISentence[] = [
+   {
+     id: 1315,
+     en: "Please remove all unnecessary materials.",
+-    cn: "请清理所有无关材料。",
++    cn: "请清理所有多余材料。",
+     ipa: "/pliːz rɪˈmuːv ɔːl ʌnˈnɛs.ə.ser.i məˈtɪr.i.əlz/",
+     tags: ["第1315句", "施工指挥", "★★★★★"],
+     when: "施工完成后，需要清理现场，移除所有无关材料（多余的电缆、包装材料、废料等），保持施工现场整洁。这是施工收尾的重要步骤。",
+diff --git a/src/data/sentencePart17a.ts b/src/data/sentencePart17a.ts
+index 99bb004..a7b1225 100644
+--- a/src/data/sentencePart17a.ts
++++ b/src/data/sentencePart17a.ts
+@@ -96,7 +96,7 @@ export const MOCK_SENTENCES_PART17A: ISentence[] = [
+   {
+     id: 1324,
+     en: "Please confirm the equipment identification.",
+-    cn: "请确认设备编号。",
++    cn: "请确认设备标识。",
+     ipa: "/pliːz kənˈfɜːrm ðə ɪˈkwɪp.mənt ˌaɪ.dɛn.tɪ.fɪˈkeɪ.ʃən/",
+     tags: ["第1324句", "设备识别", "★★★★★"],
+     when: "操作前必须确认要操作的设备编号正确，防止误操作其他设备。equipment identification 是设备的唯一标识。",
+@@ -244,8 +244,8 @@ export const MOCK_SENTENCES_PART17A: ISentence[] = [
+   },
+   {
+     id: 1329,
+-    en: "Please announce the switching operation.",
+-    cn: "请宣布开始倒闸操作。",
++    en: "Please announce the start of the switching operation.",
++    cn: "请通报即将开始倒闸操作。",
+     ipa: "/pliːz əˈnaʊns ðə ˈswɪtʃ.ɪŋ ˌɒp.əˈreɪ.ʃən/",
+     tags: ["第1329句", "宣布操作", "★★★★★"],
+     when: "所有准备工作完成后，操作负责人向现场所有人员正式宣布开始倒闸操作，确保所有人都知道操作即将开始。",
+diff --git a/src/data/sentencePart17b.ts b/src/data/sentencePart17b.ts
+index a65a1d5..07114c6 100644
+--- a/src/data/sentencePart17b.ts
++++ b/src/data/sentencePart17b.ts
+@@ -155,8 +155,8 @@ export const MOCK_SENTENCES_PART17B: ISentence[] = [
+   },
+   {
+     id: 1346,
+-    en: "No abnormal alarms have been reported.",
+-    cn: "没有出现异常告警。",
++    en: "No unexpected alarms have been reported.",
++    cn: "没有出现意外告警。",
+     ipa: "/noʊ æbˈnɔːr.məl ˈæl.ɑːrmz hæv biːn rɪˈpɔːr.tɪd/",
+     tags: ["第1346句", "操作确认", "★★★★★"],
+     when: "五分钟观察期内，确认BMS、SCADA、保护继电器等系统没有出现任何异常告警，这是操作完成前最后一个确认项。",
+diff --git a/src/data/sentencePart18a.ts b/src/data/sentencePart18a.ts
+index a1696d3..4f15ecf 100644
+--- a/src/data/sentencePart18a.ts
++++ b/src/data/sentencePart18a.ts
+@@ -1083,7 +1083,7 @@ export const MOCK_SENTENCES_PART18A: ISentence[] = [
+   {
+     "id": 1374,
+     "en": "Both UPS systems are synchronized now.",
+-    "cn": "两台UPS已经完成同步。",
++    "cn": "两套UPS系统已经完成同步。",
+     "ipa": "/bəʊθ juː piː ɛs ˈsɪstəmz ɑː ˈsɪŋkrənaɪzd naʊ/",
+     "tags": [
+       "第1374句",
+diff --git a/src/data/sentencePart18b.ts b/src/data/sentencePart18b.ts
+index ace7874..ca3b519 100644
+--- a/src/data/sentencePart18b.ts
++++ b/src/data/sentencePart18b.ts
+@@ -116,7 +116,7 @@ export const MOCK_SENTENCES_PART18B: ISentence[] = [
+   {
+     "id": 1382,
+     "en": "All battery strings are operating normally.",
+-    "cn": "所有电池组运行正常。",
++    "cn": "所有电池串运行正常。",
+     "ipa": "/ɔːl ˈbæt.ər.i strɪŋz ɑːr ˈɒp.ər.eɪ.tɪŋ ˈnɔːr.mə.li/",
+     "tags": [
+       "第1382句",
+@@ -1010,7 +1010,7 @@ export const MOCK_SENTENCES_PART18B: ISentence[] = [
+   {
+     "id": 1391,
+     "en": "A UPS warning alarm has been detected.",
+-    "cn": "检测到UPS警告告警。",
++    "cn": "检测到UPS警告级告警。",
+     "ipa": "/ə juː.piː.ɛs ˈwɔːr.nɪŋ əˈlɑːrm hæz biːn dɪˈtɛk.tɪd/",
+     "tags": [
+       "第1391句",
+@@ -1120,7 +1120,7 @@ export const MOCK_SENTENCES_PART18B: ISentence[] = [
+   {
+     "id": 1392,
+     "en": "A UPS critical alarm has been detected.",
+-    "cn": "检测到UPS严重告警。",
++    "cn": "检测到UPS严重级告警。",
+     "ipa": "/ə juː.piː.ɛs ˈkrɪt.ɪ.kəl əˈlɑːrm hæz biːn dɪˈtɛk.tɪd/",
+     "tags": [
+       "第1392句",
+@@ -1276,7 +1276,7 @@ export const MOCK_SENTENCES_PART18B: ISentence[] = [
+   {
+     "id": 1394,
+     "en": "Please investigate the alarm immediately.",
+-    "cn": "请立即调查告警原因。",
++    "cn": "请立即排查告警原因。",
+     "ipa": "/pliːz ɪnˈvɛs.tɪ.ɡeɪt ðə əˈlɑːrm ɪˈmiː.di.ət.li/",
+     "tags": [
+       "第1394句",
+@@ -1574,7 +1574,7 @@ export const MOCK_SENTENCES_PART18B: ISentence[] = [
+   {
+     "id": 1397,
+     "en": "Please continue monitoring the UPS for the next thirty minutes.",
+-    "cn": "请继续监控UPS三十分钟。",
++    "cn": "请在接下来的三十分钟内继续监控UPS。",
+     "ipa": "/pliːz kənˈtɪn.juː ˈmɒn.ɪ.tər.ɪŋ ðə juː.piː.ɛs fɔːr ðə nɛkst ˈθɜːr.ti ˈmɪn.ɪts/",
+     "tags": [
+       "第1397句",
+@@ -1904,7 +1904,7 @@ export const MOCK_SENTENCES_PART18B: ISentence[] = [
+   {
+     "id": 1400,
+     "en": "The UPS system is ready for normal operation.",
+-    "cn": "UPS系统已经恢复正常运行。",
++    "cn": "UPS系统已具备正常运行条件。",
+     "ipa": "/ðə juː.piː.ɛs ˈsɪs.təm ɪz ˈrɛd.i fɔːr ˈnɔːr.məl ˌɒp.əˈreɪ.ʃən/",
+     "tags": [
+       "第1400句",
+diff --git a/src/data/sentencePart19a.ts b/src/data/sentencePart19a.ts
+index 2bd16ed..a41992d 100644
+--- a/src/data/sentencePart19a.ts
++++ b/src/data/sentencePart19a.ts
+@@ -297,7 +297,7 @@ export const MOCK_SENTENCES_PART19A: ISentence[] = [
+   },
+   {
+     id: 1411,
+-    en: "Please connect Battery Cabinet No.1 to the system.",
++    en: "Please connect Battery Cabinet No. 1 to the system.",
+     cn: "请将1号电池柜接入系统。",
+     ipa: "/pliːz kəˈnɛkt ˈbæt.ər.i ˈkæb.ɪ.nɪt ˈnʌm.bər wʌn tuː ðə ˈsɪs.təm/",
+     tags: ["第1411句", "电池切入", "★★★★★"],
+@@ -326,7 +326,7 @@ export const MOCK_SENTENCES_PART19A: ISentence[] = [
+   },
+   {
+     id: 1412,
+-    en: "Battery Cabinet No.1 has been connected successfully.",
++    en: "Battery Cabinet No. 1 has been connected successfully.",
+     cn: "1号电池柜已成功接入系统。",
+     ipa: "/ˈbæt.ər.i ˈkæb.ɪ.nɪt ˈnʌm.bər wʌn hæz biːn kəˈnɛk.tɪd səkˈsɛs.fəl.i/",
+     tags: ["第1412句", "接入成功", "★★★★★"],
+@@ -355,7 +355,7 @@ export const MOCK_SENTENCES_PART19A: ISentence[] = [
+   },
+   {
+     id: 1413,
+-    en: "Please disconnect Battery Cabinet No.1 from the system.",
++    en: "Please disconnect Battery Cabinet No. 1 from the system.",
+     cn: "请将1号电池柜退出系统。",
+     ipa: "/pliːz ˌdɪs.kəˈnɛkt ˈbæt.ər.i ˈkæb.ɪ.nɪt ˈnʌm.bər wʌn frɒm ðə ˈsɪs.təm/",
+     tags: ["第1413句", "电池切出", "★★★★★"],
+@@ -384,7 +384,7 @@ export const MOCK_SENTENCES_PART19A: ISentence[] = [
+   },
+   {
+     id: 1414,
+-    en: "Battery Cabinet No.1 has been disconnected successfully.",
++    en: "Battery Cabinet No. 1 has been disconnected successfully.",
+     cn: "1号电池柜已成功退出系统。",
+     ipa: "/ˈbæt.ər.i ˈkæb.ɪ.nɪt ˈnʌm.bər wʌn hæz biːn ˌdɪs.kəˈnɛk.tɪd səkˈsɛs.fəl.i/",
+     tags: ["第1414句", "退出成功", "★★★★★"],
+@@ -531,8 +531,8 @@ export const MOCK_SENTENCES_PART19A: ISentence[] = [
+   },
+   {
+     id: 1419,
+-    en: "No abnormal battery alarms have been reported.",
+-    cn: "没有发现异常电池告警。",
++    en: "No unexpected battery alarms have been reported.",
++    cn: "没有出现意外的电池告警。",
+     ipa: "/noʊ æbˈnɔːr.məl ˈbæt.ər.i əˈlɑːrmz hæv biːn rɪˈpɔːr.tɪd/",
+     tags: ["第1419句", "无告警", "★★★★★"],
+     when: "确认电池系统没有异常告警，是交接中最理想的结论之一。abnormal alarm 指非预期的、异常的告警。",
+diff --git a/src/data/sentencePart19b.ts b/src/data/sentencePart19b.ts
+index 5dd5c84..88bc72f 100644
+--- a/src/data/sentencePart19b.ts
++++ b/src/data/sentencePart19b.ts
+@@ -1234,7 +1234,7 @@ export const MOCK_SENTENCES_PART19B: ISentence[] = [
+   {
+     "id": 1435,
+     "en": "Please investigate the battery alarm immediately.",
+-    "cn": "请立即调查电池告警原因。",
++    "cn": "请立即排查电池告警原因。",
+     "ipa": "/pliːz ɪnˈvɛstɪɡeɪt ðə ˈbætəri ˈælɑːrm ɪˈmiːdiətli/",
+     "tags": [
+       "电池告警",
