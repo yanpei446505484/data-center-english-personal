@@ -24,6 +24,8 @@ jobs:
         run: git clone --depth 1 https://github.com/yanpei446505484/data-center-english-training.git app
       - name: Apply the fully audited 2600-sentence corrections
         run: git -C app apply "$GITHUB_WORKSPACE"/personal/patches/*.patch
+      - name: Apply personal word and phrase card interface
+        run: cp -R personal/overrides/. app/
       - name: Apply personal-edition identity and reviewed terminology
         run: |
           cd app
