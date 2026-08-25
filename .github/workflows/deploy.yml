@@ -1,0 +1,40 @@
+name: Deploy personal edition
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download public-beta source as personal baseline
+        run: git clone --depth 1 https://github.com/yanpei446505484/data-center-english-training.git app
+      - name: Apply personal-edition identity
+        run: |
+          cd app
+          node -e "let fs=require('fs'); let p=JSON.parse(fs.readFileSync('package.json')); p.name='data-center-english-personal'; fs.writeFileSync('package.json', JSON.stringify(p,null,2)+'\n')"
+          sed -i 's/<title>数据中心英语培训<\/title>/<title>数据中心英语培训｜个人版<\/title>/' index.html
+          sed -i 's/数据中心英语培训/数据中心英语培训 · 个人版/g' src/components/Layout.tsx src/components/AppSidebar.tsx
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - name: Build
+        run: cd app && npm ci && npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: app/dist
+      - id: deployment
+        uses: actions/deploy-pages@v4
