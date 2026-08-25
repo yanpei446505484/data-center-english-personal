@@ -4,14 +4,14 @@
   "outcome": "将附件中实际存在的20组冷却水泵故障与巡检对话校准后加入个人版应用并发布",
   "truth_policy": "以用户附件为来源；纠正明显技术和语言问题；不把未经测量验证的原因写成确定结论；涉及停机、断电、拆解和化学清洗时保留安全前提；缺失的其他10类设备不虚构。",
   "created_at": "2026-08-25T11:59:59+00:00",
-  "updated_at": "2026-08-25T12:09:12+00:00",
+  "updated_at": "2026-08-25T12:13:09+00:00",
   "acceptance_criteria": [
     {
       "id": "coverage",
       "description": "附件实际20组场景全部入库且无重复遗漏",
       "status": "verified",
       "evidence": [
-        "src/data/alarmSummary.test.ts"
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": [
         "11 tests passed; confirms 20 scenarios, 10+10 split, 80 lines"
@@ -22,8 +22,8 @@
       "description": "每句英文自然、中文对应准确",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     },
@@ -32,8 +32,8 @@
       "description": "所有句子支持逐词卡、短语卡、音标、笔记和朗读",
       "status": "verified",
       "evidence": [
-        "src/pages/AlarmEnglishPage/AlarmEnglishPage.tsx",
-        "src/data/pumpWordGlossary.ts"
+        "../src/pages/AlarmEnglishPage/AlarmEnglishPage.tsx",
+        "../src/data/pumpWordGlossary.ts"
       ],
       "notes": []
     },
@@ -42,17 +42,21 @@
       "description": "高风险操作包含隔离、LOTO、验证和厂家程序等必要边界",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/pages/AlarmEnglishPage/AlarmEnglishPage.tsx"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/pages/AlarmEnglishPage/AlarmEnglishPage.tsx"
       ],
       "notes": []
     },
     {
       "id": "deployment",
       "description": "构建测试通过且GitHub Pages部署成功",
-      "status": "pending",
-      "evidence": [],
-      "notes": []
+      "status": "verified",
+      "evidence": [
+        "https://github.com/yanpei446505484/data-center-english-personal/actions/runs/32846218608"
+      ],
+      "notes": [
+        "GitHub Pages deployment completed successfully"
+      ]
     }
   ],
   "work_units": [
@@ -61,8 +65,8 @@
       "description": "气蚀与流量归零",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     },
@@ -71,8 +75,8 @@
       "description": "变频转速与压力波动",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     },
@@ -81,8 +85,8 @@
       "description": "轴承过热",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     },
@@ -91,8 +95,8 @@
       "description": "频繁启停与跳闸",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     },
@@ -101,8 +105,8 @@
       "description": "电机过载",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     },
@@ -111,8 +115,8 @@
       "description": "机械密封泄漏",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     },
@@ -121,8 +125,8 @@
       "description": "远程控制失效",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     },
@@ -131,8 +135,8 @@
       "description": "低频振动",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     },
@@ -141,8 +145,8 @@
       "description": "出口压力与扬程不足",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     },
@@ -151,8 +155,8 @@
       "description": "电机过热停机",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     },
@@ -161,8 +165,8 @@
       "description": "轻微异响",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     },
@@ -171,8 +175,8 @@
       "description": "参数漂移",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     },
@@ -181,8 +185,8 @@
       "description": "外壳积尘",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     },
@@ -191,8 +195,8 @@
       "description": "地脚螺栓松动",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     },
@@ -201,8 +205,8 @@
       "description": "保温层破损",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     },
@@ -211,8 +215,8 @@
       "description": "变频参数余量",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     },
@@ -221,8 +225,8 @@
       "description": "端子氧化",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     },
@@ -231,8 +235,8 @@
       "description": "备用泵轮换",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     },
@@ -241,8 +245,8 @@
       "description": "压力表滞后",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     },
@@ -251,8 +255,8 @@
       "description": "噪声趋势升高",
       "status": "verified",
       "evidence": [
-        "src/data/pumpMaintenanceDialogues.ts",
-        "src/data/alarmSummary.test.ts"
+        "../src/data/pumpMaintenanceDialogues.ts",
+        "../src/data/alarmSummary.test.ts"
       ],
       "notes": []
     }
@@ -262,6 +266,11 @@
       "at": "2026-08-25T12:09:12+00:00",
       "summary": "20组水泵对话、词汇音标、页面UI、测试和生产构建完成",
       "next_action": "发布GitHub并验证Pages部署成功"
+    },
+    {
+      "at": "2026-08-25T12:13:09+00:00",
+      "summary": "20组水泵对话全部验证并成功部署",
+      "next_action": "任务完成；等待用户提供其余设备的实际内容"
     }
   ],
   "risks_and_unknowns": []
