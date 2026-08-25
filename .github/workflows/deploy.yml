@@ -17,8 +17,13 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+        with:
+          path: personal
       - name: Download public-beta source as personal baseline
         run: git clone --depth 1 https://github.com/yanpei446505484/data-center-english-training.git app
+      - name: Apply the fully audited 2600-sentence corrections
+        run: git -C app apply ../personal/patches/*.patch
       - name: Apply personal-edition identity and reviewed terminology
         run: |
           cd app
