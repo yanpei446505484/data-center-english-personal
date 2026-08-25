@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { ALARM_CATEGORIES, ALARM_SUMMARY } from './alarmSummary';
 import { ALARM_CHINESE } from './alarmChinese';
+import { ALARM_WORD_CHINESE } from './alarmWordDictionary';
 
 describe('alarm summary import', () => {
   it('imports all 162 deduplicated alarms', () => {
@@ -21,6 +22,19 @@ describe('alarm summary import', () => {
     expect(Object.keys(ALARM_CHINESE)).toHaveLength(162);
     for (const entry of ALARM_SUMMARY) {
       expect(ALARM_CHINESE[entry.id]?.trim().length).toBeGreaterThan(0);
+    }
+  });
+
+  it('provides a data-centre Chinese meaning for every alarm word', () => {
+    const words = new Set(
+      ALARM_SUMMARY.flatMap((entry) =>
+        (entry.alarm.match(/[A-Za-z]+(?:-[A-Za-z]+)*/g) || [])
+          .map((word) => word.toLowerCase()),
+      ),
+    );
+    expect(words.size).toBe(190);
+    for (const word of words) {
+      expect(ALARM_WORD_CHINESE[word], `missing translation: ${word}`).toBeTruthy();
     }
   });
 });

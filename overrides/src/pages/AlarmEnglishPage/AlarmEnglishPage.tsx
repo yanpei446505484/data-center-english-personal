@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/select';
 import { ALARM_CATEGORIES, ALARM_SUMMARY, type AlarmSummaryEntry } from '@/data/alarmSummary';
 import { ALARM_CHINESE } from '@/data/alarmChinese';
+import { ALARM_WORD_CHINESE } from '@/data/alarmWordDictionary';
 import { splitEnglishText } from '@/lib/sentenceCards';
 import { preloadTTS, speakWithPlugin, stopAllSpeech, warmupAudio } from '@/lib/ttsPlugin';
 import {
@@ -57,11 +58,11 @@ function AlarmWord({ word, alarm, category }: { word: string; alarm: string; cat
   );
   const data = {
     word,
-    chinese: dictionary?.chinese || '暂无本地释义',
+    chinese: ALARM_WORD_CHINESE[normalized] || dictionary?.chinese || '暂无本地释义',
     example: alarm,
     tags: [CATEGORY_CN[category] || category, '告警英语'],
     ukIpa: dictionary?.ipa || '',
-    pos: dictionary?.pos || 'word',
+    pos: dictionary?.pos || '告警词汇',
     simpleMeaning: dictionary?.englishDef || '',
   };
 
