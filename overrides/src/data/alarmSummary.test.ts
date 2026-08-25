@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { ALARM_CATEGORIES, ALARM_SUMMARY } from './alarmSummary';
+import { ALARM_CHINESE } from './alarmChinese';
 
 describe('alarm summary import', () => {
   it('imports all 162 deduplicated alarms', () => {
@@ -14,5 +15,12 @@ describe('alarm summary import', () => {
     expect(ALARM_CATEGORIES).toHaveLength(15);
     expect(ALARM_CATEGORIES).toContain('UPS System');
     expect(ALARM_CATEGORIES).toContain('Precision Air Conditioning');
+  });
+
+  it('provides a Chinese meaning for every alarm', () => {
+    expect(Object.keys(ALARM_CHINESE)).toHaveLength(162);
+    for (const entry of ALARM_SUMMARY) {
+      expect(ALARM_CHINESE[entry.id]?.trim().length).toBeGreaterThan(0);
+    }
   });
 });

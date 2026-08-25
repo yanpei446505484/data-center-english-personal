@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { ALARM_CATEGORIES, ALARM_SUMMARY, type AlarmSummaryEntry } from '@/data/alarmSummary';
+import { ALARM_CHINESE } from '@/data/alarmChinese';
 import { splitEnglishText } from '@/lib/sentenceCards';
 import { preloadTTS, speakWithPlugin, stopAllSpeech, warmupAudio } from '@/lib/ttsPlugin';
 import {
@@ -109,6 +110,7 @@ export default function AlarmEnglishPage() {
       if (!normalizedQuery) return true;
       return entry.alarm.toLowerCase().includes(normalizedQuery)
         || entry.category.toLowerCase().includes(normalizedQuery)
+        || ALARM_CHINESE[entry.id].toLowerCase().includes(normalizedQuery)
         || (CATEGORY_CN[entry.category] || '').includes(query.trim());
     });
   }, [category, query]);
@@ -242,6 +244,9 @@ export default function AlarmEnglishPage() {
                             : <span key={index}>{segment.text}</span>
                         ))}
                       </div>
+                      <p className="text-sm text-foreground/75 leading-relaxed">
+                        {ALARM_CHINESE[entry.id]}
+                      </p>
                       <div className="flex flex-wrap items-center gap-2">
                         <Badge variant="secondary" className="text-[11px]">
                           {CATEGORY_CN[entry.category] || entry.category}
