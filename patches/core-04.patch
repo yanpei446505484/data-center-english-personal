@@ -1,0 +1,283 @@
+diff --git a/src/data/officePrint44a.ts b/src/data/officePrint44a.ts
+index 9f64550..45cd429 100644
+--- a/src/data/officePrint44a.ts
++++ b/src/data/officePrint44a.ts
+@@ -494,7 +494,7 @@ export const MOCK_SENTENCES_OFFICEPRINT44A: ISentence[] = [
+     id: 2417,
+     speaker: 'Engineer',
+     en: 'Please clear the paper jam.',
+-    cn: '请把卡纸清除。',
++    cn: '请排除卡纸故障。',
+     ipa: '/pliːz klɪər ðə ˈpeɪpər dʒæm/',
+     tags: ['第2417句', '复印', '★★★★'],
+     when: '指示同事清除打印机/复印机中的卡纸。',
+diff --git a/src/data/onsiteComm54b.ts b/src/data/onsiteComm54b.ts
+index 651b254..8147c58 100644
+--- a/src/data/onsiteComm54b.ts
++++ b/src/data/onsiteComm54b.ts
+@@ -417,7 +417,7 @@ export const MOCK_SENTENCES_ONSITECOMM54B: ISentence[] = [
+     id: 2834,
+     speaker: 'Engineer',
+     en: 'Have all tools been removed from the work area?',
+-    cn: '所有工具都已经撤离现场了吗？',
++    cn: '所有工具都已经移出工作区域了吗？',
+     ipa: '/hæv ɔːl tuːlz biːn rɪˈmuːvd frɒm ðə wɜːrk ˈɛriə/',
+     tags: ['第2834句', '工作完成', '★★★'],
+     when: '工作收尾时确认所有工具已撤离，防止遗留在设备区域。',
+diff --git a/src/data/opsMeeting33a.ts b/src/data/opsMeeting33a.ts
+index 8c304f6..93c7ff7 100644
+--- a/src/data/opsMeeting33a.ts
++++ b/src/data/opsMeeting33a.ts
+@@ -167,7 +167,7 @@ export const MOCK_SENTENCES_OPSMEETING33A: ISentence[] = [
+     id: 1966,
+     speaker: 'Manager',
+     en: 'One critical alarm was reported yesterday afternoon.',
+-    cn: '昨天下午发生了一条严重告警。',
++    cn: '昨天下午报告了一条严重告警。',
+     ipa: '/wʌn ˈkrɪtɪkəl əˈlɑːrm wəz rɪˈpɔːrtɪd ˈjɛstərdeɪ ˌæftərˈnuːn/',
+     tags: ['第1966句', '昨日回顾', '★★★★★'],
+     when: '在确认无重大事件后，补充说明有一条严重告警需要关注。',
+@@ -231,7 +231,7 @@ export const MOCK_SENTENCES_OPSMEETING33A: ISentence[] = [
+     id: 1968,
+     speaker: 'Manager',
+     en: 'The root cause has been identified.',
+-    cn: '根本原因已经找到。',
++    cn: '根本原因已经确定。',
+     ipa: '/ðə ruːt kɔːz hæz biːn aɪˈdɛntɪfaɪd/',
+     tags: ['第1968句', '昨日回顾', '★★★★★'],
+     when: '确认问题解决后，进一步说明根本原因已被识别，展示深度分析能力。',
+@@ -512,7 +512,7 @@ export const MOCK_SENTENCES_OPSMEETING33A: ISentence[] = [
+     id: 1977,
+     speaker: 'Manager',
+     en: 'Please notify me if any ticket is delayed.',
+-    cn: '如果有工单延期，请立即通知我。',
++    cn: '如果有任何工单延误，请立即通知我。',
+     ipa: '/pliːz ˈnoʊtɪfaɪ miː ɪf ˈɛni ˈtɪkɪt ɪz dɪˈleɪd/',
+     tags: ['第1977句', '工单汇报', '★★★★★'],
+     when: '值班经理要求团队在工单出现延期风险时立即上报，确保信息畅通。',
+@@ -544,7 +544,7 @@ export const MOCK_SENTENCES_OPSMEETING33A: ISentence[] = [
+     id: 1978,
+     speaker: 'Manager',
+     en: 'No ticket should exceed the SLA.',
+-    cn: '任何工单都不能超过SLA时限。',
++    cn: '任何工单都不能超出SLA时限。',
+     ipa: '/noʊ ˈtɪkɪt ʃʊd ɪkˈsiːd ðə ˌɛsˌɛlˈeɪ/',
+     tags: ['第1978句', '工单汇报', '★★★★★'],
+     when: '值班经理以强硬语气设定SLA红线，强调工单管理的底线要求。',
+diff --git a/src/data/opsMeeting33b.ts b/src/data/opsMeeting33b.ts
+index 543cfd9..01a04f8 100644
+--- a/src/data/opsMeeting33b.ts
++++ b/src/data/opsMeeting33b.ts
+@@ -105,7 +105,7 @@ export const MOCK_SENTENCES_OPS33B: ISentence[] = [
+   {
+     id: 1984,
+     speaker: 'Manager',
+-    en: 'Please ensure all contractors are on the whitelist.',
++    en: 'Please ensure all contractor personnel are on the whitelist.',
+     cn: '请确认所有施工人员都在白名单内。',
+     ipa: '/pliːz ɪnˈʃʊr ɔːl kənˈtræktərz ɑːr ɑːn ðə ˈwaɪtlɪst/',
+     tags: ['第1984句', '今日维护', '★★★★★'],
+@@ -171,7 +171,7 @@ export const MOCK_SENTENCES_OPS33B: ISentence[] = [
+     id: 1986,
+     speaker: 'Manager',
+     en: 'Safety comes before everything else.',
+-    cn: '安全永远是第一位。',
++    cn: '安全高于一切。',
+     ipa: '/ˈseɪfti kʌmz bɪˈfɔːr ˈɛvriθɪŋ ɛls/',
+     tags: ['第1986句', '今日维护', '★★★★★'],
+     when: '值班经理在布置维护任务后强调安全的重要性。',
+@@ -395,7 +395,7 @@ export const MOCK_SENTENCES_OPS33B: ISentence[] = [
+     id: 1993,
+     speaker: 'Manager',
+     en: 'Please inspect the roof after the rain.',
+-    cn: '下雨后请检查屋顶。',
++    cn: '雨后请检查屋面。',
+     ipa: '/pliːz ɪnˈspɛkt ðə ruːf æftər ðə reɪn/',
+     tags: ['第1993句', '今日重点', '★★★★☆'],
+     when: '值班经理布置雨后巡检任务，预防屋顶漏水。',
+@@ -588,7 +588,7 @@ export const MOCK_SENTENCES_OPS33B: ISentence[] = [
+     id: 1999,
+     speaker: 'Manager',
+     en: "Let's have a safe and productive shift.",
+-    cn: '祝大家本班工作安全、顺利。',
++    cn: '祝大家本班工作安全、高效。',
+     ipa: '/lɛts hæv ə seɪf ænd prəˈdʌktɪv ʃɪft/',
+     tags: ['第1999句', '会议结束', '★★★★★'],
+     when: '值班经理在会议结束时祝福团队本班工作顺利。',
+diff --git a/src/data/performance37a.ts b/src/data/performance37a.ts
+index 50a7c1a..d093ef2 100644
+--- a/src/data/performance37a.ts
++++ b/src/data/performance37a.ts
+@@ -6,7 +6,7 @@ export const MOCK_SENTENCES_PERFORMANCE37A: ISentence[] = [
+   {
+     id: 2121,
+     speaker: 'Manager',
+-    en: 'Thank you for meeting with me today.',
++    en: "Thank you for meeting with me for today's performance review.",
+     cn: '感谢你今天来参加绩效沟通。',
+     ipa: '/θæŋk juː fər ˈmiːtɪŋ wɪð miː təˈdeɪ/',
+     tags: ['第2121句', '一对一沟通', '★★★★★'],
+@@ -196,7 +196,7 @@ export const MOCK_SENTENCES_PERFORMANCE37A: ISentence[] = [
+     id: 2127,
+     speaker: 'Manager',
+     en: 'You handled several critical incidents very well.',
+-    cn: '你很好地处理了几次重大事件。',
++    cn: '你很好地处理了几起严重事件。',
+     ipa: '/juː ˈhændəld ˈsɛvrəl ˈkrɪtɪkəl ˈɪnsɪdənts ˈvɛri wɛl/',
+     tags: ['第2127句', '一对一沟通', '★★★★★'],
+     when: '经理具体肯定员工在处理重大事件中的出色表现。',
+@@ -386,7 +386,7 @@ export const MOCK_SENTENCES_PERFORMANCE37A: ISentence[] = [
+     id: 2133,
+     speaker: 'Manager',
+     en: 'You respond to alarms quickly.',
+-    cn: '你处理告警非常及时。',
++    cn: '你响应告警非常及时。',
+     ipa: '/juː rɪˈspɑːnd tuː əˈlɑːrmz ˈkwɪkli/',
+     tags: ['第2133句', '优点', '★★★★★'],
+     when: '经理肯定员工对告警的快速响应能力。',
+diff --git a/src/data/performance37b.ts b/src/data/performance37b.ts
+index 5fa236f..e0dca2a 100644
+--- a/src/data/performance37b.ts
++++ b/src/data/performance37b.ts
+@@ -197,7 +197,7 @@ export const MOCK_SENTENCES_PERFORMANCE37B: ISentence[] = [
+     id: 2147,
+     speaker: 'Manager',
+     en: 'Please continue improving your technical knowledge.',
+-    cn: '请继续提升你的技术能力。',
++    cn: '请继续提升你的技术知识水平。',
+     ipa: '/pliːz kənˈtɪnjuː ɪmˈpruːvɪŋ jɔːr ˈtɛknɪkəl ˈnɑlɪdʒ/',
+     tags: ['第2147句', '需要改进', '★★★★★'],
+     when: '经理鼓励员工持续学习，不断提升专业技术水平。',
+@@ -419,7 +419,7 @@ export const MOCK_SENTENCES_PERFORMANCE37B: ISentence[] = [
+   {
+     id: 2154,
+     speaker: 'Manager',
+-    en: 'Please prepare for your professional certification.',
++    en: 'Please prepare for your professional certification exam.',
+     cn: '请准备你的专业认证考试。',
+     ipa: '/pliːz prɪˈpeər fɔːr jɔːr prəˈfɛʃənəl ˌsɜːrtɪfɪˈkeɪʃən/',
+     tags: ['第2154句', '未来计划', '★★★★★'],
+diff --git a/src/data/rcaCapa39a.ts b/src/data/rcaCapa39a.ts
+index b2979eb..0d8076a 100644
+--- a/src/data/rcaCapa39a.ts
++++ b/src/data/rcaCapa39a.ts
+@@ -168,7 +168,7 @@ export const MOCK_SENTENCES_RCACAPA39A: ISentence[] = [
+     id: 2206,
+     speaker: 'Manager',
+     en: 'The first alarm was received by the BMS.',
+-    cn: '第一条告警由BMS发出。',
++    cn: 'BMS接收到第一条告警。',
+     ipa: '/ðə fɜːrst əˈlɑːrm wəz rɪˈsiːvd baɪ ðə biː-ɛm-ɛs/',
+     tags: ['第2206句', '事件经过', '★★★★★'],
+     when: '时间线回顾中，描述第一条告警的来源系统，明确事件发现的起点。',
+@@ -330,7 +330,7 @@ export const MOCK_SENTENCES_RCACAPA39A: ISentence[] = [
+     id: 2211,
+     speaker: 'Manager',
+     en: 'We have identified the root cause.',
+-    cn: '我们已经找到根本原因。',
++    cn: '我们已经确定根本原因。',
+     ipa: '/wiː hæv aɪˈdɛntɪfaɪd ðə ruːt kɔːz/',
+     tags: ['第2211句', '根本原因', '★★★★★'],
+     when: 'RCA 会议进入根因分析阶段，报告调查团队已经确定了事件的根本原因。',
+@@ -588,7 +588,7 @@ export const MOCK_SENTENCES_RCACAPA39A: ISentence[] = [
+     id: 2219,
+     speaker: 'Manager',
+     en: 'Corrective actions were implemented immediately.',
+-    cn: '纠正措施已经立即实施。',
++    cn: '立即实施了纠正措施。',
+     ipa: '/kəˈrɛktɪv ˈækʃənz wɜːr ˈɪmplɪmɛntɪd ɪˈmiːdiətli/',
+     tags: ['第2219句', '纠正措施（CAPA）', '★★★★★'],
+     when: 'RCA 会议进入 CAPA 环节，报告纠正措施已经立即执行。',
+diff --git a/src/data/rcaCapa39b.ts b/src/data/rcaCapa39b.ts
+index b7bcf8d..06f3f15 100644
+--- a/src/data/rcaCapa39b.ts
++++ b/src/data/rcaCapa39b.ts
+@@ -100,7 +100,7 @@ export const MOCK_SENTENCES_RCAPAPA39B: ISentence[] = [
+   {
+     id: 2224,
+     speaker: 'Engineer',
+-    en: 'The repair has been verified successfully.',
++    en: 'The repair has been successfully verified.',
+     cn: '维修结果已经验证成功。',
+     ipa: '/ðə rɪˈpɛr hæz bɪn ˈvɛrɪfaɪd səkˈsɛsfəli/',
+     tags: ['第2224句', '纠正措施', '★★★★★'],
+@@ -256,7 +256,7 @@ export const MOCK_SENTENCES_RCAPAPA39B: ISentence[] = [
+     id: 2229,
+     speaker: 'Manager',
+     en: 'Additional training will be provided.',
+-    cn: '将增加相关培训。',
++    cn: '将提供额外的相关培训。',
+     ipa: '/əˈdɪʃənəl ˈtreɪnɪŋ wɪl bɪ prəˈvaɪdɪd/',
+     tags: ['第2229句', '预防措施', '★★★★★'],
+     when: 'RCA会议中宣布将增加培训，提升团队对相关风险的识别和处置能力。',
+@@ -317,7 +317,7 @@ export const MOCK_SENTENCES_RCAPAPA39B: ISentence[] = [
+   {
+     id: 2231,
+     speaker: 'Manager',
+-    en: 'Similar equipment will be inspected this week.',
++    en: 'All similar equipment will be inspected this week.',
+     cn: '本周将检查所有同类型设备。',
+     ipa: '/ˈsɪmɪlər ɪˈkwɪpmənt wɪl bɪ ɪnˈspɛktɪd ðɪs wiːk/',
+     tags: ['第2231句', '预防措施', '★★★★★'],
+@@ -348,7 +348,7 @@ export const MOCK_SENTENCES_RCAPAPA39B: ISentence[] = [
+   {
+     id: 2232,
+     speaker: 'Manager',
+-    en: 'Spare parts will be increased.',
++    en: 'The spare-parts inventory will be increased.',
+     cn: '将增加关键备件库存。',
+     ipa: '/spɛr pɑːrts wɪl bɪ ɪnˈkriːst/',
+     tags: ['第2232句', '预防措施', '★★★★★'],
+diff --git a/src/data/recruitment36a.ts b/src/data/recruitment36a.ts
+index 16e77bc..2dd27ac 100644
+--- a/src/data/recruitment36a.ts
++++ b/src/data/recruitment36a.ts
+@@ -6,7 +6,7 @@ export const MOCK_SENTENCES_RECRUITMENT36A: ISentence[] = [
+   {
+     id: 2081,
+     speaker: 'Interviewer',
+-    en: 'Welcome, and thank you for coming today.',
++    en: 'Welcome, and thank you for coming to the interview today.',
+     cn: '欢迎您，感谢您今天来参加面试。',
+     ipa: '/ˈwɛlkəm ənd θæŋk juː fər ˈkʌmɪŋ təˈdeɪ/',
+     tags: ['第2081句', '面试开始', '★★★★★'],
+@@ -419,7 +419,7 @@ export const MOCK_SENTENCES_RECRUITMENT36A: ISentence[] = [
+   {
+     id: 2094,
+     speaker: 'Interviewer',
+-    en: 'Have you worked with transformers?',
++    en: 'Do you have experience operating and maintaining transformers?',
+     cn: '您有变压器运维经验吗？',
+     ipa: '/hæv juː wɜːrkt wɪð trænsˈfɔːrmərz/',
+     tags: ['第2094句', '电气专业', '★★★★★'],
+@@ -547,7 +547,7 @@ export const MOCK_SENTENCES_RECRUITMENT36A: ISentence[] = [
+     id: 2098,
+     speaker: 'Interviewer',
+     en: 'Are you familiar with protection relays?',
+-    cn: '您熟悉继电保护吗？',
++    cn: '您熟悉保护继电器吗？',
+     ipa: '/ɑːr juː fəˈmɪliər wɪð prəˈtɛkʃən ˈriːleɪz/',
+     tags: ['第2098句', '电气专业', '★★★★★'],
+     when: '面试官评估候选人对继电保护系统的了解，继电保护是电力系统安全运行的关键保障。',
+diff --git a/src/data/recruitment36b.ts b/src/data/recruitment36b.ts
+index 6c62780..fa505f0 100644
+--- a/src/data/recruitment36b.ts
++++ b/src/data/recruitment36b.ts
+@@ -39,7 +39,7 @@ export const MOCK_SENTENCES_RECRUITMENT36B: ISentence[] = [
+     id: 2102,
+     speaker: 'Interviewer',
+     en: 'Have you worked with CRAC or CRAH units?',
+-    cn: '您操作过精密空调或风墙空调吗？',
++    cn: '您操作过机房精密空调（CRAC）或机房空气处理机组（CRAH）吗？',
+     ipa: '/hæv juː wɜːrkt wɪð kræk ɔːr krɑː ˈjuːnɪts/',
+     tags: ['第2102句', '暖通专业', '★★★★★'],
+     when: '面试官考察候选人对数据中心专用空调设备的操作经验。',
+@@ -228,7 +228,7 @@ export const MOCK_SENTENCES_RECRUITMENT36B: ISentence[] = [
+     id: 2108,
+     speaker: 'Interviewer',
+     en: 'How do you ensure compliance with safety procedures?',
+-    cn: '您如何确保遵守安全操作流程？',
++    cn: '您如何确保遵守安全规程？',
+     ipa: '/haʊ duː juː ɪnˈʃʊr kəmˈplaɪəns wɪð ˈseɪfti prəˈsiːdʒərz/',
+     tags: ['第2108句', '运维管理', '★★★★★'],
+     when: '面试官考察候选人对安全规程的执行和合规管理能力。',
