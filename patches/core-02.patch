@@ -1,0 +1,190 @@
+diff --git a/src/data/emergencyCmd40a.ts b/src/data/emergencyCmd40a.ts
+index ffd305c..0f6f9b7 100644
+--- a/src/data/emergencyCmd40a.ts
++++ b/src/data/emergencyCmd40a.ts
+@@ -7,7 +7,7 @@ export const MOCK_SENTENCES_EMERGENCYCMD40A: ISentence[] = [
+     id: 2241,
+     speaker: 'Manager',
+     en: 'A critical incident has been declared.',
+-    cn: '已宣布发生重大事件。',
++    cn: '已宣布发生严重事件。',
+     ipa: '/ə ˈkrɪtɪkəl ˈɪnsɪdənt hæz biːn dɪˈkleərd/',
+     tags: ['第2241句', '事件开始', '★★★★★'],
+     when: '值班经理或事件指挥官正式宣布发生重大故障，启动应急响应流程。',
+@@ -169,7 +169,7 @@ export const MOCK_SENTENCES_EMERGENCYCMD40A: ISentence[] = [
+   {
+     id: 2246,
+     speaker: 'Manager',
+-    en: 'Let\'s open the emergency bridge call now.',
++    en: 'Let\'s start the emergency bridge call now.',
+     cn: '现在开始应急电话会议。',
+     ipa: '/lɛts ˈoʊpən ði ɪˈmɜːrdʒənsi brɪdʒ kɔːl naʊ/',
+     tags: ['第2246句', '事件开始', '★★★★★'],
+diff --git a/src/data/emergencyCmd40b.ts b/src/data/emergencyCmd40b.ts
+index 3cba810..0c86b34 100644
+--- a/src/data/emergencyCmd40b.ts
++++ b/src/data/emergencyCmd40b.ts
+@@ -38,7 +38,7 @@ export const MOCK_SENTENCES_EMERGENCYCMD40B: ISentence[] = [
+     id: 2262,
+     speaker: 'Manager',
+     en: 'We are currently investigating the incident.',
+-    cn: '我们正在调查此次事件。',
++    cn: '我们正在排查此次事件。',
+     ipa: '/wiː ɑːr ˈkʌrəntli ɪnˈvɛstɪɡeɪtɪŋ ði ˈɪnsɪdənt/',
+     tags: ['第2262句', '客户沟通', '★★★★★'],
+     when: '向客户通报当前处理状态，告知事件正在调查中，让客户了解进展。',
+@@ -130,8 +130,8 @@ export const MOCK_SENTENCES_EMERGENCYCMD40B: ISentence[] = [
+   {
+     id: 2265,
+     speaker: 'Manager',
+-    en: 'Customer services remain our highest priority.',
+-    cn: '客户业务始终是我们的最高优先事项。',
++    en: 'Restoring customer services remains a top priority.',
++    cn: '恢复客户业务仍是重点任务之一。',
+     ipa: '/ˈkʌstəmər ˈsɜːrvɪsɪz rɪˈmeɪn aʊər ˈhaɪɪst praɪˈɒrɪti/',
+     tags: ['第2265句', '客户沟通', '★★★★★'],
+     when: '在重大事件处理过程中向客户强调，客户业务始终是最高优先级。',
+@@ -441,7 +441,7 @@ export const MOCK_SENTENCES_EMERGENCYCMD40B: ISentence[] = [
+     id: 2275,
+     speaker: 'Manager',
+     en: 'No further abnormalities have been observed.',
+-    cn: '目前未发现新的异常。',
++    cn: '目前未再发现异常。',
+     ipa: '/noʊ ˈfɜːrðər ˌæbnɔːrˈmælɪtiz hæv bɪn əbˈzɜːrvd/',
+     tags: ['第2275句', '恢复阶段', '★★★★'],
+     when: '确认恢复后没有新的异常出现，进一步确认系统稳定。',
+diff --git a/src/data/facilityTour31a.ts b/src/data/facilityTour31a.ts
+index 2122417..757ae45 100644
+--- a/src/data/facilityTour31a.ts
++++ b/src/data/facilityTour31a.ts
+@@ -608,7 +608,7 @@ export const MOCK_SENTENCES_FACILITY31A: ISentence[] = [
+   {
+     id: 1900,
+     speaker: 'Manager',
+-    en: 'Each rack has dual power supplies.',
++    en: 'Each rack has dual power feeds.',
+     cn: '每个机柜都采用双路供电。',
+     ipa: '/iːtʃ ræk hæz ˈdjuːəl ˈpaʊər səˈplaɪz/',
+     tags: ['第1900句', '介绍机房', '★★★★★'],
+diff --git a/src/data/facilityTour31b.ts b/src/data/facilityTour31b.ts
+index ce86189..b50ea02 100644
+--- a/src/data/facilityTour31b.ts
++++ b/src/data/facilityTour31b.ts
+@@ -282,7 +282,7 @@ export const MOCK_SENTENCES_FACILITY31B: ISentence[] = [
+     id: 1910,
+     speaker: 'Manager',
+     en: 'These are the CRAH units.',
+-    cn: '这些是风墙空调。',
++    cn: '这些是机房空气处理机组（CRAH）。',
+     ipa: '/ðiːz ɑːr ðə kræh ˈjuːnɪts/',
+     tags: ['第1910句', '暖通系统', '★★★★★'],
+     when: '值班经理向客户介绍机房内的精密空调设备，说明空气处理原理。',
+@@ -342,7 +342,7 @@ export const MOCK_SENTENCES_FACILITY31B: ISentence[] = [
+     id: 1912,
+     speaker: 'Manager',
+     en: 'We use a clean agent fire suppression system.',
+-    cn: '我们采用气体灭火系统。',
++    cn: '我们采用洁净气体灭火系统。',
+     ipa: '/wiː juːz ə kliːn ˈeɪdʒənt faɪər səˈpreʃən ˈsɪstəm/',
+     tags: ['第1912句', '消防安防', '★★★★★'],
+     when: '值班经理向客户介绍数据中心采用的气体灭火技术，说明对设备无损害。',
+diff --git a/src/data/handoverSummary30a.ts b/src/data/handoverSummary30a.ts
+index 2808594..2f22c38 100644
+--- a/src/data/handoverSummary30a.ts
++++ b/src/data/handoverSummary30a.ts
+@@ -203,7 +203,7 @@ export const MOCK_SENTENCES_HANDOVER30A: ISentence[] = [
+     id: 1847,
+     speaker: 'Manager',
+     en: 'Five alarms have been cleared.',
+-    cn: '其中5条告警已经恢复。',
++    cn: '其中5条告警已经清除。',
+     ipa: '/faɪv əˈlɑːrmz həv biːn klɪrd/',
+     tags: ['第1847句', 'BMS/DCIM', '★★★★★'],
+     when: '值班经理说明已恢复的告警数量，让接班团队知道哪些已自动处理。',
+@@ -234,7 +234,7 @@ export const MOCK_SENTENCES_HANDOVER30A: ISentence[] = [
+     id: 1848,
+     speaker: 'Manager',
+     en: 'Five alarms are still under investigation.',
+-    cn: '还有5条告警正在调查中。',
++    cn: '还有5条告警正在排查中。',
+     ipa: '/faɪv əˈlɑːrmz ɑːr stɪl ˈʌndər ˌɪnvəstɪˈɡeɪʃən/',
+     tags: ['第1848句', 'BMS/DCIM', '★★★★★'],
+     when: '值班经理说明仍在调查的告警数量，接班团队需要继续跟进。',
+@@ -422,7 +422,7 @@ export const MOCK_SENTENCES_HANDOVER30A: ISentence[] = [
+     id: 1854,
+     speaker: 'Manager',
+     en: 'Four fault tickets are still in progress.',
+-    cn: '目前还有4张故障单处理中。',
++    cn: '目前还有4张故障单正在处理中。',
+     ipa: '/fɔːr fɔːlt ˈtɪkɪts ɑːr stɪl ɪn ˈprɑːɡres/',
+     tags: ['第1854句', '工单', '★★★★★'],
+     when: '值班经理汇报仍在处理中的故障单数量，接班团队需继续跟进。',
+@@ -452,7 +452,7 @@ export const MOCK_SENTENCES_HANDOVER30A: ISentence[] = [
+     id: 1855,
+     speaker: 'Manager',
+     en: 'One fault ticket will reach the SLA deadline within one hour.',
+-    cn: '有1张故障单将在1小时内到达SLA时限。',
++    cn: '有1张故障单将在1小时内达到SLA时限。',
+     ipa: '/wʌn fɔːlt ˈtɪkɪt wɪl riːtʃ ðə ˌɛs.ɛlˈeɪ ˈdɛdlaɪn ˈwɪðɪn wʌn aʊər/',
+     tags: ['第1855句', '工单', '★★★★★'],
+     when: '值班经理提醒即将到期的SLA工单，接班团队需优先处理。',
+diff --git a/src/data/handoverSummary30b.ts b/src/data/handoverSummary30b.ts
+index 9d34990..32a1c1a 100644
+--- a/src/data/handoverSummary30b.ts
++++ b/src/data/handoverSummary30b.ts
+@@ -71,7 +71,7 @@ export const MOCK_SENTENCES_HANDOVER30B: ISentence[] = [
+     id: 1863,
+     speaker: 'Manager',
+     en: 'All work was completed according to the approved MOP.',
+-    cn: '所有施工均按照批准的MOP完成。',
++    cn: '所有作业均按照批准的MOP完成。',
+     ipa: '/ɔːl wɜːrk wɒz kəmˈpliːtɪd əˈkɔːrdɪŋ tuː ði əˈpruːvd ˌɛm.oʊˈpiː/',
+     tags: ['第1863句', '今日施工', '★★★★★'],
+     when: '确认施工合规性——所有外包作业必须按照事先批准的方法程序（MOP）执行，不能擅自变更。',
+@@ -135,7 +135,7 @@ export const MOCK_SENTENCES_HANDOVER30B: ISentence[] = [
+   {
+     id: 1865,
+     speaker: 'Manager',
+-    en: 'All contractors were on the approved whitelist.',
++    en: 'All contractor personnel were on the approved whitelist.',
+     cn: '所有施工人员都在批准的白名单内。',
+     ipa: '/ɔːl kənˈtræktərz wər ɒn ði əˈpruːvd ˈwaɪtlɪst/',
+     tags: ['第1865句', '白名单', '★★★★★'],
+@@ -167,8 +167,8 @@ export const MOCK_SENTENCES_HANDOVER30B: ISentence[] = [
+   {
+     id: 1866,
+     speaker: 'Manager',
+-    en: 'One visitor required a temporary whitelist application.',
+-    cn: '有一名访客临时申请了白名单。',
++    en: 'A temporary whitelist application was required for one visitor.',
++    cn: '有一名访客需要临时申请加入白名单。',
+     ipa: '/wʌn ˈvɪzɪtər rɪˈkwaɪərd ə ˈtɛmpərəri ˈwaɪtlɪst ˌæplɪˈkeɪʃən/',
+     tags: ['第1866句', '白名单', '★★★★'],
+     when: '汇报门禁异常——有一名不在常备白名单内的访客，需要走临时审批流程才能进入。这是需要交代的特殊情况。',
+@@ -357,7 +357,7 @@ export const MOCK_SENTENCES_HANDOVER30B: ISentence[] = [
+     id: 1872,
+     speaker: 'Manager',
+     en: 'A rain inspection was carried out this afternoon.',
+-    cn: '今天下午完成了雨天巡检。',
++    cn: '今天下午进行了雨天巡检。',
+     ipa: '/ə reɪn ɪnˈspɛkʃən wɒz ˈkærid aʊt ðɪs ˌæftərˈnuːn/',
+     tags: ['第1872句', '雨天巡检', '★★★★★'],
+     when: '汇报特殊天气巡检——下雨天需要对屋顶、排水、集水井等进行额外检查，确保无渗漏风险。',
+@@ -389,7 +389,7 @@ export const MOCK_SENTENCES_HANDOVER30B: ISentence[] = [
+     id: 1873,
+     speaker: 'Manager',
+     en: 'No roof leakage was found.',
+-    cn: '屋顶没有发现漏水。',
++    cn: '未发现屋面渗漏。',
+     ipa: '/noʊ ruːf ˈliːkɪdʒ wɒz faʊnd/',
+     tags: ['第1873句', '雨天巡检', '★★★★★'],
+     when: '汇报雨天巡检结果的第一项——屋顶无渗漏，这对保护机房内IT设备至关重要。',
+@@ -486,7 +486,7 @@ export const MOCK_SENTENCES_HANDOVER30B: ISentence[] = [
+     id: 1876,
+     speaker: 'Manager',
+     en: 'No standing water was found inside the facility.',
+-    cn: '园区内未发现积水。',
++    cn: '设施内部未发现积水。',
+     ipa: '/noʊ ˈstændɪŋ ˈwɔːtər wɒz faʊnd ɪnˈsaɪd ðə fəˈsɪləti/',
+     tags: ['第1876句', '雨天巡检', '★★★★★'],
+     when: '汇报雨天巡检最后一项——园区地面（道路、停车场、出入口）没有积水，说明排水系统全面正常。',
