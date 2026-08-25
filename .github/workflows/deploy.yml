@@ -64,8 +64,29 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: app/package-lock.json
+      - name: Install dependencies
+        run: cd app && npm ci --ignore-scripts
+      - name: Prepare Kokoro browser runtime
+        shell: bash
+        run: cd app && bash scripts/prepare-kokoro-runtime.sh
       - name: Build
-        run: cd app && npm ci && npm run build
+        run: cd app && npm run build
+      - name: Add same-origin Kokoro model files
+        shell: bash
+        run: |
+          set -euo pipefail
+          model_dir="app/dist/kokoro/model"
+          mkdir -p "$model_dir/onnx"
+          base_url="https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/main"
+          curl -L --fail --retry 3 "$base_url/config.json" -o "$model_dir/config.json"
+          curl -L --fail --retry 3 "$base_url/tokenizer.json" -o "$model_dir/tokenizer.json"
+          curl -L --fail --retry 3 "$base_url/tokenizer_config.json" -o "$model_dir/tokenizer_config.json"
+          curl -L --fail --retry 3 "$base_url/onnx/model_quantized.onnx" -o "$model_dir/onnx/model_quantized.onnx"
+          test "$(stat -c%s "$model_dir/onnx/model_quantized.onnx")" -gt 80000000
+          test "$(stat -c%s "app/dist/kokoro/kokoro.web.js")" -gt 2000000
+          test "$(stat -c%s "app/dist/kokoro/ort-wasm-simd-threaded.jsep.wasm")" -gt 10000000
+          test "$(stat -c%s "app/dist/kokoro/ort-wasm-simd-threaded.jsep.mjs")" -gt 40000
+          node -e "JSON.parse(require('fs').readFileSync('$model_dir/config.json')); JSON.parse(require('fs').readFileSync('$model_dir/tokenizer.json'))"
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
