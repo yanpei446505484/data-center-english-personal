@@ -1,0 +1,237 @@
+diff --git a/src/data/bmsMonitor29a.ts b/src/data/bmsMonitor29a.ts
+index 1eaf803..2628658 100644
+--- a/src/data/bmsMonitor29a.ts
++++ b/src/data/bmsMonitor29a.ts
+@@ -254,7 +254,7 @@ export const MOCK_SENTENCES_BMS29A: ISentence[] = [
+     id: 1809,
+     speaker: 'Manager',
+     en: 'Three alarms are warnings.',
+-    cn: '其中3条为警告告警。',
++    cn: '其中3条为警告级告警。',
+     ipa: '/θriː əˈlɑːrmz ɑːr ˈwɔːrnɪŋz/',
+     tags: ['第1809句', '仪表盘总览', '★★★★'],
+     when: '继续按严重程度分类，汇报Warning级别告警数量。Warning低于Critical但仍需关注。',
+@@ -345,7 +345,7 @@ export const MOCK_SENTENCES_BMS29A: ISentence[] = [
+     id: 1812,
+     speaker: 'Manager',
+     en: 'Please investigate the alarm immediately.',
+-    cn: '请立即调查告警。',
++    cn: '请立即排查告警。',
+     ipa: '/pliːz ɪnˈvɛstɪɡeɪt ðə əˈlɑːrm ɪˈmiːdiətli/',
+     tags: ['第1812句', '告警处理', '★★★★★'],
+     when: '告警确认后，经理指示工程师立即进行现场排查和原因调查。',
+@@ -528,7 +528,7 @@ export const MOCK_SENTENCES_BMS29A: ISentence[] = [
+     id: 1818,
+     speaker: 'Engineer',
+     en: 'The alarm is under investigation.',
+-    cn: '告警正在调查中。',
++    cn: '告警正在排查中。',
+     ipa: '/ðə əˈlɑːrm ɪz ˈʌndər ɪnˌvɛstɪˈɡeɪʃən/',
+     tags: ['第1818句', '告警处理', '★★★★★'],
+     when: '工程师汇报告警当前处于调查阶段，尚未找到根因或完成处理。',
+@@ -588,7 +588,7 @@ export const MOCK_SENTENCES_BMS29A: ISentence[] = [
+     id: 1820,
+     speaker: 'Engineer',
+     en: 'The alarm has been cleared.',
+-    cn: '告警已经恢复。',
++    cn: '告警已清除。',
+     ipa: '/ðə əˈlɑːrm hæz biːn klɪərd/',
+     tags: ['第1820句', '告警处理', '★★★★★'],
+     when: '工程师汇报告警已自动恢复，系统状态回到正常，无需人工干预或人工干预后系统已自行恢复。',
+diff --git a/src/data/bmsMonitor29b.ts b/src/data/bmsMonitor29b.ts
+index c936fa7..60d2520 100644
+--- a/src/data/bmsMonitor29b.ts
++++ b/src/data/bmsMonitor29b.ts
+@@ -68,7 +68,7 @@ export const MOCK_SENTENCES_BMS29B: ISentence[] = [
+   {
+     id: 1823,
+     en: "Please display the power trend.",
+-    cn: "请显示电力趋势。",
++    cn: "请显示功率趋势。",
+     ipa: "/pliːz dɪˈspleɪ ðə ˈpaʊər trɛnd/",
+     tags: ["第1823句", "趋势分析", "★★★★"],
+     when: "请求查看电力消耗趋势图，用于监控机房用电情况和负载变化。",
+@@ -463,7 +463,7 @@ export const MOCK_SENTENCES_BMS29B: ISentence[] = [
+   {
+     id: 1836,
+     en: "This ticket will expire in one hour.",
+-    cn: "该工单将在一小时后到期。",
++    cn: "该工单将在一小时后达到SLA时限。",
+     ipa: "/ðɪs ˈtɪkɪt wɪl ɪkˈspaɪər ɪn wʌn aʊər/",
+     tags: ["第1836句", "工单管理", "★★★★★"],
+     when: "警告工单即将到期，需要优先处理或申请延期。这是交接时必须告知的紧急信息。",
+@@ -492,7 +492,7 @@ export const MOCK_SENTENCES_BMS29B: ISentence[] = [
+   {
+     id: 1837,
+     en: "This ticket has exceeded the SLA.",
+-    cn: "该工单已经超过SLA。",
++    cn: "该工单已经超出SLA时限。",
+     ipa: "/ðɪs ˈtɪkɪt hæz ˌɛksɪˈsiːdɪd ðə ˌɛs.ɛlˈeɪ/",
+     tags: ["第1837句", "工单管理", "★★★★★"],
+     when: "汇报工单已超时，这是严重的运维管理问题，需要立即上报并采取补救措施。",
+diff --git a/src/data/borrowReturn45a.ts b/src/data/borrowReturn45a.ts
+index 13963b7..2e13e42 100644
+--- a/src/data/borrowReturn45a.ts
++++ b/src/data/borrowReturn45a.ts
+@@ -68,8 +68,8 @@ export const MOCK_SENTENCES_BORROWRETURN45A: ISentence[] = [
+   {
+     id: 2443,
+     speaker: 'Engineer',
+-    en: 'Could I borrow your access card for a moment?',
+-    cn: '我可以暂时借一下你的门禁卡吗？',
++    en: 'Could you escort me through the access-controlled door for a moment?',
++    cn: '你可以陪同我通过门禁门吗？',
+     ipa: '/kʊd aɪ ˈbɒrəʊ jɔːr ˈæksəs kɑːrd fɔːr ə ˈməʊmənt/',
+     tags: ['第2443句', '借东西', '★★★★★'],
+     when: '自己的门禁卡忘记带或丢失，需要临时借用同事的门禁卡进入机房。',
+@@ -100,8 +100,8 @@ export const MOCK_SENTENCES_BORROWRETURN45A: ISentence[] = [
+   {
+     id: 2444,
+     speaker: 'Engineer',
+-    en: 'May I borrow your office key?',
+-    cn: '我可以借一下办公室钥匙吗？',
++    en: 'May I sign out the office key?',
++    cn: '我可以登记领用办公室钥匙吗？',
+     ipa: '/meɪ aɪ ˈbɒrəʊ jɔːr ˈɒfɪs kiː/',
+     tags: ['第2444句', '借东西', '★★★★'],
+     when: '需要进入同事的办公室取文件或设备，向对方借钥匙。',
+@@ -375,7 +375,7 @@ export const MOCK_SENTENCES_BORROWRETURN45A: ISentence[] = [
+     id: 2453,
+     speaker: 'Engineer',
+     en: 'Could I borrow a ladder?',
+-    cn: '我可以借一把梯子吗？',
++    cn: '我可以借一架梯子吗？',
+     ipa: '/kʊd aɪ ˈbɒrəʊ ə ˈlædər/',
+     tags: ['第2453句', '借工具', '★★★★'],
+     when: '需要检查天花板上的线缆桥架或高处设备，向同事借梯子。',
+diff --git a/src/data/borrowReturn45b.ts b/src/data/borrowReturn45b.ts
+index fabcc63..ed09ea9 100644
+--- a/src/data/borrowReturn45b.ts
++++ b/src/data/borrowReturn45b.ts
+@@ -250,7 +250,7 @@ export const MOCK_SENTENCES_BORROWRETURN45B: ISentence[] = [
+     id: 2469,
+     speaker: 'Engineer',
+     en: 'I cleaned it before returning it.',
+-    cn: '我已经清理干净再还给你。',
++    cn: '归还前我已经把它清理干净了。',
+     ipa: '/aɪ kliːnd ɪt bɪˈfɔːr rɪˈtɜːrnɪŋ ɪt/',
+     tags: ['第2469句', '还东西', '★★★★'],
+     when: '归还工具或设备前已清洁，体现专业素养。',
+@@ -310,7 +310,7 @@ export const MOCK_SENTENCES_BORROWRETURN45B: ISentence[] = [
+     id: 2471,
+     speaker: 'Manager',
+     en: 'Please sign for the tool before taking it.',
+-    cn: '领取工具前请签字。',
++    cn: '领取工具前请签收。',
+     ipa: '/pliːz saɪn fɔːr ðə tuːl bɪˈfɔːr ˈteɪkɪŋ ɪt/',
+     tags: ['第2471句', '工具管理', '★★★★★'],
+     when: '工具管理员要求领用人在登记表上签字确认。',
+@@ -494,7 +494,7 @@ export const MOCK_SENTENCES_BORROWRETURN45B: ISentence[] = [
+     id: 2477,
+     speaker: 'Engineer',
+     en: 'The tool has been returned to the warehouse.',
+-    cn: '工具已经归还仓库。',
++    cn: '工具已经归还至仓库。',
+     ipa: '/ðə tuːl hæz biːn rɪˈtɜːrnd tu ðə ˈwɛrhaʊs/',
+     tags: ['第2477句', '工具管理', '★★★★★'],
+     when: '确认工具已归还至工具仓库，完成归还流程。',
+@@ -585,7 +585,7 @@ export const MOCK_SENTENCES_BORROWRETURN45B: ISentence[] = [
+     id: 2480,
+     speaker: 'Manager',
+     en: 'All tools have been accounted for.',
+-    cn: '所有工具都已经清点完成。',
++    cn: '所有工具均已核对无误。',
+     ipa: '/ɔːl tuːlz hæv biːn əˈkaʊntɪd fɔːr/',
+     tags: ['第2480句', '工具管理', '★★★★★'],
+     when: '工具清点完毕，确认所有工具都在位，无缺失。',
+diff --git a/src/data/clientComm38a.ts b/src/data/clientComm38a.ts
+index e6ba241..7ee4c50 100644
+--- a/src/data/clientComm38a.ts
++++ b/src/data/clientComm38a.ts
+@@ -38,7 +38,7 @@ export const MOCK_SENTENCES_CLIENTCOMM38A: ISentence[] = [
+   {
+     id: 2162,
+     speaker: 'Manager',
+-    en: 'Let\'s begin with today\'s agenda.',
++    en: 'Let\'s begin by reviewing today\'s agenda.',
+     cn: '我们先开始今天的会议议程。',
+     ipa: '/lɛts bɪˈɡɪn wɪð təˈdeɪz əˈdʒɛndə/',
+     tags: ['第2162句', '会议开始', '★★★★★'],
+diff --git a/src/data/clientComm38b.ts b/src/data/clientComm38b.ts
+index 93a459a..1d473cf 100644
+--- a/src/data/clientComm38b.ts
++++ b/src/data/clientComm38b.ts
+@@ -391,7 +391,7 @@ export const MOCK_SENTENCES_CLIENTCOMM38B: ISentence[] = [
+     id: 2193,
+     speaker: 'Manager',
+     en: 'We have identified the root cause.',
+-    cn: '我们已经找到根本原因。',
++    cn: '我们已经确定根本原因。',
+     ipa: '/wiː hæv aɪˈdɛntɪfaɪd ðə ruːt kɔːz/',
+     tags: ['第2193句', '客户投诉', '★★★★★'],
+     when: '在投诉处理中告知客户已找到问题的根本原因，展示专业排查能力。',
+@@ -486,8 +486,8 @@ export const MOCK_SENTENCES_CLIENTCOMM38B: ISentence[] = [
+   {
+     id: 2196,
+     speaker: 'Manager',
+-    en: 'We will prevent similar issues from happening again.',
+-    cn: '我们将避免类似问题再次发生。',
++    en: 'We will take steps to prevent similar issues from recurring.',
++    cn: '我们将采取措施防止类似问题再次发生。',
+     ipa: '/wiː wɪl prɪˈvɛnt ˈsɪmɪlər ˈɪʃuːz frəm ˈhæpənɪŋ əˈɡɛn/',
+     tags: ['第2196句', '客户投诉', '★★★★★'],
+     when: '在投诉处理最后环节，向客户做出避免问题复发的承诺，恢复客户信心。',
+diff --git a/src/data/commTools53a.ts b/src/data/commTools53a.ts
+index 1a03714..222e545 100644
+--- a/src/data/commTools53a.ts
++++ b/src/data/commTools53a.ts
+@@ -477,7 +477,7 @@ export const MOCK_SENTENCES_COMMMTOOLS53A: ISentence[] = [
+     id: 2776,
+     speaker: 'Engineer',
+     en: 'Please send me a video of the alarm.',
+-    cn: '请发一段告警现场的视频给我。',
++    cn: '请发一段显示告警情况的视频给我。',
+     ipa: '/pliːz sɛnd miː ə ˈvɪdioʊ ɒv ðə əˈlɑːrm/',
+     tags: ['第2776句', 'WhatsApp', '★★★'],
+     when: '需要同事拍摄告警现场视频以便远程判断情况。',
+diff --git a/src/data/commTools53b.ts b/src/data/commTools53b.ts
+index e89d5ad..dfadb04 100644
+--- a/src/data/commTools53b.ts
++++ b/src/data/commTools53b.ts
+@@ -451,8 +451,8 @@ export const MOCK_SENTENCES_COMMMTOOLS53B: ISentence[] = [
+   {
+     id: 2795,
+     speaker: 'Engineer',
+-    en: 'Could you open the access door for me?',
+-    cn: '你能帮我开一下门禁吗？',
++    en: 'Could you meet me at the access-controlled door?',
++    cn: '你能到门禁门接我吗？',
+     ipa: '/kʊd juː ˈoʊpən ðə ˈæksɛs dɔːr fɔːr miː/',
+     tags: ['第2795句', '到达现场', '★★★★'],
+     when: '到达需要门禁授权的区域时，请求有权限的同事帮忙开门。',
+diff --git a/src/data/customerAudit32a.ts b/src/data/customerAudit32a.ts
+index d8eb8c2..2579350 100644
+--- a/src/data/customerAudit32a.ts
++++ b/src/data/customerAudit32a.ts
+@@ -585,7 +585,7 @@ export const MOCK_SENTENCES_AUDIT32A: ISentence[] = [
+   {
+     id: 1939,
+     speaker: 'Manager',
+-    en: 'Please review the calibration certificates.',
++    en: 'Please review the instrument calibration certificates.',
+     cn: '请查阅仪器校准证书。',
+     ipa: '/pliz rɪˈvju ðə ˌkælɪˈbreɪʃən ˈsɜrtɪfɪkəts/',
+     tags: ['第1939句', '文件审核', '★★★★★'],
+diff --git a/src/data/customerAudit32b.ts b/src/data/customerAudit32b.ts
+index 85cf09d..93596a3 100644
+--- a/src/data/customerAudit32b.ts
++++ b/src/data/customerAudit32b.ts
+@@ -255,7 +255,7 @@ export const MOCK_SENTENCES_AUDIT32B: ISentence[] = [
+     id: 1949,
+     speaker: 'Manager',
+     en: 'All testing results meet the required standards.',
+-    cn: '所有测试结果均符合要求。',
++    cn: '所有测试结果均符合规定标准。',
+     ipa: '/ɔːl ˈtɛstɪŋ rɪˈzʌlts miːt ðə rɪˈkwaɪərd ˈstændərdz/',
+     tags: ['第1949句', '测试记录', '★★★★★'],
+     when: '审计员询问测试结果是否达标时，值班经理给出肯定答复。',
