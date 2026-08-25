@@ -13,6 +13,8 @@ import {
 import { getAlarmTextIpa, getAlarmWordIpa } from './alarmPhonetics';
 import { lookupDictionary } from '../skills/dictionarySkill';
 import { lemmatize } from '../skills/lemmatizeSkill';
+import { PUMP_MAINTENANCE_DIALOGUES } from './pumpMaintenanceDialogues';
+import { PUMP_WORD_CHINESE } from './pumpWordGlossary';
 
 describe('alarm summary import', () => {
   it('imports all 162 deduplicated alarms', () => {
@@ -122,6 +124,47 @@ describe('alarm summary import', () => {
         expect(chinese, `missing dialogue translation: ${word}`).toBeTruthy();
       }
     }
+  });
+
+  it('provides all 20 reviewed pump maintenance scenarios', () => {
+    expect(PUMP_MAINTENANCE_DIALOGUES).toHaveLength(20);
+    expect(PUMP_MAINTENANCE_DIALOGUES.filter((item) => item.kind === '故障维修')).toHaveLength(10);
+    expect(PUMP_MAINTENANCE_DIALOGUES.filter((item) => item.kind === '日常巡检')).toHaveLength(10);
+    expect(PUMP_MAINTENANCE_DIALOGUES.flatMap((item) => item.lines)).toHaveLength(80);
+    for (const scenario of PUMP_MAINTENANCE_DIALOGUES) {
+      expect(scenario.causeCn.trim()).toBeTruthy();
+      expect(scenario.lines).toHaveLength(4);
+      for (const line of scenario.lines) {
+        expect(line.en.trim()).toBeTruthy();
+        expect(line.cn.trim()).toBeTruthy();
+        expect(line.phrases.length).toBeGreaterThan(0);
+        for (const phrase of line.phrases) {
+          expect(line.en.toLowerCase()).toContain(phrase.text.toLowerCase());
+          expect(phrase.chinese.trim()).toBeTruthy();
+        }
+      }
+    }
+  });
+
+  it('provides Chinese meanings and IPA for every pump-dialogue word', () => {
+    const missingChinese = new Set<string>();
+    const missingIpa = new Set<string>();
+    for (const scenario of PUMP_MAINTENANCE_DIALOGUES) {
+      for (const line of scenario.lines) {
+        const words = line.en.match(/[A-Za-z]+(?:[’'][A-Za-z]+)*(?:-[A-Za-z]+)*/g) || [];
+        for (const word of words) {
+          const normalized = word.toLowerCase();
+          const chinese = ALARM_WORD_CHINESE[normalized]
+            || PUMP_WORD_CHINESE[normalized]
+            || lookupDictionary(normalized, lemmatize(normalized), line.en)?.chinese;
+          if (!chinese) missingChinese.add(normalized);
+          if (!getAlarmWordIpa(word, line.en)) missingIpa.add(normalized);
+        }
+        expect(getAlarmTextIpa(line.en)).toMatch(/^\/ .+ \/$/);
+      }
+    }
+    expect([...missingIpa], `missing pump IPA: ${[...missingIpa].join(', ')}`).toEqual([]);
+    expect([...missingChinese], `missing pump translation: ${[...missingChinese].join(', ')}`).toEqual([]);
   });
 
   it('provides IPA for every alarm and meeting word and phrase', () => {

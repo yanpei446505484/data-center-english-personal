@@ -27,6 +27,8 @@ import { ALARM_MEETING_SCRIPTS, type AlarmMeetingLine } from '@/data/alarmMeetin
 import { getAlarmPhraseCards, type AlarmPhraseCard } from '@/data/alarmPhrases';
 import { ALARM_WORD_CHINESE } from '@/data/alarmWordDictionary';
 import { getAlarmTextIpa, getAlarmWordIpa } from '@/data/alarmPhonetics';
+import { PUMP_MAINTENANCE_DIALOGUES, PUMP_PRINCIPLE_CN } from '@/data/pumpMaintenanceDialogues';
+import { PUMP_WORD_CHINESE } from '@/data/pumpWordGlossary';
 import { splitEnglishText } from '@/lib/sentenceCards';
 import { preloadTTS, speakWithPlugin, stopAllSpeech, warmupAudio } from '@/lib/ttsPlugin';
 import {
@@ -68,7 +70,7 @@ function AlarmWord({ word, alarm, category }: { word: string; alarm: string; cat
   );
   const data = {
     word,
-    chinese: ALARM_WORD_CHINESE[normalized] || dictionary?.chinese || '暂无本地释义',
+    chinese: ALARM_WORD_CHINESE[normalized] || PUMP_WORD_CHINESE[normalized] || dictionary?.chinese || '暂无本地释义',
     example: alarm,
     tags: [CATEGORY_CN[category] || category, '告警英语'],
     ukIpa: dictionary?.ipa || getAlarmWordIpa(word, alarm),
@@ -564,6 +566,79 @@ export default function AlarmEnglishPage() {
                 </div>
               );
             })}
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="border-primary/20">
+        <CardContent className="p-4 space-y-4">
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="font-semibold text-foreground">冷却水泵故障维修与日常巡检</h2>
+            <Badge variant="secondary">{PUMP_MAINTENANCE_DIALOGUES.length}组 · 80句</Badge>
+          </div>
+          <p className="text-xs leading-relaxed text-muted-foreground">{PUMP_PRINCIPLE_CN}</p>
+          <div className="rounded-md border border-warning/30 bg-warning/5 p-3 text-xs leading-relaxed text-foreground/75">
+            安全提示：以下内容用于英语和排查思路学习，不代替现场SOP、MOP、PTW、LOTO、厂家手册或风险评估。任何停机、拆解、带压系统、电气端子和化学清洗操作，都必须由授权人员按批准程序执行。
+          </div>
+          <div className="grid gap-3">
+            {PUMP_MAINTENANCE_DIALOGUES.map((scenario) => (
+              <details key={scenario.id} className="group rounded-lg border border-border/50 bg-muted/10">
+                <summary className="flex cursor-pointer list-none items-center gap-3 p-3">
+                  <Badge variant={scenario.kind === '故障维修' ? 'destructive' : 'secondary'}>
+                    {scenario.kind}{scenario.id > 10 ? scenario.id - 10 : scenario.id}
+                  </Badge>
+                  <span className="flex-1 text-sm font-semibold text-foreground">{scenario.title}</span>
+                  <span className="text-xs text-muted-foreground group-open:hidden">展开</span>
+                  <span className="hidden text-xs text-muted-foreground group-open:inline">收起</span>
+                </summary>
+                <div className="space-y-3 border-t border-border/50 p-3">
+                  <div className="rounded-md bg-muted/30 p-2.5 text-xs leading-relaxed text-foreground/75">
+                    <span className="font-semibold text-primary">排查说明：</span>{scenario.causeCn}
+                  </div>
+                  {scenario.lines.map((line) => {
+                    const key = `pump-${scenario.id}-${line.id}`;
+                    const isPlaying = playingKey === key;
+                    return (
+                      <div key={line.id} className="flex items-start gap-3 rounded-md border border-border/40 bg-background/40 p-3">
+                        <Badge variant={line.speaker === 'A' ? 'default' : 'outline'} className="shrink-0 font-mono">
+                          {line.speaker}
+                        </Badge>
+                        <div className="min-w-0 flex-1 space-y-2">
+                          <div className="flex flex-wrap items-center gap-x-1 text-sm leading-7">
+                            {splitEnglishText(line.en).map((segment, index) => (
+                              segment.kind === 'word'
+                                ? <AlarmWord key={index} word={segment.text} alarm={line.en} category="冷却水泵运维" />
+                                : <span key={index}>{segment.text}</span>
+                            ))}
+                          </div>
+                          <p className="text-sm text-foreground/70">{line.cn}</p>
+                          <div className="flex flex-wrap gap-2">
+                            {line.phrases.map((phrase) => (
+                              <AlarmPhrase
+                                key={`${scenario.id}-${line.id}-${phrase.text}`}
+                                phrase={{ ...phrase, fullAlarm: false }}
+                                alarm={line.en}
+                                category="冷却水泵运维"
+                              />
+                            ))}
+                          </div>
+                        </div>
+                        <Button
+                          type="button"
+                          variant={isPlaying ? 'destructive' : 'outline'}
+                          size="sm"
+                          onClick={() => playText(key, line.en)}
+                          className="shrink-0 gap-1.5"
+                        >
+                          {isPlaying ? <Square className="size-3.5 fill-current" /> : <Volume2 className="size-3.5" />}
+                          {isPlaying && playingRound > 0 ? `${playingRound}/${repeatCount}` : '朗读'}
+                        </Button>
+                      </div>
+                    );
+                  })}
+                </div>
+              </details>
+            ))}
           </div>
         </CardContent>
       </Card>

@@ -1,5 +1,6 @@
 import { lookupDictionary } from '@/skills/dictionarySkill';
 import { lemmatize } from '@/skills/lemmatizeSkill';
+import { PUMP_WORD_IPA } from './pumpWordGlossary';
 
 /** British-style IPA for specialist alarm vocabulary missing from the general dictionary. */
 export const ALARM_WORD_IPA: Record<string, string> = {
@@ -97,6 +98,7 @@ const WORD_PATTERN = /[A-Za-z]+(?:[’'][A-Za-z]+)*(?:-[A-Za-z]+)*/g;
 export function getAlarmWordIpa(word: string, context = word): string {
   const normalized = word.toLowerCase().replaceAll('’', "'");
   return ALARM_WORD_IPA[normalized]
+    || PUMP_WORD_IPA[normalized]
     || lookupDictionary(normalized, lemmatize(normalized), context)?.ipa
     || '';
 }
