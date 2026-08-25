@@ -1,7 +1,12 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { Volume2, Square, BookOpen, Hash } from 'lucide-react';
 import { speakWithPlugin, stopAllSpeech, warmupAudio } from '@/lib/ttsPlugin';
-import { getReadCount, incrementReadCount } from '@/lib/readCounts';
+import {
+  TTS_REPEAT_OPTIONS,
+  loadTtsRepeat,
+  saveTtsRepeat,
+  type TtsRepeatCount,
+} from '@/lib/ttsRepeat';
 
 interface WordCardData {
   word: string;
@@ -37,13 +42,18 @@ const POS_LABELS: Record<string, string> = {
 
 export default function WordCard({ data, autoPlay = false }: WordCardProps) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [readCount, setReadCount] = useState(() => getReadCount('word', data.word));
+  const [repeatCount, setRepeatCount] = useState<TtsRepeatCount>(
+    () => loadTtsRepeat('word'),
+  );
+  const [playRound, setPlayRound] = useState(0);
   const stopFnRef = useRef<(() => void) | null>(null);
   const autoPlayedRef = useRef(false);
+  const playbackAbortRef = useRef(false);
 
   const chainTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const stopPlayback = useCallback(() => {
+    playbackAbortRef.current = true;
     stopAllSpeech();
     if (chainTimerRef.current) {
       clearTimeout(chainTimerRef.current);
@@ -54,6 +64,7 @@ export default function WordCard({ data, autoPlay = false }: WordCardProps) {
       stopFnRef.current = null;
     }
     setIsPlaying(false);
+    setPlayRound(0);
   }, []);
 
   const playWordAudio = useCallback(() => {
@@ -61,39 +72,47 @@ export default function WordCard({ data, autoPlay = false }: WordCardProps) {
     // 🔒 Mobile iOS: unlock audio in user gesture BEFORE async
     warmupAudio();
     stopPlayback();
+    playbackAbortRef.current = false;
     setIsPlaying(true);
-    setReadCount(incrementReadCount('word', data.word));
 
-    // Read: word → short pause → example sentence
-    const stop1 = speakWithPlugin(
-      data.word,
-      () => {
-        if (!data.example?.trim()) {
-          setIsPlaying(false);
+    let round = 0;
+    const playNextWord = () => {
+      if (playbackAbortRef.current) return;
+      round += 1;
+      setPlayRound(round);
+      stopFnRef.current = speakWithPlugin(
+        data.word,
+        () => {
           stopFnRef.current = null;
-          return;
-        }
-        chainTimerRef.current = setTimeout(() => {
-          chainTimerRef.current = null;
-          const stop2 = speakWithPlugin(
-            data.example,
-            () => {
-              setIsPlaying(false);
-              stopFnRef.current = null;
-            },
-            'british',
-          );
-          stopFnRef.current = stop2;
-        }, 400);
-      },
-      'british',
-    );
-    stopFnRef.current = stop1;
-  }, [data.word, data.example, stopPlayback]);
-
-  useEffect(() => {
-    setReadCount(getReadCount('word', data.word));
-  }, [data.word]);
+          if (playbackAbortRef.current) return;
+          if (round < repeatCount) {
+            chainTimerRef.current = setTimeout(playNextWord, 350);
+            return;
+          }
+          if (!data.example?.trim()) {
+            setIsPlaying(false);
+            setPlayRound(0);
+            return;
+          }
+          chainTimerRef.current = setTimeout(() => {
+            chainTimerRef.current = null;
+            if (playbackAbortRef.current) return;
+            stopFnRef.current = speakWithPlugin(
+              data.example,
+              () => {
+                stopFnRef.current = null;
+                setIsPlaying(false);
+                setPlayRound(0);
+              },
+              'british',
+            );
+          }, 400);
+        },
+        'british',
+      );
+    };
+    playNextWord();
+  }, [data.word, data.example, repeatCount, stopPlayback]);
 
   useEffect(() => {
     if (autoPlay && !autoPlayedRef.current && data.word?.trim()) {
@@ -176,9 +195,25 @@ export default function WordCard({ data, autoPlay = false }: WordCardProps) {
             <Volume2 className="size-3.5" />
           )}
         </button>
-        <span className="text-[10px] text-muted-foreground tabular-nums whitespace-nowrap">
-          已朗读 {readCount} 次
-        </span>
+        <select
+          value={repeatCount}
+          disabled={isPlaying}
+          onChange={(event) => {
+            const next = saveTtsRepeat('word', event.target.value);
+            setRepeatCount(next);
+          }}
+          className="h-8 rounded-sm border border-border/40 bg-background px-1.5 text-[11px] text-foreground disabled:opacity-60"
+          aria-label={`${data.word}朗读遍数`}
+        >
+          {TTS_REPEAT_OPTIONS.map((count) => (
+            <option key={count} value={count}>{count}遍</option>
+          ))}
+        </select>
+        {isPlaying && playRound > 0 && (
+          <span className="text-[10px] text-primary tabular-nums whitespace-nowrap">
+            第 {playRound}/{repeatCount} 遍
+          </span>
+        )}
       </div>
 
       <div className="px-4 py-3 space-y-3">

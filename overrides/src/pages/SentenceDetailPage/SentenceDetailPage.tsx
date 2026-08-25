@@ -50,7 +50,12 @@ import { userStorageKey } from '@/lib/userStorage';
 import { preloadTTS, speakWithPlugin, stopAllSpeech, warmupAudio } from '@/lib/ttsPlugin';
 import { recordSentenceStudied } from '@/hooks/useStudyProgress';
 import { useFavorites } from '@/hooks/useFavorites';
-import { getReadCount, incrementReadCount } from '@/lib/readCounts';
+import {
+  TTS_REPEAT_OPTIONS,
+  loadTtsRepeat,
+  saveTtsRepeat,
+  type TtsRepeatCount,
+} from '@/lib/ttsRepeat';
 import {
   buildWordReferenceIndex,
   getCompletePhraseCards,
@@ -68,27 +73,40 @@ export default function SentenceDetailPage() {
   const [quizAnswers, setQuizAnswers] = useState<Record<number, boolean>>({});
   const [revealedQuiz, setRevealedQuiz] = useState<Record<number, boolean>>({});
   const [expandedWords, setExpandedWords] = useState<Record<string, boolean>>({});
-  const [sentenceReadCount, setSentenceReadCount] = useState(0);
-  const [wordReadCounts, setWordReadCounts] = useState<Record<string, number>>({});
+  const [sentenceRepeatCount, setSentenceRepeatCount] = useState<TtsRepeatCount>(
+    () => loadTtsRepeat('sentence'),
+  );
+  const [wordRepeatCount, setWordRepeatCount] = useState<TtsRepeatCount>(
+    () => loadTtsRepeat('word'),
+  );
 
-  // TTS reading (single play only)
-  const repeatCount = 1;
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [speakRound, setSpeakRound] = useState(0);
   const speakAbortRef = useRef(false);
   const pluginStopRef = useRef<(() => void) | null>(null);
+  const speechResolveRef = useRef<(() => void) | null>(null);
 
   const speakEnglish = useCallback((text: string): Promise<void> => {
     return new Promise((resolve) => {
-      pluginStopRef.current = speakWithPlugin(text, resolve);
+      let settled = false;
+      const finish = () => {
+        if (settled) return;
+        settled = true;
+        if (speechResolveRef.current === finish) speechResolveRef.current = null;
+        resolve();
+      };
+      speechResolveRef.current = finish;
+      pluginStopRef.current = speakWithPlugin(text, finish);
     });
   }, []);
 
   const stopSpeaking = useCallback(() => {
     speakAbortRef.current = true;
-    stopAllSpeech();
     pluginStopRef.current?.();
     pluginStopRef.current = null;
+    stopAllSpeech();
+    speechResolveRef.current?.();
+    speechResolveRef.current = null;
     setIsSpeaking(false);
     setSpeakRound(0);
   }, []);
@@ -135,27 +153,6 @@ export default function SentenceDetailPage() {
     [sentence, completeWords],
   );
 
-  useEffect(() => {
-    if (!sentence) return;
-    setSentenceReadCount(getReadCount('sentence', sentence.id));
-  }, [sentence?.id]);
-
-  useEffect(() => {
-    const counts: Record<string, number> = {};
-    for (const word of completeWords) {
-      counts[word.w.toLocaleLowerCase('en-US')] = getReadCount('word', word.w);
-    }
-    setWordReadCounts(counts);
-  }, [completeWords]);
-
-  const recordWordRead = useCallback((word: string) => {
-    const next = incrementReadCount('word', word);
-    setWordReadCounts((previous) => ({
-      ...previous,
-      [word.toLocaleLowerCase('en-US')]: next,
-    }));
-  }, []);
-
   // Prepare the current and next English sentence while the learner reads the page.
   // If the audio is not in the static pack, Kokoro generation is deduplicated and
   // cached so clicking the button does not start the same expensive work again.
@@ -171,13 +168,6 @@ export default function SentenceDetailPage() {
   const NOTES_KEY_PREFIX = '__app_dc_sentence_note_';
   const [noteText, setNoteText] = useState<string>('');
   const [noteSaved, setNoteSaved] = useState(false);
-
-  // 页面卸载时停止所有语音
-  useEffect(() => {
-    return () => {
-      stopAllSpeech();
-    };
-  }, []);
 
   // Load / reset note when sentence changes
   useEffect(() => {
@@ -201,40 +191,88 @@ export default function SentenceDetailPage() {
     }
   }, [sentence, noteText]);
 
+  const [miniPlaying, setMiniPlaying] = useState<string | null>(null);
+  const [miniRound, setMiniRound] = useState(0);
+  const miniAbortRef = useRef(false);
+  const miniStopRef = useRef<(() => void) | null>(null);
+  const miniTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const stopMiniTTS = useCallback(() => {
+    miniAbortRef.current = true;
+    if (miniTimerRef.current) {
+      clearTimeout(miniTimerRef.current);
+      miniTimerRef.current = null;
+    }
+    miniStopRef.current?.();
+    miniStopRef.current = null;
+    stopAllSpeech();
+    setMiniPlaying(null);
+    setMiniRound(0);
+  }, []);
+
   const startSpeaking = useCallback(async () => {
     // 🔒 Mobile iOS: unlock audio in user gesture BEFORE async
     warmupAudio();
     if (!sentence || !sentence.en?.trim()) return;
-    // stopAllSpeech 由 speakWithPlugin 内部调用，此处不再重复
+    stopMiniTTS();
     pluginStopRef.current?.();
     pluginStopRef.current = null;
     speakAbortRef.current = false;
     setIsSpeaking(true);
-    setSentenceReadCount(incrementReadCount('sentence', sentence.id));
 
-    setSpeakRound(1);
-    await speakEnglish(sentence.en);
+    for (let round = 1; round <= sentenceRepeatCount; round += 1) {
+      if (speakAbortRef.current) break;
+      setSpeakRound(round);
+      await speakEnglish(sentence.en);
+      if (speakAbortRef.current) break;
+      if (round < sentenceRepeatCount) {
+        await new Promise((resolve) => setTimeout(resolve, 350));
+      }
+    }
 
     setIsSpeaking(false);
     setSpeakRound(0);
-  }, [sentence, speakEnglish]);
+  }, [sentence, sentenceRepeatCount, speakEnglish, stopMiniTTS]);
 
-  const [miniPlaying, setMiniPlaying] = useState<string | null>(null);
-
-  const playMiniTTS = useCallback((text: string, key: string, countWord?: string) => {
+  const playMiniTTS = useCallback((text: string, key: string, repeats = 1) => {
     if (!text?.trim()) return;
     if (miniPlaying === key) {
-      stopAllSpeech();
-      setMiniPlaying(null);
+      stopMiniTTS();
       return;
     }
     warmupAudio();
-    stopAllSpeech();
-    if (countWord) recordWordRead(countWord);
+    stopSpeaking();
+    stopMiniTTS();
+    miniAbortRef.current = false;
     setMiniPlaying(key);
-    const onDone = () => setMiniPlaying(null);
-    speakWithPlugin(text, onDone);
-  }, [miniPlaying, recordWordRead]);
+    let round = 0;
+    const playNext = () => {
+      if (miniAbortRef.current) return;
+      round += 1;
+      setMiniRound(round);
+      miniStopRef.current = speakWithPlugin(text, () => {
+        miniStopRef.current = null;
+        if (miniAbortRef.current) return;
+        if (round >= repeats) {
+          setMiniPlaying(null);
+          setMiniRound(0);
+          return;
+        }
+        miniTimerRef.current = setTimeout(playNext, 350);
+      });
+    };
+    playNext();
+  }, [miniPlaying, stopMiniTTS, stopSpeaking]);
+
+  // 页面卸载时停止所有语音和重复朗读计时器
+  useEffect(() => () => {
+    speakAbortRef.current = true;
+    miniAbortRef.current = true;
+    if (miniTimerRef.current) clearTimeout(miniTimerRef.current);
+    pluginStopRef.current?.();
+    miniStopRef.current?.();
+    stopAllSpeech();
+  }, []);
 
   const toggleWordExpand = (wordKey: string) => {
     setExpandedWords((prev) => ({ ...prev, [wordKey]: !prev[wordKey] }));
@@ -348,20 +386,37 @@ export default function SentenceDetailPage() {
               </div>
             </div>
             <div className="shrink-0 flex flex-col items-end gap-2">
+              <label className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <span>朗读</span>
+                <select
+                  value={sentenceRepeatCount}
+                  disabled={isSpeaking}
+                  onChange={(event) => {
+                    const next = saveTtsRepeat('sentence', event.target.value);
+                    setSentenceRepeatCount(next);
+                  }}
+                  className="h-8 rounded-md border border-border bg-background px-2 text-xs text-foreground disabled:opacity-60"
+                  aria-label="选择整句朗读遍数"
+                >
+                  {TTS_REPEAT_OPTIONS.map((count) => (
+                    <option key={count} value={count}>{count}遍</option>
+                  ))}
+                </select>
+              </label>
               {isSpeaking ? (
                 <Button variant="destructive" size="sm" onClick={stopSpeaking} className="h-9 gap-1.5">
                   <Square className="size-3.5 fill-current" />
                   停止
                   {speakRound > 0 && (
                     <span className="text-[10px] opacity-80 ml-1">
-                      {speakRound}/{repeatCount} · 已朗读 {sentenceReadCount}次
+                      第 {speakRound}/{sentenceRepeatCount} 遍
                     </span>
                   )}
                 </Button>
               ) : (
                 <Button variant="outline" size="sm" onClick={startSpeaking} className="h-9 gap-1.5">
                   <Volume2 className="size-3.5" />
-                  朗读 · {sentenceReadCount}次
+                  朗读 {sentenceRepeatCount} 遍
                 </Button>
               )}
             </div>
@@ -441,16 +496,33 @@ export default function SentenceDetailPage() {
                           type="button"
                           onClick={(e) => {
                             e.stopPropagation();
-                            playMiniTTS(word.w, `word-${wi}`, word.w);
+                            playMiniTTS(word.w, `word-${wi}`, wordRepeatCount);
                           }}
                           className="shrink-0"
                           title="朗读单词"
                         >
                           <Volume2 className={`size-3.5 ${miniPlaying === `word-${wi}` ? 'text-primary animate-pulse' : 'text-muted-foreground hover:text-primary'} transition-colors`} />
                         </button>
-                        <span className="text-[10px] text-muted-foreground tabular-nums">
-                          已朗读 {wordReadCounts[word.w.toLocaleLowerCase('en-US')] || 0} 次
-                        </span>
+                        <select
+                          value={wordRepeatCount}
+                          onClick={(event) => event.stopPropagation()}
+                          onChange={(event) => {
+                            event.stopPropagation();
+                            const next = saveTtsRepeat('word', event.target.value);
+                            setWordRepeatCount(next);
+                          }}
+                          className="h-7 rounded-md border border-border bg-background px-1.5 text-[11px] text-foreground"
+                          aria-label={`${word.w}朗读遍数`}
+                        >
+                          {TTS_REPEAT_OPTIONS.map((count) => (
+                            <option key={count} value={count}>{count}遍</option>
+                          ))}
+                        </select>
+                        {miniPlaying === `word-${wi}` && miniRound > 0 && (
+                          <span className="text-[10px] text-primary tabular-nums">
+                            第 {miniRound}/{wordRepeatCount} 遍
+                          </span>
+                        )}
                         {/* 收藏单词按钮 */}
                         <button
                           type="button"
