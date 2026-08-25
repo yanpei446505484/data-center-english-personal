@@ -28,11 +28,15 @@ jobs:
         run: |
           cd app
           node -e "let fs=require('fs'); let p=JSON.parse(fs.readFileSync('package.json')); p.name='data-center-english-personal'; fs.writeFileSync('package.json', JSON.stringify(p,null,2)+'\\n')"
-          sed -i 's/<title>数据中心英语培训<\\/title>/<title>数据中心英语培训｜个人版<\\/title>/' index.html
-          sed -i 's/数据中心英语培训/数据中心英语培训 · 个人版/g' src/components/Layout.tsx src/components/AppSidebar.tsx
           python3 - <<'PY'
           from pathlib import Path
           import re
+
+          path = Path('index.html')
+          path.write_text(path.read_text().replace('<title>数据中心英语培训</title>', '<title>数据中心英语培训｜个人版</title>'))
+          for filename in ['src/components/Layout.tsx', 'src/components/AppSidebar.tsx']:
+              path = Path(filename)
+              path.write_text(path.read_text().replace('数据中心英语培训', '数据中心英语培训 · 个人版'))
 
           def replace_word_card(text, word, old_cn, new_cn):
               pattern = rf'(\\{{ w: "{word}",[^\\n]*?cn: )"{old_cn}"'
