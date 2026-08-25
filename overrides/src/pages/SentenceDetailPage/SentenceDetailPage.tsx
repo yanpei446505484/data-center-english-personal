@@ -50,6 +50,7 @@ import { userStorageKey } from '@/lib/userStorage';
 import { preloadTTS, speakWithPlugin, stopAllSpeech, warmupAudio } from '@/lib/ttsPlugin';
 import { recordSentenceStudied } from '@/hooks/useStudyProgress';
 import { useFavorites } from '@/hooks/useFavorites';
+import { getReadCount, incrementReadCount } from '@/lib/readCounts';
 import {
   buildWordReferenceIndex,
   getCompletePhraseCards,
@@ -67,6 +68,8 @@ export default function SentenceDetailPage() {
   const [quizAnswers, setQuizAnswers] = useState<Record<number, boolean>>({});
   const [revealedQuiz, setRevealedQuiz] = useState<Record<number, boolean>>({});
   const [expandedWords, setExpandedWords] = useState<Record<string, boolean>>({});
+  const [sentenceReadCount, setSentenceReadCount] = useState(0);
+  const [wordReadCounts, setWordReadCounts] = useState<Record<string, number>>({});
 
   // TTS reading (single play only)
   const repeatCount = 1;
@@ -132,6 +135,27 @@ export default function SentenceDetailPage() {
     [sentence, completeWords],
   );
 
+  useEffect(() => {
+    if (!sentence) return;
+    setSentenceReadCount(getReadCount('sentence', sentence.id));
+  }, [sentence?.id]);
+
+  useEffect(() => {
+    const counts: Record<string, number> = {};
+    for (const word of completeWords) {
+      counts[word.w.toLocaleLowerCase('en-US')] = getReadCount('word', word.w);
+    }
+    setWordReadCounts(counts);
+  }, [completeWords]);
+
+  const recordWordRead = useCallback((word: string) => {
+    const next = incrementReadCount('word', word);
+    setWordReadCounts((previous) => ({
+      ...previous,
+      [word.toLocaleLowerCase('en-US')]: next,
+    }));
+  }, []);
+
   // Prepare the current and next English sentence while the learner reads the page.
   // If the audio is not in the static pack, Kokoro generation is deduplicated and
   // cached so clicking the button does not start the same expensive work again.
@@ -186,6 +210,7 @@ export default function SentenceDetailPage() {
     pluginStopRef.current = null;
     speakAbortRef.current = false;
     setIsSpeaking(true);
+    setSentenceReadCount(incrementReadCount('sentence', sentence.id));
 
     setSpeakRound(1);
     await speakEnglish(sentence.en);
@@ -196,7 +221,7 @@ export default function SentenceDetailPage() {
 
   const [miniPlaying, setMiniPlaying] = useState<string | null>(null);
 
-  const playMiniTTS = useCallback((text: string, key: string) => {
+  const playMiniTTS = useCallback((text: string, key: string, countWord?: string) => {
     if (!text?.trim()) return;
     if (miniPlaying === key) {
       stopAllSpeech();
@@ -205,10 +230,11 @@ export default function SentenceDetailPage() {
     }
     warmupAudio();
     stopAllSpeech();
+    if (countWord) recordWordRead(countWord);
     setMiniPlaying(key);
     const onDone = () => setMiniPlaying(null);
     speakWithPlugin(text, onDone);
-  }, [miniPlaying]);
+  }, [miniPlaying, recordWordRead]);
 
   const toggleWordExpand = (wordKey: string) => {
     setExpandedWords((prev) => ({ ...prev, [wordKey]: !prev[wordKey] }));
@@ -328,14 +354,14 @@ export default function SentenceDetailPage() {
                   停止
                   {speakRound > 0 && (
                     <span className="text-[10px] opacity-80 ml-1">
-                      {speakRound}/{repeatCount} · EN
+                      {speakRound}/{repeatCount} · 已朗读 {sentenceReadCount}次
                     </span>
                   )}
                 </Button>
               ) : (
                 <Button variant="outline" size="sm" onClick={startSpeaking} className="h-9 gap-1.5">
                   <Volume2 className="size-3.5" />
-                  朗读
+                  朗读 · {sentenceReadCount}次
                 </Button>
               )}
             </div>
@@ -415,13 +441,16 @@ export default function SentenceDetailPage() {
                           type="button"
                           onClick={(e) => {
                             e.stopPropagation();
-                            playMiniTTS(word.w, `word-${wi}`);
+                            playMiniTTS(word.w, `word-${wi}`, word.w);
                           }}
                           className="shrink-0"
                           title="朗读单词"
                         >
                           <Volume2 className={`size-3.5 ${miniPlaying === `word-${wi}` ? 'text-primary animate-pulse' : 'text-muted-foreground hover:text-primary'} transition-colors`} />
                         </button>
+                        <span className="text-[10px] text-muted-foreground tabular-nums">
+                          已朗读 {wordReadCounts[word.w.toLocaleLowerCase('en-US')] || 0} 次
+                        </span>
                         {/* 收藏单词按钮 */}
                         <button
                           type="button"
