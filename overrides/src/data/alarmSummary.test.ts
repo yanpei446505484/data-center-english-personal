@@ -4,7 +4,14 @@ import { ALARM_CHINESE } from './alarmChinese';
 import { ALARM_WORD_CHINESE } from './alarmWordDictionary';
 import { getAlarmPhraseCards } from './alarmPhrases';
 import { ALARM_MEETING_SCRIPTS } from './alarmMeetingScripts';
+import {
+  ALARM_ACCESS_MAINTENANCE_DIALOGUE,
+  ALARM_CHAT_DIALOGUE,
+  ALARM_TREND_DRILL_DIALOGUE,
+} from './alarmChatDialogue';
 import { getAlarmTextIpa, getAlarmWordIpa } from './alarmPhonetics';
+import { lookupDictionary } from '../skills/dictionarySkill';
+import { lemmatize } from '../skills/lemmatizeSkill';
 
 describe('alarm summary import', () => {
   it('imports all 162 deduplicated alarms', () => {
@@ -78,19 +85,68 @@ describe('alarm summary import', () => {
     }
   });
 
+  it('provides the reviewed on-site chat dialogue with phrase cards', () => {
+    expect(ALARM_CHAT_DIALOGUE).toHaveLength(33);
+    expect(ALARM_TREND_DRILL_DIALOGUE).toHaveLength(22);
+    expect(ALARM_ACCESS_MAINTENANCE_DIALOGUE).toHaveLength(22);
+    for (const line of [
+      ...ALARM_CHAT_DIALOGUE,
+      ...ALARM_TREND_DRILL_DIALOGUE,
+      ...ALARM_ACCESS_MAINTENANCE_DIALOGUE,
+    ]) {
+      expect(line.en.trim().length).toBeGreaterThan(0);
+      expect(line.cn.trim().length).toBeGreaterThan(0);
+      expect(line.phrases.length).toBeGreaterThan(0);
+      for (const phrase of line.phrases) {
+        expect(line.en.toLowerCase()).toContain(phrase.text.toLowerCase());
+        expect(phrase.chinese.trim().length).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it('provides a Chinese meaning for every dialogue word', () => {
+    for (const line of [
+      ...ALARM_CHAT_DIALOGUE,
+      ...ALARM_TREND_DRILL_DIALOGUE,
+      ...ALARM_ACCESS_MAINTENANCE_DIALOGUE,
+    ]) {
+      const words = line.en.match(/[A-Za-z]+(?:[’'][A-Za-z]+)*(?:-[A-Za-z]+)*/g) || [];
+      for (const word of words) {
+        const normalized = word.toLowerCase();
+        const chinese = ALARM_WORD_CHINESE[normalized]
+          || lookupDictionary(normalized, lemmatize(normalized), line.en)?.chinese;
+        expect(chinese, `missing dialogue translation: ${word}`).toBeTruthy();
+      }
+    }
+  });
+
   it('provides IPA for every alarm and meeting word and phrase', () => {
     const texts = [
       ...ALARM_SUMMARY.map((entry) => entry.alarm),
       ...ALARM_MEETING_SCRIPTS.map((line) => line.en),
+      ...ALARM_CHAT_DIALOGUE.map((line) => line.en),
+      ...ALARM_TREND_DRILL_DIALOGUE.map((line) => line.en),
+      ...ALARM_ACCESS_MAINTENANCE_DIALOGUE.map((line) => line.en),
     ];
+    const missingIpa = new Set<string>();
     for (const text of texts) {
       const words = text.match(/[A-Za-z]+(?:[’'][A-Za-z]+)*(?:-[A-Za-z]+)*/g) || [];
       for (const word of words) {
-        expect(getAlarmWordIpa(word, text), `missing IPA: ${word}`).toBeTruthy();
+        if (!getAlarmWordIpa(word, text)) missingIpa.add(word.toLowerCase());
       }
-      expect(getAlarmTextIpa(text)).toMatch(/^\/ .+ \/$/);
     }
+    expect([...missingIpa], `missing IPA: ${[...missingIpa].join(', ')}`).toEqual([]);
+    for (const text of texts) expect(getAlarmTextIpa(text)).toMatch(/^\/ .+ \/$/);
     for (const line of ALARM_MEETING_SCRIPTS) {
+      for (const phrase of line.phrases) expect(getAlarmTextIpa(phrase.text)).toBeTruthy();
+    }
+    for (const line of ALARM_CHAT_DIALOGUE) {
+      for (const phrase of line.phrases) expect(getAlarmTextIpa(phrase.text)).toBeTruthy();
+    }
+    for (const line of ALARM_TREND_DRILL_DIALOGUE) {
+      for (const phrase of line.phrases) expect(getAlarmTextIpa(phrase.text)).toBeTruthy();
+    }
+    for (const line of ALARM_ACCESS_MAINTENANCE_DIALOGUE) {
       for (const phrase of line.phrases) expect(getAlarmTextIpa(phrase.text)).toBeTruthy();
     }
   });

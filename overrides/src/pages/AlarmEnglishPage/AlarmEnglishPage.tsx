@@ -16,6 +16,12 @@ import {
 } from '@/components/ui/select';
 import { ALARM_CATEGORIES, ALARM_SUMMARY } from '@/data/alarmSummary';
 import { ALARM_CHINESE } from '@/data/alarmChinese';
+import {
+  ALARM_CHAT_DIALOGUE,
+  ALARM_ACCESS_MAINTENANCE_DIALOGUE,
+  ALARM_TREND_DRILL_DIALOGUE,
+  type AlarmChatLine,
+} from '@/data/alarmChatDialogue';
 import { ALARM_MEETING_SCRIPTS, type AlarmMeetingLine } from '@/data/alarmMeetingScripts';
 import { getAlarmPhraseCards, type AlarmPhraseCard } from '@/data/alarmPhrases';
 import { ALARM_WORD_CHINESE } from '@/data/alarmWordDictionary';
@@ -299,6 +305,186 @@ export default function AlarmEnglishPage() {
                             phrase={{ ...phrase, fullAlarm: false }}
                             alarm={line.en}
                             category="现场告警会议"
+                          />
+                        ))}
+                      </div>
+                    </div>
+                    <Button
+                      type="button"
+                      variant={isPlaying ? 'destructive' : 'outline'}
+                      size="sm"
+                      onClick={() => playText(key, line.en)}
+                      className="shrink-0 gap-1.5"
+                    >
+                      {isPlaying ? <Square className="size-3.5 fill-current" /> : <Volume2 className="size-3.5" />}
+                      {isPlaying && playingRound > 0 ? `${playingRound}/${repeatCount}` : '朗读'}
+                    </Button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="border-primary/20">
+        <CardContent className="p-4 space-y-4">
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="font-semibold text-foreground">现场工作聊天标准对话</h2>
+            <Badge variant="secondary">{ALARM_CHAT_DIALOGUE.length}句</Badge>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            已按现场真实语境校准并按顺序整理；每个单词和短语均可打开卡片、查看音标、朗读并记录笔记。
+          </p>
+          <div className="grid gap-3">
+            {ALARM_CHAT_DIALOGUE.map((line: AlarmChatLine) => {
+              const key = `dialogue-${line.id}`;
+              const isPlaying = playingKey === key;
+              return (
+                <div key={line.id} className="rounded-lg border border-border/50 bg-muted/10 p-3">
+                  <div className="flex items-start gap-3">
+                    <Badge
+                      variant={line.speaker === 'A' ? 'default' : 'outline'}
+                      className="shrink-0 font-mono"
+                    >
+                      {line.speaker}
+                    </Badge>
+                    <div className="min-w-0 flex-1 space-y-2">
+                      <div className="flex flex-wrap items-center gap-x-1 text-sm leading-7">
+                        {splitEnglishText(line.en).map((segment, index) => (
+                          segment.kind === 'word'
+                            ? <AlarmWord key={index} word={segment.text} alarm={line.en} category="现场工作对话" />
+                            : <span key={index}>{segment.text}</span>
+                        ))}
+                      </div>
+                      <p className="text-sm text-foreground/70">{line.cn}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {line.phrases.map((phrase) => (
+                          <AlarmPhrase
+                            key={`${line.id}-${phrase.text}`}
+                            phrase={{ ...phrase, fullAlarm: false }}
+                            alarm={line.en}
+                            category="现场工作对话"
+                          />
+                        ))}
+                      </div>
+                    </div>
+                    <Button
+                      type="button"
+                      variant={isPlaying ? 'destructive' : 'outline'}
+                      size="sm"
+                      onClick={() => playText(key, line.en)}
+                      className="shrink-0 gap-1.5"
+                    >
+                      {isPlaying ? <Square className="size-3.5 fill-current" /> : <Volume2 className="size-3.5" />}
+                      {isPlaying && playingRound > 0 ? `${playingRound}/${repeatCount}` : '朗读'}
+                    </Button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="border-primary/20">
+        <CardContent className="p-4 space-y-4">
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="font-semibold text-foreground">水泵趋势、演练与故障工单对话</h2>
+            <Badge variant="secondary">{ALARM_TREND_DRILL_DIALOGUE.length}句</Badge>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            覆盖趋势检查、设备状态、应急演练、照片补拍以及ELV故障工单分派。
+          </p>
+          <div className="grid gap-3">
+            {ALARM_TREND_DRILL_DIALOGUE.map((line: AlarmChatLine) => {
+              const key = `trend-dialogue-${line.id}`;
+              const isPlaying = playingKey === key;
+              return (
+                <div key={line.id} className="rounded-lg border border-border/50 bg-muted/10 p-3">
+                  <div className="flex items-start gap-3">
+                    <Badge
+                      variant={line.speaker === 'A' ? 'default' : 'outline'}
+                      className="shrink-0 font-mono"
+                    >
+                      {line.speaker}
+                    </Badge>
+                    <div className="min-w-0 flex-1 space-y-2">
+                      <div className="flex flex-wrap items-center gap-x-1 text-sm leading-7">
+                        {splitEnglishText(line.en).map((segment, index) => (
+                          segment.kind === 'word'
+                            ? <AlarmWord key={index} word={segment.text} alarm={line.en} category="现场工作对话" />
+                            : <span key={index}>{segment.text}</span>
+                        ))}
+                      </div>
+                      <p className="text-sm text-foreground/70">{line.cn}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {line.phrases.map((phrase) => (
+                          <AlarmPhrase
+                            key={`${line.id}-${phrase.text}`}
+                            phrase={{ ...phrase, fullAlarm: false }}
+                            alarm={line.en}
+                            category="现场工作对话"
+                          />
+                        ))}
+                      </div>
+                    </div>
+                    <Button
+                      type="button"
+                      variant={isPlaying ? 'destructive' : 'outline'}
+                      size="sm"
+                      onClick={() => playText(key, line.en)}
+                      className="shrink-0 gap-1.5"
+                    >
+                      {isPlaying ? <Square className="size-3.5 fill-current" /> : <Volume2 className="size-3.5" />}
+                      {isPlaying && playingRound > 0 ? `${playingRound}/${repeatCount}` : '朗读'}
+                    </Button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="border-primary/20">
+        <CardContent className="p-4 space-y-4">
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="font-semibold text-foreground">访客登记、变更工单与登录排障对话</h2>
+            <Badge variant="secondary">{ALARM_ACCESS_MAINTENANCE_DIALOGUE.length}句</Badge>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            覆盖司机资料、临时访问权限、膨胀阀更换、系统登录和网线排障；真实证件号码已隐藏。
+          </p>
+          <div className="grid gap-3">
+            {ALARM_ACCESS_MAINTENANCE_DIALOGUE.map((line: AlarmChatLine) => {
+              const key = `access-dialogue-${line.id}`;
+              const isPlaying = playingKey === key;
+              return (
+                <div key={line.id} className="rounded-lg border border-border/50 bg-muted/10 p-3">
+                  <div className="flex items-start gap-3">
+                    <Badge
+                      variant={line.speaker === 'A' ? 'default' : 'outline'}
+                      className="shrink-0 font-mono"
+                    >
+                      {line.speaker}
+                    </Badge>
+                    <div className="min-w-0 flex-1 space-y-2">
+                      <div className="flex flex-wrap items-center gap-x-1 text-sm leading-7">
+                        {splitEnglishText(line.en).map((segment, index) => (
+                          segment.kind === 'word'
+                            ? <AlarmWord key={index} word={segment.text} alarm={line.en} category="现场工作对话" />
+                            : <span key={index}>{segment.text}</span>
+                        ))}
+                      </div>
+                      <p className="text-sm text-foreground/70">{line.cn}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {line.phrases.map((phrase) => (
+                          <AlarmPhrase
+                            key={`${line.id}-${phrase.text}`}
+                            phrase={{ ...phrase, fullAlarm: false }}
+                            alarm={line.en}
+                            category="现场工作对话"
                           />
                         ))}
                       </div>
