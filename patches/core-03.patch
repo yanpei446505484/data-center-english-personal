@@ -1,0 +1,202 @@
+diff --git a/src/data/leaveAttendance52a.ts b/src/data/leaveAttendance52a.ts
+index 33b97ee..86df1b8 100644
+--- a/src/data/leaveAttendance52a.ts
++++ b/src/data/leaveAttendance52a.ts
+@@ -389,7 +389,7 @@ export const MOCK_SENTENCES_LEAVEATTENDANCE52A: ISentence[] = [
+     id: 2733,
+     speaker: 'Engineer',
+     en: 'What time will you be back?',
+-    cn: '你什么时候回来？',
++    cn: '你几点回来？',
+     ipa: '/wɒt taɪm wɪl juː biː bæk/',
+     tags: ['第2733句', '事假', '★★★'],
+     when: '同事请假时询问预计返回时间。',
+@@ -580,7 +580,7 @@ export const MOCK_SENTENCES_LEAVEATTENDANCE52A: ISentence[] = [
+     id: 2739,
+     speaker: 'Engineer',
+     en: 'Please update the duty roster accordingly.',
+-    cn: '请同步更新值班表。',
++    cn: '请相应更新值班表。',
+     ipa: '/pliːz ˌʌpˈdeɪt ðə ˈdjuːti ˈrɒstər əˈkɔːrdɪŋli/',
+     tags: ['第2739句', '调班', '★★★★'],
+     when: '调班批准后，提醒相关人员更新排班表。',
+diff --git a/src/data/leaveAttendance52b.ts b/src/data/leaveAttendance52b.ts
+index a31ce29..e61387a 100644
+--- a/src/data/leaveAttendance52b.ts
++++ b/src/data/leaveAttendance52b.ts
+@@ -199,7 +199,7 @@ export const MOCK_SENTENCES_LEAVEATTENDANCE52B: ISentence[] = [
+     id: 2747,
+     speaker: 'Engineer',
+     en: 'I forgot to clock out yesterday.',
+-    cn: '我昨天忘记打下班卡了。',
++    cn: '我昨天忘记下班打卡了。',
+     ipa: '/aɪ fərˈɡɒt tə klɒk aʊt ˈjɛstərdeɪ/',
+     tags: ['第2747句', '考勤', '★★★'],
+     when: '发现自己昨天忘记打下班卡时说明情况。',
+@@ -518,7 +518,7 @@ export const MOCK_SENTENCES_LEAVEATTENDANCE52B: ISentence[] = [
+     id: 2757,
+     speaker: 'Engineer',
+     en: 'Have you uploaded all the receipts?',
+-    cn: '你把所有发票都上传了吗？',
++    cn: '你把所有报销凭证都上传了吗？',
+     ipa: '/hæv juː ˌʌpˈloʊdɪd ɔːl ðə rɪˈsiːts/',
+     tags: ['第2757句', '报销', '★★★'],
+     when: '确认同事是否已上传所有报销票据。',
+diff --git a/src/data/malayLife51a.ts b/src/data/malayLife51a.ts
+index bdbb2ce..ec8a92d 100644
+--- a/src/data/malayLife51a.ts
++++ b/src/data/malayLife51a.ts
+@@ -551,7 +551,7 @@ export const MOCK_SENTENCES_MALAYLIFE51A: ISentence[] = [
+     id: 2698,
+     speaker: 'Engineer',
+     en: 'Do you want to share a plate of char kway teow?',
+-    cn: '你要不要一起点一碟炒粿条？',
++    cn: '你要不要一起吃一碟炒粿条？',
+     ipa: '/duː juː wɒnt tuː ʃɛr ə pleɪt əv tʃɑːr kwaɪ tjaʊ/',
+     tags: ['第2698句', '早餐午餐', '★★★★'],
+     when: '在美食广场建议同事合点一碟炒粿条分享。',
+diff --git a/src/data/malayLife51b.ts b/src/data/malayLife51b.ts
+index 4d07ca8..881e979 100644
+--- a/src/data/malayLife51b.ts
++++ b/src/data/malayLife51b.ts
+@@ -454,7 +454,7 @@ export const MOCK_SENTENCES_MALAYLIFE51B: ISentence[] = [
+     id: 2715,
+     speaker: 'Engineer',
+     en: 'Happy Chinese New Year!',
+-    cn: '新年快乐！',
++    cn: '春节快乐！',
+     ipa: '/ˈhæpi ˌtʃaɪˈniːz njuː jɪr/',
+     tags: ['第2715句', '节日', '★★★'],
+     when: '春节期间向华裔同事或其他同事送上新年祝福。',
+diff --git a/src/data/meetingRoom47a.ts b/src/data/meetingRoom47a.ts
+index 05778fc..8039c91 100644
+--- a/src/data/meetingRoom47a.ts
++++ b/src/data/meetingRoom47a.ts
+@@ -407,7 +407,7 @@ export const MOCK_SENTENCES_MEETINGROOM47A: ISentence[] = [
+     id: 2534,
+     speaker: 'Engineer',
+     en: 'Please unmute your microphone.',
+-    cn: '请打开你的麦克风。',
++    cn: '请取消麦克风静音。',
+     ipa: '/pliːz ʌnˈmjuːt jɔːr ˈmaɪkrəfəʊn/',
+     tags: ['第2534句', '会议沟通', '★★★★★'],
+     when: '需要同事发言时，请对方解除麦克风静音。',
+diff --git a/src/data/meetingRoom47b.ts b/src/data/meetingRoom47b.ts
+index 5912ccf..08e714b 100644
+--- a/src/data/meetingRoom47b.ts
++++ b/src/data/meetingRoom47b.ts
+@@ -509,7 +509,7 @@ export const MOCK_SENTENCES_MEETINGROOM47B: ISentence[] = [
+     id: 2557,
+     speaker: 'Engineer',
+     en: 'Have a productive day, everyone.',
+-    cn: '祝大家今天工作顺利。',
++    cn: '祝大家今天工作高效。',
+     ipa: '/hæv ə prəˈdʌktɪv deɪ ˈɛvriwʌn/',
+     tags: ['第2557句', '会议结束', '★★★★★'],
+     when: '会议结束时向所有人送上工作祝福。',
+diff --git a/src/data/mgmtReport35a.ts b/src/data/mgmtReport35a.ts
+index 80d0f22..5ec03ad 100644
+--- a/src/data/mgmtReport35a.ts
++++ b/src/data/mgmtReport35a.ts
+@@ -134,7 +134,7 @@ export const MOCK_SENTENCES_MGMTREPORT35A: ISentence[] = [
+   {
+     id: 2045,
+     speaker: 'Manager',
+-    en: 'Customer services were not affected.',
++    en: 'Customer operations were not affected.',
+     cn: '客户业务没有受到影响。',
+     ipa: '/ˈkʌstəmər ˈsɜːrvɪsɪz wɜːr nɑt əˈfɛktɪd/',
+     tags: ['第2045句', '每日汇报', '★★★★★'],
+@@ -231,7 +231,7 @@ export const MOCK_SENTENCES_MGMTREPORT35A: ISentence[] = [
+     id: 2048,
+     speaker: 'Manager',
+     en: 'No safety incidents were reported today.',
+-    cn: '今天没有发生安全事故。',
++    cn: '今天未报告安全事故。',
+     ipa: '/noʊ ˈseɪfti ˈɪnsɪdənts wɜːr rɪˈpɔːrtɪd təˈdeɪ/',
+     tags: ['第2048句', '每日汇报', '★★★★★'],
+     when: '汇报中确认当天没有发生任何安全事故，包括人员伤害、设备损坏等。',
+@@ -295,7 +295,7 @@ export const MOCK_SENTENCES_MGMTREPORT35A: ISentence[] = [
+     id: 2050,
+     speaker: 'Manager',
+     en: 'There are no major operational concerns at this time.',
+-    cn: '目前没有重大运行风险。',
++    cn: '目前没有需要关注的重大运行问题。',
+     ipa: '/ðɛr ɑr noʊ ˈmeɪdʒər ˌɑpəˈreɪʃənəl kənˈsɜːrnz æt ðɪs taɪm/',
+     tags: ['第2050句', '每日汇报', '★★★★★'],
+     when: '每日汇报的总结性陈述，向管理层确认当前没有需要特别关注的重大运行风险。',
+@@ -327,7 +327,7 @@ export const MOCK_SENTENCES_MGMTREPORT35A: ISentence[] = [
+     id: 2051,
+     speaker: 'Manager',
+     en: 'All KPI targets have been achieved this month.',
+-    cn: '本月所有KPI指标均已完成。',
++    cn: '本月所有KPI指标均已达成。',
+     ipa: '/ɔːl ˌkeɪpiːˈaɪ ˈtɑːrɡɪts hæv bɪn əˈtʃiːvd ðɪs mʌnθ/',
+     tags: ['第2051句', 'KPI汇报', '★★★★★'],
+     when: 'KPI汇报开场，向管理层确认本月所有关键绩效指标均已达标。',
+diff --git a/src/data/mgmtReport35b.ts b/src/data/mgmtReport35b.ts
+index 93fdebe..fc4dd9a 100644
+--- a/src/data/mgmtReport35b.ts
++++ b/src/data/mgmtReport35b.ts
+@@ -39,7 +39,7 @@ export const MOCK_SENTENCES_MGMTREPORT35B: ISentence[] = [
+     id: 2062,
+     speaker: 'Manager',
+     en: 'One potential risk is being closely monitored.',
+-    cn: '有一项潜在风险正在密切监控。',
++    cn: '有一项潜在风险正在受到密切监控。',
+     ipa: '/wʌn pəˈtɛnʃəl rɪsk ɪz ˈbiːɪŋ ˈkloʊsli ˈmɑnɪtərd/',
+     tags: ['第2062句', '风险汇报', '★★★★★'],
+     when: '汇报中提及需要关注的潜在风险，同时表明已在积极监控中。',
+@@ -167,7 +167,7 @@ export const MOCK_SENTENCES_MGMTREPORT35B: ISentence[] = [
+     id: 2066,
+     speaker: 'Manager',
+     en: 'Spare parts are available for all critical equipment.',
+-    cn: '所有关键设备的备件均已准备就绪。',
++    cn: '所有关键设备所需的备件均有库存。',
+     ipa: '/spɛr pɑrts ɑr əˈveɪləbl fɔr ɔl ˈkrɪtɪkəl ɪˈkwɪpmənt/',
+     tags: ['第2066句', '风险汇报', '★★★★★'],
+     when: '向管理层确认备件储备充足，确保关键设备故障时能快速更换。',
+@@ -391,7 +391,7 @@ export const MOCK_SENTENCES_MGMTREPORT35B: ISentence[] = [
+     id: 2073,
+     speaker: 'Manager',
+     en: 'We are also recruiting one HVAC engineer.',
+-    cn: '我们还在招聘一名暖通工程师。',
++    cn: '我们还在招聘一名暖通空调工程师。',
+     ipa: '/wi ɑr ˈɔlsoʊ rɪˈkruːtɪŋ wʌn ˌeɪtʃ viː eɪ ˈsiː ˌɛndʒɪˈnɪr/',
+     tags: ['第2073句', '人员管理', '★★★★★'],
+     when: '紧接上一条，补充说明暖通专业的招聘需求。',
+diff --git a/src/data/morningGreet43b.ts b/src/data/morningGreet43b.ts
+index 9865624..30540d7 100644
+--- a/src/data/morningGreet43b.ts
++++ b/src/data/morningGreet43b.ts
+@@ -387,7 +387,7 @@ export const MOCK_SENTENCES_MORNINGGREET43B: ISentence[] = [
+   {
+     id: 2393,
+     speaker: 'Colleague',
+-    en: 'Did you catch the traffic this morning?',
++    en: 'Did you hit traffic this morning?',
+     cn: '今早堵车了吗？',
+     ipa: '/dɪd juː kætʃ ðə ˈtræfɪk ðɪs ˈmɔːrnɪŋ/',
+     tags: ['第2393句', '简短日常对话', '★★★★'],
+@@ -420,7 +420,7 @@ export const MOCK_SENTENCES_MORNINGGREET43B: ISentence[] = [
+     id: 2394,
+     speaker: 'Colleague',
+     en: 'The coffee machine is working again.',
+-    cn: '咖啡机又修好了。',
++    cn: '咖啡机又能用了。',
+     ipa: '/ðə ˈkɒfi məˈʃiːn ɪz ˈwɜːrkɪŋ əˈɡɛn/',
+     tags: ['第2394句', '简短日常对话', '★★★★'],
+     when: '茶水间的咖啡机修好了，高兴地告诉同事这个好消息。',
+diff --git a/src/data/officeComms46a.ts b/src/data/officeComms46a.ts
+index 5a842d2..dc2e8fb 100644
+--- a/src/data/officeComms46a.ts
++++ b/src/data/officeComms46a.ts
+@@ -253,7 +253,7 @@ export const MOCK_SENTENCES_OFFICECOMMS46A: ISentence[] = [
+     id: 2489,
+     speaker: 'Engineer',
+     en: 'I have copied everyone in the email.',
+-    cn: '我已经把所有人抄送了。',
++    cn: '我已经在邮件中抄送了所有人。',
+     ipa: '/aɪ hæv ˈkɒpid ˈɛvriwʌn ɪn ðə ˈiːmeɪl/',
+     tags: ['第2489句', '邮件', '★★★★'],
+     when: '发送邮件后确认已将所有相关人员加入抄送列表。',
