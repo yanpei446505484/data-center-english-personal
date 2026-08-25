@@ -14,10 +14,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { ALARM_CATEGORIES, ALARM_SUMMARY, type AlarmSummaryEntry } from '@/data/alarmSummary';
+import { ALARM_CATEGORIES, ALARM_SUMMARY } from '@/data/alarmSummary';
 import { ALARM_CHINESE } from '@/data/alarmChinese';
+import { ALARM_MEETING_SCRIPTS, type AlarmMeetingLine } from '@/data/alarmMeetingScripts';
 import { getAlarmPhraseCards, type AlarmPhraseCard } from '@/data/alarmPhrases';
 import { ALARM_WORD_CHINESE } from '@/data/alarmWordDictionary';
+import { getAlarmTextIpa, getAlarmWordIpa } from '@/data/alarmPhonetics';
 import { splitEnglishText } from '@/lib/sentenceCards';
 import { preloadTTS, speakWithPlugin, stopAllSpeech, warmupAudio } from '@/lib/ttsPlugin';
 import {
@@ -62,7 +64,7 @@ function AlarmWord({ word, alarm, category }: { word: string; alarm: string; cat
     chinese: ALARM_WORD_CHINESE[normalized] || dictionary?.chinese || '暂无本地释义',
     example: alarm,
     tags: [CATEGORY_CN[category] || category, '告警英语'],
-    ukIpa: dictionary?.ipa || '',
+    ukIpa: dictionary?.ipa || getAlarmWordIpa(word, alarm),
     pos: dictionary?.pos || '告警词汇',
     simpleMeaning: dictionary?.englishDef || '',
   };
@@ -97,6 +99,8 @@ function AlarmPhrase({ phrase, alarm, category }: {
     tags: [CATEGORY_CN[category] || category, phrase.fullAlarm ? '完整告警短语' : '专业短语'],
     pos: phrase.fullAlarm ? '完整告警短语' : '告警短语',
     dataCenterMeaning: phrase.chinese,
+    ukIpa: getAlarmTextIpa(phrase.text),
+    simpleMeaning: phrase.fullAlarm ? '完整告警表达' : '数据中心现场专业短语',
   };
 
   return (
@@ -124,7 +128,7 @@ export default function AlarmEnglishPage() {
   const [repeatCount, setRepeatCount] = useState<TtsRepeatCount>(
     () => loadTtsRepeat('sentence'),
   );
-  const [playingId, setPlayingId] = useState<number | null>(null);
+  const [playingKey, setPlayingKey] = useState<string | null>(null);
   const [playingRound, setPlayingRound] = useState(0);
   const abortRef = useRef(false);
   const stopRef = useRef<(() => void) | null>(null);
@@ -159,12 +163,12 @@ export default function AlarmEnglishPage() {
     stopRef.current?.();
     stopRef.current = null;
     stopAllSpeech();
-    setPlayingId(null);
+    setPlayingKey(null);
     setPlayingRound(0);
   }, []);
 
-  const playAlarm = useCallback((entry: AlarmSummaryEntry) => {
-    if (playingId === entry.id) {
+  const playText = useCallback((key: string, text: string) => {
+    if (playingKey === key) {
       stopPlayback();
       return;
     }
@@ -172,18 +176,18 @@ export default function AlarmEnglishPage() {
     warmupAudio();
     stopPlayback();
     abortRef.current = false;
-    setPlayingId(entry.id);
+    setPlayingKey(key);
     let round = 0;
 
     const playNext = () => {
       if (abortRef.current) return;
       round += 1;
       setPlayingRound(round);
-      stopRef.current = speakWithPlugin(entry.alarm, () => {
+      stopRef.current = speakWithPlugin(text, () => {
         stopRef.current = null;
         if (abortRef.current) return;
         if (round >= repeatCount) {
-          setPlayingId(null);
+          setPlayingKey(null);
           setPlayingRound(0);
           return;
         }
@@ -192,7 +196,7 @@ export default function AlarmEnglishPage() {
     };
 
     playNext();
-  }, [playingId, repeatCount, stopPlayback]);
+  }, [playingKey, repeatCount, stopPlayback]);
 
   useEffect(() => {
     void preloadTTS(filtered.slice(0, 2).map((entry) => entry.alarm), 'british');
@@ -262,10 +266,66 @@ export default function AlarmEnglishPage() {
         </CardContent>
       </Card>
 
+      <Card className="border-primary/20">
+        <CardContent className="p-4 space-y-4">
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="font-semibold text-foreground">现场告警会议标准话术</h2>
+            <Badge variant="secondary">{ALARM_MEETING_SCRIPTS.length}句</Badge>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            已按数据中心现场会议口语校准；点击单词或短语查看卡片，右侧可朗读整句。
+          </p>
+          <div className="grid gap-3">
+            {ALARM_MEETING_SCRIPTS.map((line: AlarmMeetingLine) => {
+              const key = `meeting-${line.id}`;
+              const isPlaying = playingKey === key;
+              return (
+                <div key={line.id} className="rounded-lg border border-border/50 bg-muted/10 p-3">
+                  <div className="flex items-start gap-3">
+                    <Badge variant="outline" className="shrink-0 font-mono">M{line.id}</Badge>
+                    <div className="min-w-0 flex-1 space-y-2">
+                      <div className="flex flex-wrap items-center gap-x-1 text-sm leading-7">
+                        {splitEnglishText(line.en).map((segment, index) => (
+                          segment.kind === 'word'
+                            ? <AlarmWord key={index} word={segment.text} alarm={line.en} category="现场告警会议" />
+                            : <span key={index}>{segment.text}</span>
+                        ))}
+                      </div>
+                      <p className="text-sm text-foreground/70">{line.cn}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {line.phrases.map((phrase) => (
+                          <AlarmPhrase
+                            key={phrase.text}
+                            phrase={{ ...phrase, fullAlarm: false }}
+                            alarm={line.en}
+                            category="现场告警会议"
+                          />
+                        ))}
+                      </div>
+                    </div>
+                    <Button
+                      type="button"
+                      variant={isPlaying ? 'destructive' : 'outline'}
+                      size="sm"
+                      onClick={() => playText(key, line.en)}
+                      className="shrink-0 gap-1.5"
+                    >
+                      {isPlaying ? <Square className="size-3.5 fill-current" /> : <Volume2 className="size-3.5" />}
+                      {isPlaying && playingRound > 0 ? `${playingRound}/${repeatCount}` : '朗读'}
+                    </Button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </CardContent>
+      </Card>
+
       {filtered.length > 0 ? (
         <div className="grid gap-3">
           {filtered.map((entry) => {
-            const isPlaying = playingId === entry.id;
+            const alarmKey = `alarm-${entry.id}`;
+            const isPlaying = playingKey === alarmKey;
             const phrases = getAlarmPhraseCards(entry);
             return (
               <Card key={entry.id} className="border-border/50">
@@ -280,11 +340,8 @@ export default function AlarmEnglishPage() {
                             : <span key={index}>{segment.text}</span>
                         ))}
                       </div>
-                      <p className="text-sm text-foreground/75 leading-relaxed">
-                        {ALARM_CHINESE[entry.id]}
-                      </p>
                       <div className="space-y-1.5">
-                        <div className="text-[11px] font-medium text-muted-foreground">短语（{phrases.length}）</div>
+                        <div className="text-[11px] font-semibold text-primary">专业短语（{phrases.length}）</div>
                         <div className="flex flex-wrap gap-2">
                           {phrases.map((phrase) => (
                             <AlarmPhrase
@@ -296,6 +353,9 @@ export default function AlarmEnglishPage() {
                           ))}
                         </div>
                       </div>
+                      <p className="text-sm text-foreground/75 leading-relaxed">
+                        {ALARM_CHINESE[entry.id]}
+                      </p>
                       <div className="flex flex-wrap items-center gap-2">
                         <Badge variant="secondary" className="text-[11px]">
                           {CATEGORY_CN[entry.category] || entry.category}
@@ -307,7 +367,7 @@ export default function AlarmEnglishPage() {
                       type="button"
                       variant={isPlaying ? 'destructive' : 'outline'}
                       size="sm"
-                      onClick={() => playAlarm(entry)}
+                      onClick={() => playText(alarmKey, entry.alarm)}
                       className="shrink-0 gap-1.5"
                       aria-label={isPlaying ? `停止朗读：${entry.alarm}` : `朗读：${entry.alarm}`}
                     >

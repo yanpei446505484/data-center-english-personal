@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { Volume2, Square, BookOpen, Hash } from 'lucide-react';
+import { Volume2, Square, BookOpen, Hash, PencilLine } from 'lucide-react';
 import { speakWithPlugin, stopAllSpeech, warmupAudio } from '@/lib/ttsPlugin';
 import {
   TTS_REPEAT_OPTIONS,
@@ -7,6 +7,8 @@ import {
   saveTtsRepeat,
   type TtsRepeatCount,
 } from '@/lib/ttsRepeat';
+import { storage } from '@/lib/storage';
+import { userStorageKey } from '@/lib/userStorage';
 
 interface WordCardData {
   word: string;
@@ -46,6 +48,8 @@ export default function WordCard({ data, autoPlay = false }: WordCardProps) {
     () => loadTtsRepeat('word'),
   );
   const [playRound, setPlayRound] = useState(0);
+  const noteKey = userStorageKey(`__app_dc_card_note_${encodeURIComponent(data.word.toLowerCase())}`);
+  const [note, setNote] = useState(() => storage.getItem(noteKey) || '');
   const stopFnRef = useRef<(() => void) | null>(null);
   const autoPlayedRef = useRef(false);
   const playbackAbortRef = useRef(false);
@@ -113,6 +117,11 @@ export default function WordCard({ data, autoPlay = false }: WordCardProps) {
     };
     playNextWord();
   }, [data.word, data.example, repeatCount, stopPlayback]);
+
+  useEffect(() => {
+    const nextKey = userStorageKey(`__app_dc_card_note_${encodeURIComponent(data.word.toLowerCase())}`);
+    setNote(storage.getItem(nextKey) || '');
+  }, [data.word]);
 
   useEffect(() => {
     if (autoPlay && !autoPlayedRef.current && data.word?.trim()) {
@@ -273,6 +282,27 @@ export default function WordCard({ data, autoPlay = false }: WordCardProps) {
             </div>
           </div>
         )}
+
+        <div className="rounded-sm border border-border/40 bg-background/50 p-3">
+          <div className="mb-2 flex items-center gap-1.5">
+            <PencilLine className="size-3.5 text-primary" />
+            <span className="text-xs font-medium text-foreground">我的笔记</span>
+            <span className="text-[10px] text-muted-foreground">自动保存</span>
+          </div>
+          <textarea
+            value={note}
+            onChange={(event) => {
+              const value = event.target.value;
+              setNote(value);
+              storage.setItem(noteKey, value);
+            }}
+            rows={3}
+            maxLength={2000}
+            placeholder="记录这个单词或短语的用法、记忆方法和现场案例……"
+            className="w-full resize-y rounded-sm border border-border/40 bg-background px-2.5 py-2 text-xs text-foreground outline-none focus:border-primary/50"
+          />
+          <div className="mt-1 text-right text-[10px] text-muted-foreground">{note.length}/2000</div>
+        </div>
       </div>
 
       {/* Footer: tags + level */}

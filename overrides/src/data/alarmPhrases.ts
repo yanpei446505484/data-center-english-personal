@@ -9,6 +9,8 @@ export interface AlarmPhraseCard {
 
 /** Reviewed multi-word terminology used by the imported alarm list. */
 export const ALARM_PHRASE_CHINESE: Record<string, string> = {
+  'power supply': '供电；电源',
+  'hv power supply': '高压供电',
   'power supply interruption': '供电中断',
   'switchgear trip': '开关柜跳闸',
   'overcurrent protection': '过电流保护',
