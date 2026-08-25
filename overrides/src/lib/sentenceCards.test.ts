@@ -1,6 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { MOCK_SENTENCES } from '@/data/sentenceLearning';
-import { getSentenceCardModel, splitEnglishText } from './sentenceCards';
+import {
+  buildWordReferenceIndex,
+  getCompletePhraseCards,
+  getCompleteSentenceWords,
+  getSentenceCardModel,
+  splitEnglishText,
+} from './sentenceCards';
 
 describe('sentence vocabulary card model', () => {
   it('preserves punctuation while separating every English word', () => {
@@ -34,5 +40,37 @@ describe('sentence vocabulary card model', () => {
 
     expect(totalWordCards).toBeGreaterThan(10_000);
     expect(totalPhraseCards).toBeGreaterThan(2_500);
+  });
+
+  it('lists every word occurrence in order on all 2,600 sentence detail pages', () => {
+    const referenceIndex = buildWordReferenceIndex(MOCK_SENTENCES);
+    let total = 0;
+
+    for (const sentence of MOCK_SENTENCES) {
+      const expected = splitEnglishText(sentence.en)
+        .filter((segment) => segment.kind === 'word')
+        .map((segment) => segment.text);
+      const complete = getCompleteSentenceWords(sentence, referenceIndex);
+
+      expect(complete.map((word) => word.w)).toEqual(expected);
+      expect(complete.every((word) => word.cn.trim().length > 0)).toBe(true);
+      total += complete.length;
+    }
+
+    expect(total).toBe(16_693);
+  });
+
+  it('merges all valid curated, collocation and dictionary phrases', () => {
+    const referenceIndex = buildWordReferenceIndex(MOCK_SENTENCES);
+    const sentence = MOCK_SENTENCES.find((item) => item.id === 5)!;
+    const words = getCompleteSentenceWords(sentence, referenceIndex);
+    const phrases = getCompletePhraseCards(sentence, words);
+
+    expect(words.map((word) => word.w)).toEqual([
+      'Please', 'switch', 'to', 'the', 'BMS', 'dashboard',
+    ]);
+    expect(phrases.map((phrase) => phrase.text)).toEqual(
+      expect.arrayContaining(['switch to', 'BMS dashboard']),
+    );
   });
 });
