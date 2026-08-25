@@ -1,0 +1,328 @@
+diff --git a/src/data/smallTalk50b.ts b/src/data/smallTalk50b.ts
+index c2e8cbc..3b64c9a 100644
+--- a/src/data/smallTalk50b.ts
++++ b/src/data/smallTalk50b.ts
+@@ -230,7 +230,7 @@ export const MOCK_SENTENCES_SMALLTALK50B: ISentence[] = [
+   {
+     id: 2668,
+     speaker: 'Engineer',
+-    en: "I've started improving my English.",
++    en: "I've started working on my English.",
+     cn: '我开始提升英语了。',
+     ipa: "/aɪv ˈstɑːrtɪd ɪmˈpruːvɪŋ maɪ ˈɪŋɡlɪʃ/",
+     tags: ['第2668句', '最近怎么样', '★★★★'],
+diff --git a/src/data/upsFault42a.ts b/src/data/upsFault42a.ts
+index ad1dd4d..18fa1f8 100644
+--- a/src/data/upsFault42a.ts
++++ b/src/data/upsFault42a.ts
+@@ -7,7 +7,7 @@ export const MOCK_SENTENCES_UPSFAULT42A: ISentence[] = [
+     id: 2321,
+     speaker: 'Engineer',
+     en: 'UPS Module 3 has dropped out of the parallel system.',
+-    cn: 'UPS3模块已经退出并联系统。',
++    cn: 'UPS 3号模块已经退出并联系统。',
+     ipa: '/juː-piː-ɛs ˈmɒdjuːl θriː hæz drɒpt aʊt əv ðə ˈpærəl ˈsɪstəm/',
+     tags: ['第2321句', 'UPS模块故障', '★★★★★'],
+     when: '值班工程师发现 BMS 显示 UPS3 模块脱离并联总线，立即口头通报。',
+@@ -39,7 +39,7 @@ export const MOCK_SENTENCES_UPSFAULT42A: ISentence[] = [
+     id: 2322,
+     speaker: 'Engineer',
+     en: 'The remaining modules are carrying the load without interruption.',
+-    cn: '其余模块正在不中断地承担负载。',
++    cn: '其余模块继续承担负载，供电未中断。',
+     ipa: '/ðə rɪˈmeɪnɪŋ ˈmɒdjuːlz ɑːr ˈkæriɪŋ ðə loʊd wɪˈðaʊt ˌɪntəˈrʌpʃən/',
+     tags: ['第2322句', 'UPS模块故障', '★★★★★'],
+     when: '工程师确认故障模块退出后，其余模块正常带载，业务无中断。',
+@@ -169,7 +169,7 @@ export const MOCK_SENTENCES_UPSFAULT42A: ISentence[] = [
+     id: 2326,
+     speaker: 'Manager',
+     en: 'The parallel redundancy is still available.',
+-    cn: 'UPS并联冗余仍然有效。',
++    cn: 'UPS并联冗余仍然可用。',
+     ipa: '/ðə ˈpærəl rɪˈdʌndənsi ɪz stɪl əˈveɪləbl/',
+     tags: ['第2326句', '并联系统', '★★★★★'],
+     when: '值班经理确认虽然一台模块退出，但系统仍有足够的并联冗余容量。',
+@@ -201,7 +201,7 @@ export const MOCK_SENTENCES_UPSFAULT42A: ISentence[] = [
+     id: 2327,
+     speaker: 'Manager',
+     en: 'The system is operating with reduced redundancy.',
+-    cn: '系统目前处于降低冗余运行状态。',
++    cn: '系统目前处于冗余度降低的运行状态。',
+     ipa: '/ðə ˈsɪstəm ɪz ˈɒpəreɪtɪŋ wɪð rɪˈdjuːst rɪˈdʌndənsi/',
+     tags: ['第2327句', '并联系统', '★★★★★'],
+     when: '值班经理向团队说明当前系统冗余已从 N+1 降至 N（无冗余），风险等级提高。',
+@@ -331,7 +331,7 @@ export const MOCK_SENTENCES_UPSFAULT42A: ISentence[] = [
+     id: 2331,
+     speaker: 'Engineer',
+     en: 'The UPS transferred the load to the static bypass automatically.',
+-    cn: 'UPS已经自动切换到静态旁路。',
++    cn: 'UPS已经自动将负载切换至静态旁路。',
+     ipa: '/ðə juː-piː-ɛs trænsˈfɜːrd ðə loʊd tuː ðə ˈstætɪk ˈbaɪpæs ˌɔːtəˈmætɪkli/',
+     tags: ['第2331句', '静态旁路', '★★★★★'],
+     when: '工程师发现 UPS 逆变器故障后自动将负载切换至静态旁路供电。',
+@@ -621,8 +621,8 @@ export const MOCK_SENTENCES_UPSFAULT42A: ISentence[] = [
+   {
+     id: 2340,
+     speaker: 'Engineer',
+-    en: 'We are still operating through the UPS inverter.',
+-    cn: '目前负载仍由UPS逆变器供电。',
++    en: 'We are still operating on static bypass.',
++    cn: '目前负载仍由静态旁路供电。',
+     ipa: '/wiː ɑːr stɪl ˈɒpəreɪtɪŋ θruː ðə juː-piː-ɛs ɪnˈvɜːrtər/',
+     tags: ['第2340句', '维护旁路', '★★★★★'],
+     when: '工程师确认当前供电仍通过 UPS 逆变器（非旁路），UPS 保护功能仍然有效。',
+diff --git a/src/data/upsFault42b.ts b/src/data/upsFault42b.ts
+index efa5822..969e60f 100644
+--- a/src/data/upsFault42b.ts
++++ b/src/data/upsFault42b.ts
+@@ -358,8 +358,8 @@ export const MOCK_SENTENCES_UPSFAULT42B: ISentence[] = [
+   {
+     id: 2352,
+     speaker: 'Engineer',
+-    en: 'The new module load sharing is balanced across all modules.',
+-    cn: '新模块的负载均流在所有模块间平衡分配。',
++    en: 'The load is balanced across all modules, including the new one.',
++    cn: '包括新模块在内的所有模块之间负载均衡。',
+     ipa: '/ðə njuː ˈmɒdjuːl loʊd ˈʃɛərɪŋ ɪz ˈbælənst əˈkrɔːs ɔːl ˈmɒdjuːlz/',
+     tags: ['第2352句', '后续监控', '★★★★★'],
+     when: '工程师确认更换后的新模块已正确分担负载，各模块间负载分配均匀。',
+@@ -583,7 +583,7 @@ export const MOCK_SENTENCES_UPSFAULT42B: ISentence[] = [
+     id: 2359,
+     speaker: 'Manager',
+     en: 'The UPS system is now cleared for normal operations.',
+-    cn: 'UPS系统现在已恢复正常运营状态。',
++    cn: 'UPS系统现在已获准恢复正常运行。',
+     ipa: '/ðə juː-piː-ɛs ˈsɪstəm ɪz naʊ klɪərd fər ˈnɔːrməl ˌɒpəˈreɪʃənz/',
+     tags: ['第2359句', '后续监控', '★★★★★'],
+     when: '加强监控期结束后，值班经理正式宣布 UPS 系统已完全恢复正常运营，可以解除特别关注。',
+diff --git a/src/data/utilityPower41a.ts b/src/data/utilityPower41a.ts
+index 215f51a..a0c492a 100644
+--- a/src/data/utilityPower41a.ts
++++ b/src/data/utilityPower41a.ts
+@@ -6,7 +6,7 @@ export const MOCK_SENTENCES_UTILITYPOWER41A: ISentence[] = [
+   {
+     id: 2281,
+     speaker: 'Engineer',
+-    en: 'We have lost Utility Power Source A.',
++    en: 'We have lost utility power source A.',
+     cn: '我们A路市电已经失电。',
+     ipa: '/wiː hæv lɒst juːˈtɪlɪti ˈpaʊər sɔːrs eɪ/',
+     tags: ['第2281句', '市电失电', '★★★★★'],
+@@ -71,7 +71,7 @@ export const MOCK_SENTENCES_UTILITYPOWER41A: ISentence[] = [
+     id: 2283,
+     speaker: 'Engineer',
+     en: 'Utility Power Source B is still available.',
+-    cn: 'B路市电目前正常。',
++    cn: 'B路市电目前仍可用。',
+     ipa: '/juːˈtɪlɪti ˈpaʊər sɔːrs biː ɪz stɪl əˈveɪləbəl/',
+     tags: ['第2283句', '市电失电', '★★★★★'],
+     when: 'A路失电后，工程师汇报 B 路市电状态，确认冗余电源仍然可用。',
+@@ -194,7 +194,7 @@ export const MOCK_SENTENCES_UTILITYPOWER41A: ISentence[] = [
+     id: 2287,
+     speaker: 'Engineer',
+     en: 'Please confirm the loss of voltage.',
+-    cn: '请确认电压已经消失。',
++    cn: '请确认已经无电压。',
+     ipa: '/pliːz kənˈfɜːrm ðə lɒs əv ˈvoʊltɪdʒ/',
+     tags: ['第2287句', '市电失电', '★★★★'],
+     when: '工程师用万用表或验电器确认进线电压确实为零，排除 BMS 误报可能。',
+@@ -504,7 +504,7 @@ export const MOCK_SENTENCES_UTILITYPOWER41A: ISentence[] = [
+   {
+     id: 2297,
+     speaker: 'Engineer',
+-    en: 'No abnormal UPS alarms have been detected.',
++    en: 'No unexpected UPS alarms have been detected.',
+     cn: '没有发现UPS异常告警。',
+     ipa: '/noʊ æbˈnɔːrməl juː-piː-ɛs əˈlɑːrmz hæv biːn dɪˈtɛktɪd/',
+     tags: ['第2297句', 'UPS运行', '★★★★'],
+@@ -597,7 +597,7 @@ export const MOCK_SENTENCES_UTILITYPOWER41A: ISentence[] = [
+   {
+     id: 2300,
+     speaker: 'Engineer',
+-    en: 'Generator No.1 is supplying the load.',
++    en: 'Generator No. 1 is supplying the load.',
+     cn: '1号柴油发电机正在带载。',
+     ipa: '/ˈdʒɛnəreɪtər ˈnʌmbər wʌn ɪz səˈplaɪɪŋ ðə loʊd/',
+     tags: ['第2300句', '柴油发电机', '★★★★★'],
+diff --git a/src/data/utilityPower41b.ts b/src/data/utilityPower41b.ts
+index 93fefe8..73b9115 100644
+--- a/src/data/utilityPower41b.ts
++++ b/src/data/utilityPower41b.ts
+@@ -6,7 +6,7 @@ export const MOCK_SENTENCES_UTILITYPOWER41B: ISentence[] = [
+   {
+     id: 2301,
+     speaker: 'Engineer',
+-    en: 'Generator No.2 has synchronized successfully.',
++    en: 'Generator No. 2 has synchronized successfully.',
+     cn: '2号柴油发电机同步成功。',
+     ipa: '/ˈdʒɛnəreɪtər ˌnʌmbər ˈwʌn hæz ˈsɪŋkrəˌnaɪzd səkˈsɛsfəli/',
+     tags: ['第2301句', '柴油发电机', '★★★★★'],
+@@ -383,7 +383,7 @@ export const MOCK_SENTENCES_UTILITYPOWER41B: ISentence[] = [
+     id: 2313,
+     speaker: 'Engineer',
+     en: 'The generators have completed the cool-down cycle.',
+-    cn: '柴油发电机已经完成冷却运行。',
++    cn: '柴油发电机已经完成冷却运行周期。',
+     ipa: '/ðə ˈdʒɛnəreɪtərz hæv kəmˈpliːtɪd ðə kuːl daʊn ˈsaɪkəl/',
+     tags: ['第2313句', '市电恢复', '★★★★★'],
+     when: '负载切回市电后，柴发进入冷却运行阶段（空载运行一段时间散热），完成后工程师汇报。',
+@@ -604,7 +604,7 @@ export const MOCK_SENTENCES_UTILITYPOWER41B: ISentence[] = [
+     id: 2320,
+     speaker: 'Manager',
+     en: 'The utility power incident has been closed successfully.',
+-    cn: '本次市电停电事件已经顺利结束。',
++    cn: '本次市电停电事件已经顺利关闭。',
+     ipa: '/ðə juːˈtɪlɪti ˈpaʊər ˈɪnsɪdənt hæz biːn kloʊzd səkˈsɛsfəli/',
+     tags: ['第2320句', '收尾工作', '★★★★★'],
+     when: '所有收尾工作完成后，值班经理正式宣布本次市电停电事件关闭。',
+diff --git a/src/data/vendorMgmt55a.ts b/src/data/vendorMgmt55a.ts
+index d0a87f6..d9386ff 100644
+--- a/src/data/vendorMgmt55a.ts
++++ b/src/data/vendorMgmt55a.ts
+@@ -39,7 +39,7 @@ export const MOCK_SENTENCES_VENDORMGMT55A: ISentence[] = [
+     id: 2842,
+     speaker: 'Engineer',
+     en: 'How many technicians are working today?',
+-    cn: '今天共有多少名技术人员施工？',
++    cn: '今天共有多少名技术人员在作业？',
+     ipa: '/haʊ ˈmɛni ˌtɛkˈnɪʃənz ɑːr ˈwɜːrkɪŋ təˈdeɪ/',
+     tags: ['第2842句', '开工前确认', '★★★'],
+     when: '确认到场技术人员数量，与施工计划中的人数进行核对。',
+@@ -134,7 +134,7 @@ export const MOCK_SENTENCES_VENDORMGMT55A: ISentence[] = [
+   {
+     id: 2845,
+     speaker: 'Engineer',
+-    en: 'Has every contractor completed the site safety briefing?',
++    en: 'Has everyone on the contractor team completed the site safety briefing?',
+     cn: '所有施工人员都完成现场安全交底了吗？',
+     ipa: '/hæz ˈɛvri ˈkɒntræktər kəmˈpliːtɪd ðə saɪt ˈseɪfti ˈbriːfɪŋ/',
+     tags: ['第2845句', '开工前确认', '★★★★'],
+@@ -423,7 +423,7 @@ export const MOCK_SENTENCES_VENDORMGMT55A: ISentence[] = [
+     id: 2854,
+     speaker: 'Engineer',
+     en: 'What is your rollback plan if the work cannot be completed?',
+-    cn: '如果无法完成施工，你们的回退方案是什么？',
++    cn: '如果无法完成作业，你们的回退方案是什么？',
+     ipa: '/wɒt ɪz jɔːr ˈroʊlbæk plæn ɪf ðə wɜːrk ˈkænɒt biː kəmˈpliːtɪd/',
+     tags: ['第2854句', '工作范围', '★★★★★'],
+     when: '确认施工失败或无法按时完成时的应急回退方案，确保系统安全。',
+@@ -487,7 +487,7 @@ export const MOCK_SENTENCES_VENDORMGMT55A: ISentence[] = [
+     id: 2856,
+     speaker: 'Engineer',
+     en: 'Stop the work immediately if anything differs from the approved procedure.',
+-    cn: '如果现场情况与批准方案不一致，请立即停止施工。',
++    cn: '如果现场情况与批准程序不一致，请立即停止作业。',
+     ipa: '/stɒp ðə wɜːrk ɪˈmiːdiətli ɪf ˈɛniθɪŋ ˈdɪfərz frɒm ðə əˈpruːvd prəˈsiːdʒər/',
+     tags: ['第2856句', '施工控制', '★★★★★'],
+     when: '向供应商下达施工控制指令，任何偏离批准方案的情况都必须立即停工。',
+@@ -519,7 +519,7 @@ export const MOCK_SENTENCES_VENDORMGMT55A: ISentence[] = [
+     id: 2857,
+     speaker: 'Engineer',
+     en: 'Do not expand the work scope without written approval.',
+-    cn: '未经书面批准，不得扩大施工范围。',
++    cn: '未经书面批准，不得扩大作业范围。',
+     ipa: '/duː nɒt ɪkˈspænd ðə wɜːrk skoʊp wɪˈðaʊt ˈrɪtən əˈpruːvəl/',
+     tags: ['第2857句', '施工控制', '★★★★★'],
+     when: '明确告知供应商施工范围不得自行扩大，必须获得书面批准。',
+diff --git a/src/data/vendorMgmt55b.ts b/src/data/vendorMgmt55b.ts
+index 4e13aad..e7b658a 100644
+--- a/src/data/vendorMgmt55b.ts
++++ b/src/data/vendorMgmt55b.ts
+@@ -39,7 +39,7 @@ export const MOCK_SENTENCES_VENDORMGMT55B: ISentence[] = [
+     id: 2862,
+     speaker: 'Engineer',
+     en: 'We need to suspend the work until the revised procedure is approved.',
+-    cn: '需要暂停施工，等待修订后的方案批准。',
++    cn: '需要暂停作业，等待修订后的程序获得批准。',
+     ipa: '/wiː niːd tuː səˈspɛnd ðə wɜːrk ənˈtɪl ðə rɪˈvaɪzd ˈproʊsɪdʒər ɪz əˈpruːvd/',
+     tags: ['第2862句', '现场变更', '★★★★'],
+     when: '因现场变化需要暂停施工，等待新方案审批时使用。',
+@@ -327,7 +327,7 @@ export const MOCK_SENTENCES_VENDORMGMT55B: ISentence[] = [
+     id: 2871,
+     speaker: 'Engineer',
+     en: 'What went well during today\'s work?',
+-    cn: '今天施工哪些地方做得比较好？',
++    cn: '今天的作业哪些方面做得比较好？',
+     ipa: '/wɒt wɛnt wɛl ˈdjʊərɪŋ təˈdeɪz wɜːrk/',
+     tags: ['第2871句', '经验反馈', '★★★'],
+     when: '施工完工后进行经验反馈（Lessons Learned）时，询问做得好的方面。',
+@@ -359,7 +359,7 @@ export const MOCK_SENTENCES_VENDORMGMT55B: ISentence[] = [
+     id: 2872,
+     speaker: 'Engineer',
+     en: 'What difficulties did your team encounter?',
+-    cn: '今天施工遇到了哪些困难？',
++    cn: '今天的作业遇到了哪些困难？',
+     ipa: '/wɒt ˈdɪfɪkəltiz dɪd jɔːr tiːm ɪnˈkaʊntər/',
+     tags: ['第2872句', '经验反馈', '★★★★'],
+     when: '经验反馈环节询问施工团队遇到了哪些困难和挑战。',
+@@ -551,7 +551,7 @@ export const MOCK_SENTENCES_VENDORMGMT55B: ISentence[] = [
+     id: 2878,
+     speaker: 'Engineer',
+     en: 'Thank you for completing the work safely and professionally.',
+-    cn: '感谢你们安全、专业地完成了这次施工。',
++    cn: '感谢你们安全、专业地完成了这次作业。',
+     ipa: '/θæŋk juː fɔːr kəmˈpliːtɪŋ ðə wɜːrk ˈseɪfli ænd prəˈfɛʃənəli/',
+     tags: ['第2878句', '经验反馈', '★★★'],
+     when: '施工完工后向供应商团队表达感谢和认可。',
+diff --git a/src/data/warehouseSpare56a.ts b/src/data/warehouseSpare56a.ts
+index c1b09e4..0f127e3 100644
+--- a/src/data/warehouseSpare56a.ts
++++ b/src/data/warehouseSpare56a.ts
+@@ -135,7 +135,7 @@ export const MOCK_SENTENCES_WAREHOUSESPARE56A: ISentence[] = [
+     id: 2885,
+     speaker: 'Engineer',
+     en: 'This item has reached the minimum stock level.',
+-    cn: '这个物料已经达到最低库存。',
++    cn: '这个物料的库存已经降至最低库存水平。',
+     ipa: '/ðɪs ˈaɪtəm hæz riːtʃt ðə ˈmɪnɪməm stɒk ˈlɛvəl/',
+     tags: ['第2885句', '仓库管理', '★★★★'],
+     when: '提醒相关人员某物料已达到补货临界点，需要启动采购流程。',
+@@ -487,7 +487,7 @@ export const MOCK_SENTENCES_WAREHOUSESPARE56A: ISentence[] = [
+     id: 2896,
+     speaker: 'Engineer',
+     en: 'Please obtain three quotations before purchasing.',
+-    cn: '采购前请取得三家报价。',
++    cn: '采购前请取得三家供应商的报价。',
+     ipa: '/pliːz əbˈteɪn θriː ˌkwoʊˈteɪʃənz bɪˈfɔːr ˈpɜːrtʃəsɪŋ/',
+     tags: ['第2896句', '采购沟通', '★★★★'],
+     when: '提醒采购人员在下单前按公司规定获取足够的比价信息。',
+diff --git a/src/data/warehouseSpare56b.ts b/src/data/warehouseSpare56b.ts
+index 47a02bf..62f5fa1 100644
+--- a/src/data/warehouseSpare56b.ts
++++ b/src/data/warehouseSpare56b.ts
+@@ -71,7 +71,7 @@ export const MOCK_SENTENCES_WAREHOUSESPARE56B: ISentence[] = [
+     id: 2903,
+     speaker: 'Engineer',
+     en: 'We need to return it to the supplier.',
+-    cn: '我们需要退回供应商。',
++    cn: '我们需要把它退回给供应商。',
+     ipa: '/wiː niːd tuː rɪˈtɜːrn ɪt tuː ðə səˈplaɪər/',
+     tags: ['第2903句', '备件质量', '★★★'],
+     when: '经确认物料存在质量问题后，决定将其退回供应商处理。',
+@@ -103,7 +103,7 @@ export const MOCK_SENTENCES_WAREHOUSESPARE56B: ISentence[] = [
+     id: 2904,
+     speaker: 'Engineer',
+     en: 'Please arrange a replacement as soon as possible.',
+-    cn: '请尽快安排更换。',
++    cn: '请尽快安排换货。',
+     ipa: '/pliːz əˈreɪndʒ ə rɪˈpleɪsmənt æz suːn æz ˈpɒsəbl/',
+     tags: ['第2904句', '备件质量', '★★★★'],
+     when: '物料有问题需要更换时，要求供应商或采购部门尽快安排替换件。',
+@@ -454,7 +454,7 @@ export const MOCK_SENTENCES_WAREHOUSESPARE56B: ISentence[] = [
+     id: 2915,
+     speaker: 'Engineer',
+     en: 'Keep the inventory records up to date.',
+-    cn: '保持库存记录为最新状态。',
++    cn: '请及时更新库存记录。',
+     ipa: '/kiːp ðə ɪnˈvɛntɔːri ˈrɛkərdz ʌp tuː deɪt/',
+     tags: ['第2915句', '库存优化', '★★★'],
+     when: '强调库存记录必须与实际库存保持同步，每次出入库后及时更新。',
+@@ -582,7 +582,7 @@ export const MOCK_SENTENCES_WAREHOUSESPARE56B: ISentence[] = [
+     id: 2919,
+     speaker: 'Engineer',
+     en: 'Accurate inventory reduces emergency risks.',
+-    cn: '准确的库存管理可以降低应急风险。',
++    cn: '准确的库存数据可以降低应急风险。',
+     ipa: '/ˈækjərət ɪnˈvɛntɔːri rɪˈdjuːsɪz ɪˈmɜːrdʒənsi rɪsks/',
+     tags: ['第2919句', '库存优化', '★★★★'],
+     when: '向团队解释为什么库存准确性对数据中心运维至关重要。',
