@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/select';
 import { ALARM_CATEGORIES, ALARM_SUMMARY, type AlarmSummaryEntry } from '@/data/alarmSummary';
 import { ALARM_CHINESE } from '@/data/alarmChinese';
+import { getAlarmPhraseCards, type AlarmPhraseCard } from '@/data/alarmPhrases';
 import { ALARM_WORD_CHINESE } from '@/data/alarmWordDictionary';
 import { splitEnglishText } from '@/lib/sentenceCards';
 import { preloadTTS, speakWithPlugin, stopAllSpeech, warmupAudio } from '@/lib/ttsPlugin';
@@ -78,6 +79,39 @@ function AlarmWord({ word, alarm, category }: { word: string; alarm: string; cat
         </button>
       </PopoverTrigger>
       <PopoverContent align="start" className="w-[min(22rem,calc(100vw-2rem))] p-2">
+        <WordCard data={data} />
+      </PopoverContent>
+    </Popover>
+  );
+}
+
+function AlarmPhrase({ phrase, alarm, category }: {
+  phrase: AlarmPhraseCard;
+  alarm: string;
+  category: string;
+}) {
+  const data = {
+    word: phrase.text,
+    chinese: phrase.chinese,
+    example: alarm,
+    tags: [CATEGORY_CN[category] || category, phrase.fullAlarm ? '完整告警短语' : '专业短语'],
+    pos: phrase.fullAlarm ? '完整告警短语' : '告警短语',
+    dataCenterMeaning: phrase.chinese,
+  };
+
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <button
+          type="button"
+          className="rounded-md border border-border/50 bg-muted/25 px-2.5 py-1.5 text-left transition-colors hover:border-primary/40 hover:bg-primary/10"
+          title={`查看短语卡：${phrase.text}`}
+        >
+          <span className="block text-xs font-semibold text-foreground">{phrase.text}</span>
+          <span className="block text-[11px] text-muted-foreground mt-0.5">{phrase.chinese}</span>
+        </button>
+      </PopoverTrigger>
+      <PopoverContent align="start" className="w-[min(24rem,calc(100vw-2rem))] p-2">
         <WordCard data={data} />
       </PopoverContent>
     </Popover>
@@ -175,7 +209,7 @@ export default function AlarmEnglishPage() {
           <Badge variant="secondary">{ALARM_SUMMARY.length} 条</Badge>
         </div>
         <p className="text-sm text-muted-foreground">
-          数据中心去重告警清单；点击英文单词查看单词卡，点击喇叭朗读整条告警。
+          数据中心去重告警清单；每条告警均列出单词和专业短语，点击即可查看并朗读对应卡片。
         </p>
       </div>
 
@@ -232,6 +266,7 @@ export default function AlarmEnglishPage() {
         <div className="grid gap-3">
           {filtered.map((entry) => {
             const isPlaying = playingId === entry.id;
+            const phrases = getAlarmPhraseCards(entry);
             return (
               <Card key={entry.id} className="border-border/50">
                 <CardContent className="p-4">
@@ -248,6 +283,19 @@ export default function AlarmEnglishPage() {
                       <p className="text-sm text-foreground/75 leading-relaxed">
                         {ALARM_CHINESE[entry.id]}
                       </p>
+                      <div className="space-y-1.5">
+                        <div className="text-[11px] font-medium text-muted-foreground">短语（{phrases.length}）</div>
+                        <div className="flex flex-wrap gap-2">
+                          {phrases.map((phrase) => (
+                            <AlarmPhrase
+                              key={`${entry.id}-${phrase.text}`}
+                              phrase={phrase}
+                              alarm={entry.alarm}
+                              category={entry.category}
+                            />
+                          ))}
+                        </div>
+                      </div>
                       <div className="flex flex-wrap items-center gap-2">
                         <Badge variant="secondary" className="text-[11px]">
                           {CATEGORY_CN[entry.category] || entry.category}

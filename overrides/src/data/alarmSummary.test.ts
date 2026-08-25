@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { ALARM_CATEGORIES, ALARM_SUMMARY } from './alarmSummary';
 import { ALARM_CHINESE } from './alarmChinese';
 import { ALARM_WORD_CHINESE } from './alarmWordDictionary';
+import { getAlarmPhraseCards } from './alarmPhrases';
 
 describe('alarm summary import', () => {
   it('imports all 162 deduplicated alarms', () => {
@@ -36,5 +37,23 @@ describe('alarm summary import', () => {
     for (const word of words) {
       expect(ALARM_WORD_CHINESE[word], `missing translation: ${word}`).toBeTruthy();
     }
+  });
+
+  it('lists translated phrase cards for every alarm', () => {
+    for (const entry of ALARM_SUMMARY) {
+      const phrases = getAlarmPhraseCards(entry);
+      expect(phrases.length, `no phrases: ${entry.alarm}`).toBeGreaterThan(0);
+      expect(phrases[0].text).toBe(entry.alarm);
+      for (const phrase of phrases) {
+        expect(phrase.chinese.trim().length, `missing phrase translation: ${phrase.text}`).toBeGreaterThan(0);
+      }
+    }
+
+    expect(getAlarmPhraseCards(ALARM_SUMMARY[2]).map((phrase) => phrase.text)).toEqual([
+      'HV Overcurrent Protection Activated',
+      'overcurrent protection',
+      'protection activated',
+    ]);
+    expect(getAlarmPhraseCards(ALARM_SUMMARY[5]).map((phrase) => phrase.text)).toContain('earth fault protection');
   });
 });
