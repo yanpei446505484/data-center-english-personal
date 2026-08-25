@@ -34,7 +34,7 @@ const NAV_ITEMS = [
   },
   {
     path: '/alarms',
-    label: '告警英语',
+    label: '告警与运维英语',
     icon: BellRing,
   },
   {

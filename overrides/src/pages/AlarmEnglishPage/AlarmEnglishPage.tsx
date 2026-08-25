@@ -131,7 +131,20 @@ function AlarmPhrase({ phrase, alarm, category }: {
   );
 }
 
+type AlarmTopicKey = 'meeting' | 'generator' | 'trend' | 'access' | 'water' | 'pump' | 'alarms';
+
+const ALARM_TOPICS: Array<{ key: AlarmTopicKey; label: string; count: string }> = [
+  { key: 'meeting', label: '告警会议', count: `${ALARM_MEETING_SCRIPTS.length}句` },
+  { key: 'generator', label: '柴发／电池与维修', count: `${ALARM_CHAT_DIALOGUE.length}句` },
+  { key: 'trend', label: '水泵趋势与工单', count: `${ALARM_TREND_DRILL_DIALOGUE.length}句` },
+  { key: 'access', label: '访客／变更与登录', count: `${ALARM_ACCESS_MAINTENANCE_DIALOGUE.length}句` },
+  { key: 'water', label: '低水压与应急', count: `${ALARM_WATER_SUPPLY_DIALOGUE.length}句` },
+  { key: 'pump', label: '水泵维修巡检', count: `${PUMP_MAINTENANCE_DIALOGUES.length}组` },
+  { key: 'alarms', label: '告警数据表', count: `${ALARM_SUMMARY.length}条` },
+];
+
 export default function AlarmEnglishPage() {
+  const [activeTopic, setActiveTopic] = useState<AlarmTopicKey>('meeting');
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('all');
   const [repeatCount, setRepeatCount] = useState<TtsRepeatCount>(
@@ -218,15 +231,43 @@ export default function AlarmEnglishPage() {
       <div className="space-y-1">
         <div className="flex items-center gap-2">
           <BellRing className="size-5 text-primary" />
-          <h1 className="text-xl font-semibold text-foreground">告警英语</h1>
-          <Badge variant="secondary">{ALARM_SUMMARY.length} 条</Badge>
+          <h1 className="text-xl font-semibold text-foreground">告警与运维英语</h1>
+          <Badge variant="secondary">7个主题</Badge>
         </div>
         <p className="text-sm text-muted-foreground">
-          数据中心去重告警清单；每条告警均列出单词和专业短语，点击即可查看并朗读对应卡片。
+          按主题学习现场会议、运维对话、水泵维修巡检和告警数据；每句话均支持单词卡、短语卡和重复朗读。
         </p>
       </div>
 
-      <Card>
+      <Card className="border-primary/20">
+        <CardContent className="p-4 space-y-3">
+          <div>
+            <h2 className="font-semibold text-foreground">主题导航</h2>
+            <p className="mt-1 text-xs text-muted-foreground">点击一个主题，下方只显示该主题的内容。</p>
+          </div>
+          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+            {ALARM_TOPICS.map((topic) => (
+              <Button
+                key={topic.key}
+                type="button"
+                variant={activeTopic === topic.key ? 'default' : 'outline'}
+                onClick={() => {
+                  stopPlayback();
+                  setActiveTopic(topic.key);
+                }}
+                className="h-auto min-h-12 justify-between gap-3 px-3 py-2 text-left"
+              >
+                <span>{topic.label}</span>
+                <span className={activeTopic === topic.key ? 'text-primary-foreground/75' : 'text-muted-foreground'}>
+                  {topic.count}
+                </span>
+              </Button>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className={activeTopic === 'alarms' ? '' : 'hidden'}>
         <CardContent className="p-4 space-y-3">
           <div className="grid gap-3 md:grid-cols-[1fr_1fr_auto]">
             <div className="relative">
@@ -275,7 +316,7 @@ export default function AlarmEnglishPage() {
         </CardContent>
       </Card>
 
-      <Card className="border-primary/20">
+      <Card className={activeTopic === 'meeting' ? 'border-primary/20' : 'hidden'}>
         <CardContent className="p-4 space-y-4">
           <div className="flex flex-wrap items-center gap-2">
             <h2 className="font-semibold text-foreground">现场告警会议标准话术</h2>
@@ -330,7 +371,7 @@ export default function AlarmEnglishPage() {
         </CardContent>
       </Card>
 
-      <Card className="border-primary/20">
+      <Card className={activeTopic === 'generator' ? 'border-primary/20' : 'hidden'}>
         <CardContent className="p-4 space-y-4">
           <div className="flex flex-wrap items-center gap-2">
             <h2 className="font-semibold text-foreground">现场工作聊天标准对话</h2>
@@ -390,7 +431,7 @@ export default function AlarmEnglishPage() {
         </CardContent>
       </Card>
 
-      <Card className="border-primary/20">
+      <Card className={activeTopic === 'trend' ? 'border-primary/20' : 'hidden'}>
         <CardContent className="p-4 space-y-4">
           <div className="flex flex-wrap items-center gap-2">
             <h2 className="font-semibold text-foreground">水泵趋势、演练与故障工单对话</h2>
@@ -450,7 +491,7 @@ export default function AlarmEnglishPage() {
         </CardContent>
       </Card>
 
-      <Card className="border-primary/20">
+      <Card className={activeTopic === 'access' ? 'border-primary/20' : 'hidden'}>
         <CardContent className="p-4 space-y-4">
           <div className="flex flex-wrap items-center gap-2">
             <h2 className="font-semibold text-foreground">访客登记、变更工单与登录排障对话</h2>
@@ -510,7 +551,7 @@ export default function AlarmEnglishPage() {
         </CardContent>
       </Card>
 
-      <Card className="border-primary/20">
+      <Card className={activeTopic === 'water' ? 'border-primary/20' : 'hidden'}>
         <CardContent className="p-4 space-y-4">
           <div className="flex flex-wrap items-center gap-2">
             <h2 className="font-semibold text-foreground">低水压、供水端与应急响应对话</h2>
@@ -570,7 +611,7 @@ export default function AlarmEnglishPage() {
         </CardContent>
       </Card>
 
-      <Card className="border-primary/20">
+      <Card className={activeTopic === 'pump' ? 'border-primary/20' : 'hidden'}>
         <CardContent className="p-4 space-y-4">
           <div className="flex flex-wrap items-center gap-2">
             <h2 className="font-semibold text-foreground">冷却水泵故障维修与日常巡检</h2>
@@ -643,8 +684,9 @@ export default function AlarmEnglishPage() {
         </CardContent>
       </Card>
 
-      {filtered.length > 0 ? (
-        <div className="grid gap-3">
+      <div className={activeTopic === 'alarms' ? '' : 'hidden'}>
+        {filtered.length > 0 ? (
+          <div className="grid gap-3">
           {filtered.map((entry) => {
             const alarmKey = `alarm-${entry.id}`;
             const isPlaying = playingKey === alarmKey;
@@ -701,15 +743,16 @@ export default function AlarmEnglishPage() {
               </Card>
             );
           })}
-        </div>
-      ) : (
-        <Card>
-          <CardContent className="flex flex-col items-center justify-center py-14 text-muted-foreground">
-            <BookOpen className="size-8 mb-3 opacity-40" />
-            <p className="text-sm">没有找到匹配的告警</p>
-          </CardContent>
-        </Card>
-      )}
+          </div>
+        ) : (
+          <Card>
+            <CardContent className="flex flex-col items-center justify-center py-14 text-muted-foreground">
+              <BookOpen className="size-8 mb-3 opacity-40" />
+              <p className="text-sm">没有找到匹配的告警</p>
+            </CardContent>
+          </Card>
+        )}
+      </div>
     </div>
   );
 }
