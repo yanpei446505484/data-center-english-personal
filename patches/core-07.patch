@@ -1,0 +1,494 @@
+diff --git a/src/data/sentencePart20a.ts b/src/data/sentencePart20a.ts
+index b334794..e379b7a 100644
+--- a/src/data/sentencePart20a.ts
++++ b/src/data/sentencePart20a.ts
+@@ -193,7 +193,7 @@ export const MOCK_SENTENCES_PART20A: ISentence[] = [
+   },
+   {
+     "id": 1443,
+-    "en": "Please check the incoming feeder.",
++    "en": "Please check the incoming feeder panel.",
+     "cn": "请检查进线柜。",
+     "ipa": "/pliːz tʃɛk ði ˈɪn.kʌm.ɪŋ ˈfiː.dər/",
+     "tags": [
+@@ -303,7 +303,7 @@ export const MOCK_SENTENCES_PART20A: ISentence[] = [
+   },
+   {
+     "id": 1444,
+-    "en": "The incoming feeder is energized.",
++    "en": "The incoming feeder panel is energized.",
+     "cn": "进线柜已经带电。",
+     "ipa": "/ði ˈɪn.kʌm.ɪŋ ˈfiː.dər ɪz ˈɛn.ər.dʒaɪzd/",
+     "tags": [
+@@ -381,7 +381,7 @@ export const MOCK_SENTENCES_PART20A: ISentence[] = [
+   },
+   {
+     "id": 1445,
+-    "en": "Please check the outgoing feeder.",
++    "en": "Please check the outgoing feeder panel.",
+     "cn": "请检查出线柜。",
+     "ipa": "/pliːz tʃɛk ði ˈaʊt.ɡoʊ.ɪŋ ˈfiː.dər/",
+     "tags": [
+@@ -459,7 +459,7 @@ export const MOCK_SENTENCES_PART20A: ISentence[] = [
+   },
+   {
+     "id": 1446,
+-    "en": "The outgoing feeder is operating normally.",
++    "en": "The outgoing feeder panel is operating normally.",
+     "cn": "出线柜运行正常。",
+     "ipa": "/ði ˈaʊt.ɡoʊ.ɪŋ ˈfiː.dər ɪz ˈɒp.ər.eɪ.tɪŋ ˈnɔːr.mə.li/",
+     "tags": [
+@@ -533,7 +533,7 @@ export const MOCK_SENTENCES_PART20A: ISentence[] = [
+   },
+   {
+     "id": 1447,
+-    "en": "Please check the bus coupler.",
++    "en": "Please check the bus coupler panel.",
+     "cn": "请检查母联柜。",
+     "ipa": "/pliːz tʃɛk ðə bʌs ˈkʌp.lər/",
+     "tags": [
+@@ -643,7 +643,7 @@ export const MOCK_SENTENCES_PART20A: ISentence[] = [
+   },
+   {
+     "id": 1448,
+-    "en": "The bus coupler is open.",
++    "en": "The bus coupler circuit breaker is open.",
+     "cn": "母联断路器目前处于分闸状态。",
+     "ipa": "/ðə bʌs ˈkʌp.lər ɪz ˈoʊ.pən/",
+     "tags": [
+diff --git a/src/data/sentencePart20b.ts b/src/data/sentencePart20b.ts
+index 10df63d..cfeec06 100644
+--- a/src/data/sentencePart20b.ts
++++ b/src/data/sentencePart20b.ts
+@@ -7,7 +7,7 @@ export const MOCK_SENTENCES_PART20B: ISentence[] = [
+   {
+     id: 1461,
+     en: "Please open the grounding switch.",
+-    cn: "请分开接地开关。",
++    cn: "请分闸接地开关。",
+     ipa: "/pliːz ˈoʊpən ðə ˈɡraʊndɪŋ swɪtʃ/",
+     tags: ["第1461句", "接地开关", "★★★★★"],
+     when: "接地开关用于将设备接地，确保检修安全。分开接地开关是送电前的必要步骤。",
+@@ -120,7 +120,7 @@ export const MOCK_SENTENCES_PART20B: ISentence[] = [
+   {
+     id: 1465,
+     en: "The grounding switch is open.",
+-    cn: "接地开关已经分开。",
++    cn: "接地开关已经分闸。",
+     ipa: "/ðə ˈɡraʊndɪŋ swɪtʃ ɪz ˈoʊpən/",
+     tags: ["第1465句", "接地开关", "★★★★★"],
+     when: "确认接地开关已分开，设备接地已解除，可以进行送电操作。",
+@@ -148,7 +148,7 @@ export const MOCK_SENTENCES_PART20B: ISentence[] = [
+   {
+     id: 1466,
+     en: "Please charge the closing spring.",
+-    cn: "请给合闸弹簧储能。",
++    cn: "请为合闸弹簧储能。",
+     ipa: "/pliːz tʃɑːrdʒ ðə ˈkloʊzɪŋ sprɪŋ/",
+     tags: ["第1466句", "储能", "★★★★★"],
+     when: "断路器合闸需要弹簧储能提供动力。储能是合闸操作的准备工作。",
+@@ -464,7 +464,7 @@ export const MOCK_SENTENCES_PART20B: ISentence[] = [
+   },
+   {
+     id: 1477,
+-    en: "Please verify the interlock mechanism.",
++    en: "Please verify that the interlock mechanism is functioning correctly.",
+     cn: "请确认联锁机构正常。",
+     ipa: "/pliːz ˈvɛrɪfaɪ ðə ˈɪntərlɑːk ˈmɛkənɪzəm/",
+     tags: ["第1477句", "五防联锁", "★★★★★"],
+@@ -552,7 +552,7 @@ export const MOCK_SENTENCES_PART20B: ISentence[] = [
+   {
+     id: 1480,
+     en: "The medium-voltage system is ready for normal operation.",
+-    cn: "中压系统已经恢复正常运行。",
++    cn: "中压系统已具备正常运行条件。",
+     ipa: "/ðə ˈmiːdiəm ˈvoʊltɪdʒ ˈsɪstəm ɪz ˈrɛdi fɔːr ˈnɔːrməl ˌɒpəˈreɪʃən/",
+     tags: ["第1480句", "完成", "★★★★★"],
+     when: "确认中压系统已具备正常运行条件，可以投入运行。",
+diff --git a/src/data/sentencePart21a.ts b/src/data/sentencePart21a.ts
+index f9f8274..626fbd3 100644
+--- a/src/data/sentencePart21a.ts
++++ b/src/data/sentencePart21a.ts
+@@ -35,7 +35,7 @@ export const MOCK_SENTENCES_PART21A: ISentence[] = [
+   },
+   {
+     id: 1482,
+-    en: "Transformer No.1 is operating normally.",
++    en: "Transformer No. 1 is operating normally.",
+     cn: "1号变压器运行正常。",
+     ipa: "/trænsˈfɔːrmər ˌnʌmˈwʌn ɪz ˈɒpəreɪtɪŋ ˈnɔːrməli/",
+     tags: ["第1482句", "变压器状态", "★★★★★"],
+@@ -63,7 +63,7 @@ export const MOCK_SENTENCES_PART21A: ISentence[] = [
+   },
+   {
+     id: 1483,
+-    en: "Transformer No.2 is operating normally.",
++    en: "Transformer No. 2 is operating normally.",
+     cn: "2号变压器运行正常。",
+     ipa: "/trænsˈfɔːrmər ˌnʌmˈtuː ɪz ˈɒpəreɪtɪŋ ˈnɔːrməli/",
+     tags: ["第1483句", "变压器状态", "★★★★★"],
+@@ -119,7 +119,7 @@ export const MOCK_SENTENCES_PART21A: ISentence[] = [
+   },
+   {
+     id: 1485,
+-    en: "Transformer No.1 is operating at forty-eight percent load.",
++    en: "Transformer No. 1 is operating at forty-eight percent load.",
+     cn: "1号变压器当前负载率为48%。",
+     ipa: "/trænsˈfɔːrmər ˌnʌmˈwʌn ɪz ˈɒpəreɪtɪŋ æt ˈfɔːrti eɪt pərˈsɛnt loʊd/",
+     tags: ["第1485句", "变压器负载", "★★★★★"],
+@@ -149,7 +149,7 @@ export const MOCK_SENTENCES_PART21A: ISentence[] = [
+   },
+   {
+     id: 1486,
+-    en: "Transformer No.2 is operating at forty-six percent load.",
++    en: "Transformer No. 2 is operating at forty-six percent load.",
+     cn: "2号变压器当前负载率为46%。",
+     ipa: "/trænsˈfɔːrmər ˌnʌmˈtuː ɪz ˈɒpəreɪtɪŋ æt ˈfɔːrti sɪks pərˈsɛnt loʊd/",
+     tags: ["第1486句", "变压器负载", "★★★★★"],
+diff --git a/src/data/sentencePart21b.ts b/src/data/sentencePart21b.ts
+index 90d2f86..f45c54b 100644
+--- a/src/data/sentencePart21b.ts
++++ b/src/data/sentencePart21b.ts
+@@ -6,7 +6,7 @@ import type { ISentence } from './sentenceLearning';
+ export const MOCK_SENTENCES_PART21B: ISentence[] = [
+   {
+     id: 1501,
+-    en: "Please prepare to energize Transformer No.1.",
++    en: "Please prepare to energize Transformer No. 1.",
+     cn: "请准备给1号变压器送电。",
+     ipa: "/pliːz prɪˈpɛr tu ˈɛnərˌdʒaɪz ˈtrænsfɔːrmər ˌnʌmbər wʌn/",
+     tags: ["变压器", "上电操作", "★★★★★"],
+@@ -150,7 +150,7 @@ export const MOCK_SENTENCES_PART21B: ISentence[] = [
+   },
+   {
+     id: 1503,
+-    en: "Please energize Transformer No.1 now.",
++    en: "Please energize Transformer No. 1 now.",
+     cn: "现在请给1号变压器送电。",
+     ipa: "/pliːz ˈɛnərˌdʒaɪz ˈtrænsfɔːrmər ˌnʌmbər wʌn naʊ/",
+     tags: ["变压器", "送电指令", "★★★★★"],
+@@ -202,7 +202,7 @@ export const MOCK_SENTENCES_PART21B: ISentence[] = [
+   },
+   {
+     id: 1504,
+-    en: "Transformer No.1 has been energized successfully.",
++    en: "Transformer No. 1 has been energized successfully.",
+     cn: "1号变压器已经成功送电。",
+     ipa: "/ˈtrænsfɔːrmər ˌnʌmbər wʌn hæz biːn ˈɛnərˌdʒaɪzd səkˈsɛsfəli/",
+     tags: ["变压器", "送电完成", "★★★★★"],
+@@ -336,7 +336,7 @@ export const MOCK_SENTENCES_PART21B: ISentence[] = [
+   },
+   {
+     id: 1506,
+-    en: "Please prepare to de-energize Transformer No.2.",
++    en: "Please prepare to de-energize Transformer No. 2.",
+     cn: "请准备对2号变压器停电。",
+     ipa: "/pliːz prɪˈpɛr tu diːˈɛnərˌdʒaɪz ˈtrænsfɔːrmər ˌnʌmbər tuː/",
+     tags: ["变压器", "停电操作", "★★★★★"],
+@@ -388,7 +388,7 @@ export const MOCK_SENTENCES_PART21B: ISentence[] = [
+   },
+   {
+     id: 1507,
+-    en: "Transformer No.2 has been de-energized successfully.",
++    en: "Transformer No. 2 has been de-energized successfully.",
+     cn: "2号变压器已经成功停电。",
+     ipa: "/ˈtrænsfɔːrmər ˌnʌmbər tuː hæz biːn diːˈɛnərˌdʒaɪzd səkˈsɛsfəli/",
+     tags: ["变压器", "停电完成", "★★★★★"],
+@@ -492,8 +492,8 @@ export const MOCK_SENTENCES_PART21B: ISentence[] = [
+   },
+   {
+     id: 1509,
+-    en: "Please apply the grounding connection.",
+-    cn: "请连接接地装置。",
++    en: "Please connect the grounding lead.",
++    cn: "请连接接地线。",
+     ipa: "/pliːz əˈplaɪ ðə ˈɡraʊndɪŋ kəˈnɛkʃən/",
+     tags: ["变压器", "接地操作", "★★★★★"],
+     when: "隔离后，需要连接接地装置，释放残余电荷并确保安全。",
+@@ -906,8 +906,8 @@ export const MOCK_SENTENCES_PART21B: ISentence[] = [
+   },
+   {
+     id: 1516,
+-    en: "Please perform an infrared temperature inspection.",
+-    cn: "请进行红外测温检查。",
++    en: "Please perform an infrared thermographic inspection.",
++    cn: "请进行红外热成像检查。",
+     ipa: "/pliːz pərˈfɔːrm ən ˌɪnfrəˈrɛd ˈtɛmpərətʃər ɪnˈspɛkʃən/",
+     tags: ["变压器", "红外测温", "★★★★★"],
+     when: "使用红外热像仪对变压器进行温度检测。",
+diff --git a/src/data/sentencePart22a.ts b/src/data/sentencePart22a.ts
+index 7bb67aa..e5c8f81 100644
+--- a/src/data/sentencePart22a.ts
++++ b/src/data/sentencePart22a.ts
+@@ -5,7 +5,7 @@ import type { ISentence } from './sentenceLearning';
+ export const MOCK_SENTENCES_PART22A: ISentence[] = [
+   {
+     id: 1521,
+-    en: "Please check the generator operating status.",
++    en: "Please check the diesel generator operating status.",
+     cn: "请检查柴油发电机运行状态。",
+     ipa: "/pliːz tʃɛk ðə ˈdʒɛnəreɪtər ˈɒpəreɪtɪŋ ˈstætəs/",
+     tags: ["第1521句", "柴油发电机", "★★★★★"],
+@@ -35,7 +35,7 @@ export const MOCK_SENTENCES_PART22A: ISentence[] = [
+   },
+   {
+     id: 1522,
+-    en: "Generator No.1 is in automatic mode.",
++    en: "Generator No. 1 is in automatic mode.",
+     cn: "1号柴油发电机处于自动模式。",
+     ipa: "/ˈdʒɛnəreɪtər ˌnʌmˈwʌn ɪz ɪn ˌɔːtəˈmætɪk moʊd/",
+     tags: ["第1522句", "发电机模式", "★★★★★"],
+@@ -63,7 +63,7 @@ export const MOCK_SENTENCES_PART22A: ISentence[] = [
+   },
+   {
+     id: 1523,
+-    en: "Generator No.2 is in standby mode.",
++    en: "Generator No. 2 is in standby mode.",
+     cn: "2号柴油发电机处于备用状态。",
+     ipa: "/ˈdʒɛnəreɪtər ˌnʌmˈtuː ɪz ɪn ˈstændbaɪ moʊd/",
+     tags: ["第1523句", "发电机模式", "★★★★★"],
+@@ -147,7 +147,7 @@ export const MOCK_SENTENCES_PART22A: ISentence[] = [
+   },
+   {
+     id: 1526,
+-    en: "Please check the generator battery voltage.",
++    en: "Please check the generator starting-battery voltage.",
+     cn: "请检查发电机启动电池电压。",
+     ipa: "/pliːz tʃɛk ðə ˈdʒɛnəreɪtər ˈbætəri ˈvoʊltɪdʒ/",
+     tags: ["第1526句", "启动电池", "★★★★★"],
+@@ -317,7 +317,7 @@ export const MOCK_SENTENCES_PART22A: ISentence[] = [
+   {
+     id: 1532,
+     en: "The fuel tank is ninety percent full.",
+-    cn: "燃油箱当前为90%的液位。",
++    cn: "燃油箱当前液位为90%。",
+     ipa: "/ðə fjuːəl tæŋk ɪz ˈnaɪnti pərˈsɛnt fʊl/",
+     tags: ["第1532句", "燃油状态", "★★★★★"],
+     when: "汇报燃油箱当前液位为90%，表示燃油储备充足。ninety percent 表示90%。",
+@@ -345,7 +345,7 @@ export const MOCK_SENTENCES_PART22A: ISentence[] = [
+   },
+   {
+     id: 1533,
+-    en: "Please check the daily fuel tank.",
++    en: "Please check the day tank.",
+     cn: "请检查日用油箱。",
+     ipa: "/pliːz tʃɛk ðə ˈdeɪli fjuːəl tæŋk/",
+     tags: ["第1533句", "日用油箱", "★★★★★"],
+@@ -373,7 +373,7 @@ export const MOCK_SENTENCES_PART22A: ISentence[] = [
+   },
+   {
+     id: 1534,
+-    en: "The daily fuel tank is operating normally.",
++    en: "The day tank is in normal condition.",
+     cn: "日用油箱运行正常。",
+     ipa: "/ðə ˈdeɪli fjuːəl tæŋk ɪz ˈɒpəreɪtɪŋ ˈnɔːrməli/",
+     tags: ["第1534句", "日用油箱状态", "★★★★★"],
+diff --git a/src/data/sentencePart22b.ts b/src/data/sentencePart22b.ts
+index 35b66c9..23751bf 100644
+--- a/src/data/sentencePart22b.ts
++++ b/src/data/sentencePart22b.ts
+@@ -292,7 +292,7 @@ export const MOCK_SENTENCES_PART22B: ISentence[] = [
+   {
+     id: 1551,
+     en: "A generator warning alarm has been detected.",
+-    cn: "检测到柴油发电机警告告警。",
++    cn: "检测到柴油发电机警告级告警。",
+     ipa: "/ə ˈdʒɛnəreɪtər ˈwɔːrnɪŋ ˈælɑːrm hæz biːn dɪˈtɛktɪd/",
+     tags: ["第1551句", "告警与恢复", "★★★★★"],
+     when: "BMS 系统检测到柴油发电机发出警告级别告警，需要关注但通常不影响立即运行。警告告警提示潜在问题，需要计划性处理。",
+@@ -378,7 +378,7 @@ export const MOCK_SENTENCES_PART22B: ISentence[] = [
+   {
+     id: 1554,
+     en: "Please investigate the starting failure.",
+-    cn: "请调查启动失败原因。",
++    cn: "请排查启动失败原因。",
+     ipa: "/pliːz ɪnˈvɛstɪɡeɪt ðə ˈstɑːrtɪŋ ˈfeɪljər/",
+     tags: ["第1554句", "告警与恢复", "★★★★★"],
+     when: "发电机启动失败后，需要立即调查失败原因，找出根本问题并采取措施防止再次发生。",
+@@ -466,7 +466,7 @@ export const MOCK_SENTENCES_PART22B: ISentence[] = [
+   {
+     id: 1557,
+     en: "All generator alarms have been cleared.",
+-    cn: "所有柴油发电机告警已经恢复。",
++    cn: "所有柴油发电机告警均已清除。",
+     ipa: "/ɔːl ˈdʒɛnəreɪtər ˈælɑːrmz hæv biːn klɪərd/",
+     tags: ["第1557句", "告警与恢复", "★★★★★"],
+     when: "确认所有发电机相关的告警都已经清除/恢复，BMS 系统显示无活动告警。",
+@@ -551,7 +551,7 @@ export const MOCK_SENTENCES_PART22B: ISentence[] = [
+   {
+     id: 1560,
+     en: "The generator system is ready for normal operation.",
+-    cn: "柴油发电机系统已经恢复正常运行。",
++    cn: "柴油发电机系统已具备正常运行条件。",
+     ipa: "/ðə ˈdʒɛnəreɪtər ˈsɪstəm ɪz ˈrɛdi fɔːr ˈnɔːrməl ˌɒpəˈreɪʃən/",
+     tags: ["第1560句", "告警与恢复", "★★★★★"],
+     when: "确认柴油发电机系统已经完全准备好正常运行，可以作为应急电源随时投入使用。这是交接完成时的最终确认。",
+diff --git a/src/data/sentencePart23a.ts b/src/data/sentencePart23a.ts
+index 43cbf8a..21e51ff 100644
+--- a/src/data/sentencePart23a.ts
++++ b/src/data/sentencePart23a.ts
+@@ -63,7 +63,7 @@ export const MOCK_SENTENCES_PART23A: ISentence[] = [
+   {
+     id: 1563,
+     en: "Please check the CRAH operating status.",
+-    cn: "请检查风墙空调运行状态。",
++    cn: "请检查机房空气处理机组（CRAH）的运行状态。",
+     ipa: "/pliːz tʃɛk ðə krɑː ˈɒpəreɪtɪŋ ˈstætəs/",
+     tags: ["第1563句", "风墙空调", "★★★★★"],
+     when: "风墙空调（CRAH, Computer Room Air Handler）是另一种精密空调类型，通过冷冻水冷却空气。交接时检查CRAH运行状态。",
+@@ -92,7 +92,7 @@ export const MOCK_SENTENCES_PART23A: ISentence[] = [
+   {
+     id: 1564,
+     en: "All CRAH units are operating normally.",
+-    cn: "所有风墙空调运行正常。",
++    cn: "所有机房空气处理机组（CRAH）运行正常。",
+     ipa: "/ɔːl krɑː ˈjuːnɪts ɑːr ˈɒpəreɪtɪŋ ˈnɔːrməli/",
+     tags: ["第1564句", "CRAH状态", "★★★★★"],
+     when: "确认所有风墙空调机组运行状态正常。",
+diff --git a/src/data/sentencePart23b.ts b/src/data/sentencePart23b.ts
+index d70a249..940e451 100644
+--- a/src/data/sentencePart23b.ts
++++ b/src/data/sentencePart23b.ts
+@@ -344,7 +344,7 @@ export const MOCK_SENTENCES_PART23B: ISentence[] = [
+   {
+     id: 1593,
+     en: "Please investigate the alarm immediately.",
+-    cn: "请立即调查告警原因。",
++    cn: "请立即排查告警原因。",
+     ipa: "/pliːz ɪnˈvɛstɪɡeɪt ðə əˈlɑːrm ɪˈmiːdiətli/",
+     tags: ["第1593句", "告警处理", "★★★★★"],
+     when: "发现告警后需要立即展开调查，确定告警原因、影响范围和处置方案。investigate 强调系统性的排查过程。",
+@@ -373,7 +373,7 @@ export const MOCK_SENTENCES_PART23B: ISentence[] = [
+   {
+     id: 1594,
+     en: "Please switch to the standby CRAC unit.",
+-    cn: "请切换到备用精密空调。",
++    cn: "请切换到备用精密空调机组。",
+     ipa: "/pliːz swɪtʃ tuː ðə ˈstændbaɪ kræk ˈjuːnɪt/",
+     tags: ["第1594句", "告警处理", "★★★★★"],
+     when: "当主用CRAC出现故障或制冷能力不足时，需要切换到备用精密空调机组，恢复制冷能力。",
+@@ -402,7 +402,7 @@ export const MOCK_SENTENCES_PART23B: ISentence[] = [
+   {
+     id: 1595,
+     en: "The standby unit has started successfully.",
+-    cn: "备用设备已经成功启动。",
++    cn: "备用机组已经成功启动。",
+     ipa: "/ðə ˈstændbaɪ ˈjuːnɪt hæz ˈstɑːrtɪd səkˈsɛsfəli/",
+     tags: ["第1595句", "备用启动", "★★★★★"],
+     when: "确认备用CRAC/设备已经成功启动并开始提供制冷/服务，这是切换操作后的关键确认步骤。",
+@@ -458,7 +458,7 @@ export const MOCK_SENTENCES_PART23B: ISentence[] = [
+   {
+     id: 1597,
+     en: "All cooling alarms have been cleared.",
+-    cn: "所有制冷告警已经恢复。",
++    cn: "所有制冷告警均已清除。",
+     ipa: "/ɔːl ˈkuːlɪŋ əˈlɑːrmz hæv biːn klɪrd/",
+     tags: ["第1597句", "告警恢复", "★★★★★"],
+     when: "确认所有与制冷系统相关的告警都已消除，系统回到正常监控状态。这是告警处理完成后的最终确认。",
+@@ -486,7 +486,7 @@ export const MOCK_SENTENCES_PART23B: ISentence[] = [
+   {
+     id: 1598,
+     en: "Please update the HVAC maintenance record.",
+-    cn: "请更新暖通维护记录。",
++    cn: "请更新暖通空调维护记录。",
+     ipa: "/pliːz ˌʌpˈdeɪt ðə eɪtʃ-eɪ-siː-viː ˈmeɪntənəns ˈrɛkərd/",
+     tags: ["第1598句", "维护记录", "★★★★★"],
+     when: "告警处理完成后，需要将处理过程记录在暖通维护记录中，确保可追溯性和知识积累。",
+@@ -543,7 +543,7 @@ export const MOCK_SENTENCES_PART23B: ISentence[] = [
+   {
+     id: 1600,
+     en: "The cooling system is ready for normal operation.",
+-    cn: "制冷系统已经恢复正常运行。",
++    cn: "制冷系统已具备正常运行条件。",
+     ipa: "/ðə ˈkuːlɪŋ ˈsɪstəm ɪz ˈrɛdi fɔːr ˈnɔːrməl ˌɒpəˈreɪʃən/",
+     tags: ["第1600句", "系统恢复", "★★★★★"],
+     when: "交接完成后的最终确认：制冷系统所有组件正常，告警已处理，系统准备好持续正常运行。",
+diff --git a/src/data/sentencePart24a.ts b/src/data/sentencePart24a.ts
+index 304aa5a..a46caca 100644
+--- a/src/data/sentencePart24a.ts
++++ b/src/data/sentencePart24a.ts
+@@ -36,7 +36,7 @@ export const MOCK_SENTENCES_PART24A: ISentence[] = [
+   },
+   {
+     id: 1602,
+-    en: "Cooling Tower No.1 is operating normally.",
++    en: "Cooling Tower No. 1 is operating normally.",
+     cn: "1号冷却塔运行正常。",
+     ipa: "/ˈkuːlɪŋ ˈtaʊər ˌnʌmˈwʌn ɪz ˈɒpəreɪtɪŋ ˈnɔːrməli/",
+     tags: ["第1602句", "冷却塔状态", "★★★★★"],
+@@ -64,7 +64,7 @@ export const MOCK_SENTENCES_PART24A: ISentence[] = [
+   },
+   {
+     id: 1603,
+-    en: "Cooling Tower No.2 is on standby.",
++    en: "Cooling Tower No. 2 is on standby.",
+     cn: "2号冷却塔处于备用状态。",
+     ipa: "/ˈkuːlɪŋ ˈtaʊər ˌnʌmˈtuː ɪz ɒn ˈstændbaɪ/",
+     tags: ["第1603句", "冷却塔状态", "★★★★★"],
+@@ -376,7 +376,7 @@ export const MOCK_SENTENCES_PART24A: ISentence[] = [
+   {
+     id: 1614,
+     en: "Please check the conductivity of the cooling water.",
+-    cn: "请检查冷却水导电率。",
++    cn: "请检查冷却水电导率。",
+     ipa: "/pliːz tʃɛk ðə ˌkɒndʌkˈtɪvɪti əv ðə ˈkuːlɪŋ ˈwɔːtər/",
+     tags: ["第1614句", "冷却水导电率", "★★★★★"],
+     when: "导电率是衡量冷却水水质的重要指标，反映水中溶解盐类的含量。导电率过高会导致腐蚀和结垢。",
+@@ -404,7 +404,7 @@ export const MOCK_SENTENCES_PART24A: ISentence[] = [
+   {
+     id: 1615,
+     en: "The conductivity is within the acceptable range.",
+-    cn: "导电率在允许范围内。",
++    cn: "电导率在允许范围内。",
+     ipa: "/ðə ˌkɒndʌkˈtɪvɪti ɪz wɪˈðɪn ðə əkˈsɛptəbl̩ ˈreɪndʒ/",
+     tags: ["第1615句", "导电率状态", "★★★★★"],
+     when: "确认冷却水导电率在允许范围内，水质管理正常。",
+diff --git a/src/data/sentencePart24b.ts b/src/data/sentencePart24b.ts
+index 57b2834..a953d11 100644
+--- a/src/data/sentencePart24b.ts
++++ b/src/data/sentencePart24b.ts
+@@ -174,7 +174,7 @@ export const MOCK_SENTENCES_PART24B: ISentence[] = [
+   {
+     id: 1627,
+     en: "Please listen for any abnormal noise.",
+-    cn: "请检查是否有异常噪音。",
++    cn: "请听是否有异常噪声。",
+     ipa: "/pliːz ˈlɪsən fɔːr ˈeni æbˈnɔːrməl nɔɪz/",
+     tags: ["第1627句", "噪音检查", "★★★★★"],
+     when: "通过听觉判断设备运行状态。异常噪音往往是机械故障的早期信号，如轴承磨损、叶片松动或电机故障。",
+@@ -203,7 +203,7 @@ export const MOCK_SENTENCES_PART24B: ISentence[] = [
+   {
+     id: 1628,
+     en: "Please check for excessive vibration.",
+-    cn: "请检查是否有异常振动。",
++    cn: "请检查振动是否过大。",
+     ipa: "/pliːz tʃɛk fɔːr ɪkˈsɛsɪv vaɪˈbreɪʃən/",
+     tags: ["第1628句", "振动检查", "★★★★★"],
+     when: "振动是旋转设备健康状态的重要指标。过度振动可能表明不平衡、不对中、轴承磨损等问题。",
+@@ -345,7 +345,7 @@ export const MOCK_SENTENCES_PART24B: ISentence[] = [
+   {
+     id: 1633,
+     en: "A high conductivity alarm has been detected.",
+-    cn: "检测到导电率过高告警。",
++    cn: "检测到电导率过高告警。",
+     ipa: "/ə haɪ ˌkɒndʌkˈtɪvɪti əˈlɑːrm hæz biːn dɪˈtɛktɪd/",
+     tags: ["第1633句", "导电率告警", "★★★★★"],
+     when: "冷却水导电率过高表示水中溶解的固体物质过多，可能导致结垢和腐蚀。需要通过排污和补水来降低导电率。",
+@@ -373,7 +373,7 @@ export const MOCK_SENTENCES_PART24B: ISentence[] = [
+   {
+     id: 1634,
+     en: "Please investigate the alarm immediately.",
+-    cn: "请立即调查告警原因。",
++    cn: "请立即排查告警原因。",
+     ipa: "/pliːz ɪnˈvɛstɪɡeɪt ðə əˈlɑːrm ɪˈmiːdiətli/",
+     tags: ["第1634句", "调查告警", "★★★★★"],
+     when: "收到告警后需要立即调查原因，确定是真实故障还是误报，并采取相应措施。",
+@@ -488,7 +488,7 @@ export const MOCK_SENTENCES_PART24B: ISentence[] = [
+   {
+     id: 1638,
+     en: "All cooling tower alarms have been cleared.",
+-    cn: "所有冷却塔告警已经恢复。",
++    cn: "所有冷却塔告警均已清除。",
+     ipa: "/ɔːl ˈkuːlɪŋ ˈtaʊər əˈlɑːrmz hæv biːn klɪərd/",
+     tags: ["第1638句", "告警恢复", "★★★★★"],
+     when: "确认所有冷却塔相关告警已清除，系统恢复正常运行状态。这是告警处理流程的最后确认。",
