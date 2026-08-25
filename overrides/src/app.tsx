@@ -1,12 +1,8 @@
 import { Suspense } from "react";
 import { lazyWithRetry } from "@/lib/lazyWithRetry";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 
-// Auth & shell pages — eager loaded for fast initial auth check
-import AuthGuard from "@/components/AuthGuard";
-import LoginPage from "@/pages/LoginPage/LoginPage";
-import RegisterPage from "@/pages/RegisterPage/RegisterPage";
 import NotFoundPage from "@/pages/NotFoundPage/NotFoundPage";
 import LoadingScreen from "@/components/LoadingScreen";
 
@@ -30,28 +26,25 @@ export default function App() {
   return (
     <Suspense fallback={<LoadingScreen />}>
     <Routes>
-      {/* Public routes — no auth required */}
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
+      {/* Personal edition: all learning features are available without an account. */}
+      <Route path="/login" element={<Navigate to="/" replace />} />
+      <Route path="/register" element={<Navigate to="/" replace />} />
 
-      {/* Protected routes — AuthGuard checks session */}
-      <Route element={<AuthGuard />}>
-        <Route element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="scenarios" element={<ScenarioListPage />} />
-          <Route path="browse" element={<BrowsePage />} />
-          <Route path="browse/:id" element={<SentenceDetailPage />} />
-          <Route path="flashcard" element={<FlashcardPage />} />
-          <Route path="quiz" element={<QuizPage />} />
-          <Route path="progress" element={<ProgressPage />} />
-          <Route path="scenario/:sectionIndex" element={<ScenarioPracticePage />} />
-          <Route path="text-analysis" element={<TextAnalysisPage />} />
-          <Route path="alarms" element={<AlarmEnglishPage />} />
-          <Route path="wrong-book" element={<WrongBookPage />} />
-          <Route path="favorites" element={<FavoritesPage />} />
-          <Route path="custom-practice/:favId" element={<CustomScenarioPracticePage />} />
-          <Route path="ai-chat" element={<AIChatPage />} />
-        </Route>
+      <Route element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="scenarios" element={<ScenarioListPage />} />
+        <Route path="browse" element={<BrowsePage />} />
+        <Route path="browse/:id" element={<SentenceDetailPage />} />
+        <Route path="flashcard" element={<FlashcardPage />} />
+        <Route path="quiz" element={<QuizPage />} />
+        <Route path="progress" element={<ProgressPage />} />
+        <Route path="scenario/:sectionIndex" element={<ScenarioPracticePage />} />
+        <Route path="text-analysis" element={<TextAnalysisPage />} />
+        <Route path="alarms" element={<AlarmEnglishPage />} />
+        <Route path="wrong-book" element={<WrongBookPage />} />
+        <Route path="favorites" element={<FavoritesPage />} />
+        <Route path="custom-practice/:favId" element={<CustomScenarioPracticePage />} />
+        <Route path="ai-chat" element={<AIChatPage />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />
