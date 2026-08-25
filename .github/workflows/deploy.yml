@@ -19,12 +19,29 @@ jobs:
     steps:
       - name: Download public-beta source as personal baseline
         run: git clone --depth 1 https://github.com/yanpei446505484/data-center-english-training.git app
-      - name: Apply personal-edition identity
+      - name: Apply personal-edition identity and reviewed terminology
         run: |
           cd app
-          node -e "let fs=require('fs'); let p=JSON.parse(fs.readFileSync('package.json')); p.name='data-center-english-personal'; fs.writeFileSync('package.json', JSON.stringify(p,null,2)+'\n')"
-          sed -i 's/<title>数据中心英语培训<\/title>/<title>数据中心英语培训｜个人版<\/title>/' index.html
+          node -e "let fs=require('fs'); let p=JSON.parse(fs.readFileSync('package.json')); p.name='data-center-english-personal'; fs.writeFileSync('package.json', JSON.stringify(p,null,2)+'\\n')"
+          sed -i 's/<title>数据中心英语培训<\\/title>/<title>数据中心英语培训｜个人版<\\/title>/' index.html
           sed -i 's/数据中心英语培训/数据中心英语培训 · 个人版/g' src/components/Layout.tsx src/components/AppSidebar.tsx
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          reviewed_files = [
+              'src/data/sentencePart1a.ts',
+              'src/data/sentencePart14a.ts',
+          ]
+          for filename in reviewed_files:
+              path = Path(filename)
+              text = path.read_text()
+              text = re.sub(
+                  r'(\\{ w: "switch",[^\\n]*?cn: )"开关"',
+                  r'\\1"切换"',
+                  text,
+              )
+              path.write_text(text)
+          PY
       - uses: actions/setup-node@v4
         with:
           node-version: 22
