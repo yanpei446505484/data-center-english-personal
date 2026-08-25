@@ -8,6 +8,7 @@ import {
   ALARM_ACCESS_MAINTENANCE_DIALOGUE,
   ALARM_CHAT_DIALOGUE,
   ALARM_TREND_DRILL_DIALOGUE,
+  ALARM_WATER_SUPPLY_DIALOGUE,
 } from './alarmChatDialogue';
 import { getAlarmTextIpa, getAlarmWordIpa } from './alarmPhonetics';
 import { lookupDictionary } from '../skills/dictionarySkill';
@@ -89,10 +90,12 @@ describe('alarm summary import', () => {
     expect(ALARM_CHAT_DIALOGUE).toHaveLength(33);
     expect(ALARM_TREND_DRILL_DIALOGUE).toHaveLength(22);
     expect(ALARM_ACCESS_MAINTENANCE_DIALOGUE).toHaveLength(22);
+    expect(ALARM_WATER_SUPPLY_DIALOGUE).toHaveLength(16);
     for (const line of [
       ...ALARM_CHAT_DIALOGUE,
       ...ALARM_TREND_DRILL_DIALOGUE,
       ...ALARM_ACCESS_MAINTENANCE_DIALOGUE,
+      ...ALARM_WATER_SUPPLY_DIALOGUE,
     ]) {
       expect(line.en.trim().length).toBeGreaterThan(0);
       expect(line.cn.trim().length).toBeGreaterThan(0);
@@ -109,6 +112,7 @@ describe('alarm summary import', () => {
       ...ALARM_CHAT_DIALOGUE,
       ...ALARM_TREND_DRILL_DIALOGUE,
       ...ALARM_ACCESS_MAINTENANCE_DIALOGUE,
+      ...ALARM_WATER_SUPPLY_DIALOGUE,
     ]) {
       const words = line.en.match(/[A-Za-z]+(?:[’'][A-Za-z]+)*(?:-[A-Za-z]+)*/g) || [];
       for (const word of words) {
@@ -127,6 +131,7 @@ describe('alarm summary import', () => {
       ...ALARM_CHAT_DIALOGUE.map((line) => line.en),
       ...ALARM_TREND_DRILL_DIALOGUE.map((line) => line.en),
       ...ALARM_ACCESS_MAINTENANCE_DIALOGUE.map((line) => line.en),
+      ...ALARM_WATER_SUPPLY_DIALOGUE.map((line) => line.en),
     ];
     const missingIpa = new Set<string>();
     for (const text of texts) {
@@ -147,6 +152,9 @@ describe('alarm summary import', () => {
       for (const phrase of line.phrases) expect(getAlarmTextIpa(phrase.text)).toBeTruthy();
     }
     for (const line of ALARM_ACCESS_MAINTENANCE_DIALOGUE) {
+      for (const phrase of line.phrases) expect(getAlarmTextIpa(phrase.text)).toBeTruthy();
+    }
+    for (const line of ALARM_WATER_SUPPLY_DIALOGUE) {
       for (const phrase of line.phrases) expect(getAlarmTextIpa(phrase.text)).toBeTruthy();
     }
   });

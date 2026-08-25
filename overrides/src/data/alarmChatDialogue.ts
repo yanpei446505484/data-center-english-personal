@@ -96,3 +96,23 @@ export const ALARM_ACCESS_MAINTENANCE_DIALOGUE: AlarmChatLine[] = [
   { id: 21, speaker: 'A', en: 'Hi, sorry. Just open Lark. Do you have access now?', cn: '你好，不好意思。直接打开Lark即可。你现在可以访问了吗？', phrases: [{ text: 'just open Lark', chinese: '直接打开Lark' }, { text: 'have access now', chinese: '现在可以访问' }] },
   { id: 22, speaker: 'B', en: "Never mind. I've got it now. Thanks.", cn: '没事，我现在已经知道了。谢谢。', phrases: [{ text: 'never mind', chinese: '没事；不用了' }, { text: "I've got it now", chinese: '我现在已经知道了；我已经弄好了' }] },
 ];
+
+/** Reviewed dialogue about low water pressure and emergency response. */
+export const ALARM_WATER_SUPPLY_DIALOGUE: AlarmChatLine[] = [
+  { id: 1, speaker: 'A', en: 'Go to the site and check this. If it is confirmed as a fault, raise a fault ticket.', cn: '到现场检查一下。如果确认是故障，就开一张故障工单。', phrases: [{ text: 'go to the site', chinese: '到现场' }, { text: 'confirmed as a fault', chinese: '确认是故障' }, { text: 'raise a fault ticket', chinese: '开故障工单' }] },
+  { id: 2, speaker: 'B', en: 'This is probably another sensor issue.', cn: '这可能也是一个传感器问题。', phrases: [{ text: 'probably another sensor issue', chinese: '可能也是一个传感器问题' }] },
+  { id: 3, speaker: 'A', en: 'Yes.', cn: '是的。', phrases: [{ text: 'yes', chinese: '是的' }] },
+  { id: 4, speaker: 'B', en: 'Ask COCC to check the other buildings, as they also have an alarm.', cn: '让COCC检查其他楼宇，因为那些楼宇也有告警。', phrases: [{ text: 'ask COCC to check', chinese: '让COCC检查' }, { text: 'the other buildings', chinese: '其他楼宇' }, { text: 'also have an alarm', chinese: '也有告警' }] },
+  { id: 5, speaker: 'A', en: 'Is low water pressure also affecting this line?', cn: '这一路是否也受到低水压影响？', phrases: [{ text: 'low water pressure', chinese: '水压低；低水压' }, { text: 'affecting this line', chinese: '影响这一路管线' }] },
+  { id: 6, speaker: 'B', en: 'Yes.', cn: '是的。', phrases: [{ text: 'yes', chinese: '是的' }] },
+  { id: 7, speaker: 'A', en: 'All the water tanks need to be checked. I am concerned that the issue originates from the incoming water supply.', cn: '所有水箱都需要检查。我担心问题来自进水供水端。', phrases: [{ text: 'water tanks need to be checked', chinese: '水箱需要检查' }, { text: 'the issue originates from', chinese: '问题来自……' }, { text: 'incoming water supply', chinese: '进水供水端' }] },
+  { id: 8, speaker: 'B', en: 'In that case, we should activate the emergency response process.', cn: '既然如此，我们应该启动应急响应流程。', phrases: [{ text: 'in that case', chinese: '既然如此；在这种情况下' }, { text: 'activate the emergency response process', chinese: '启动应急响应流程' }] },
+  { id: 9, speaker: 'A', en: 'It appears to be a supply-side issue. At B1B2, they are manually topping up the water tanks.', cn: '看起来是供水端的问题。在B1B2，他们正在手动给水箱补水。', phrases: [{ text: 'supply-side issue', chinese: '供水端问题' }, { text: 'manually topping up', chinese: '正在手动补充' }, { text: 'water tanks', chinese: '水箱' }] },
+  { id: 10, speaker: 'B', en: 'COCC reported that conditions were normal.', cn: 'COCC报告称现场情况正常。', phrases: [{ text: 'reported that', chinese: '报告称……' }, { text: 'conditions were normal', chinese: '情况正常' }] },
+  { id: 11, speaker: 'A', en: 'Okay.', cn: '好的。', phrases: [{ text: 'okay', chinese: '好的' }] },
+  { id: 12, speaker: 'B', en: 'Could the pressure in the boundary supply line be too low?', cn: '会不会是边界供水管线的压力过低？', phrases: [{ text: 'boundary supply line', chinese: '边界供水管线' }, { text: 'be too low', chinese: '过低' }] },
+  { id: 13, speaker: 'A', en: 'The water pressure is far too low. When they top up their tanks, it affects our supply pressure.', cn: '水压确实太低了。他们给水箱补水时，会影响我们的供水压力。', phrases: [{ text: 'far too low', chinese: '实在太低；远低于正常值' }, { text: 'top up their tanks', chinese: '给他们的水箱补水' }, { text: 'affects our supply pressure', chinese: '影响我们的供水压力' }] },
+  { id: 14, speaker: 'B', en: 'Yes, it reduced our pressure. After they finished topping up the tanks, our pressure returned to normal.', cn: '是的，这导致我们的水压下降。他们完成水箱补水后，我们的水压恢复了正常。', phrases: [{ text: 'reduced our pressure', chinese: '导致我们的压力下降' }, { text: 'finished topping up the tanks', chinese: '完成水箱补水' }, { text: 'returned to normal', chinese: '恢复正常' }] },
+  { id: 15, speaker: 'A', en: 'Please brief Li on this issue.', cn: '请把这个问题告知李。', phrases: [{ text: 'brief Li on', chinese: '向李说明……' }, { text: 'this issue', chinese: '这个问题' }] },
+  { id: 16, speaker: 'B', en: 'Okay.', cn: '好的。', phrases: [{ text: 'okay', chinese: '好的' }] },
+];

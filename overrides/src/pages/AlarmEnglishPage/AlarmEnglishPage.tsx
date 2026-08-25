@@ -20,6 +20,7 @@ import {
   ALARM_CHAT_DIALOGUE,
   ALARM_ACCESS_MAINTENANCE_DIALOGUE,
   ALARM_TREND_DRILL_DIALOGUE,
+  ALARM_WATER_SUPPLY_DIALOGUE,
   type AlarmChatLine,
 } from '@/data/alarmChatDialogue';
 import { ALARM_MEETING_SCRIPTS, type AlarmMeetingLine } from '@/data/alarmMeetingScripts';
@@ -459,6 +460,66 @@ export default function AlarmEnglishPage() {
           <div className="grid gap-3">
             {ALARM_ACCESS_MAINTENANCE_DIALOGUE.map((line: AlarmChatLine) => {
               const key = `access-dialogue-${line.id}`;
+              const isPlaying = playingKey === key;
+              return (
+                <div key={line.id} className="rounded-lg border border-border/50 bg-muted/10 p-3">
+                  <div className="flex items-start gap-3">
+                    <Badge
+                      variant={line.speaker === 'A' ? 'default' : 'outline'}
+                      className="shrink-0 font-mono"
+                    >
+                      {line.speaker}
+                    </Badge>
+                    <div className="min-w-0 flex-1 space-y-2">
+                      <div className="flex flex-wrap items-center gap-x-1 text-sm leading-7">
+                        {splitEnglishText(line.en).map((segment, index) => (
+                          segment.kind === 'word'
+                            ? <AlarmWord key={index} word={segment.text} alarm={line.en} category="现场工作对话" />
+                            : <span key={index}>{segment.text}</span>
+                        ))}
+                      </div>
+                      <p className="text-sm text-foreground/70">{line.cn}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {line.phrases.map((phrase) => (
+                          <AlarmPhrase
+                            key={`${line.id}-${phrase.text}`}
+                            phrase={{ ...phrase, fullAlarm: false }}
+                            alarm={line.en}
+                            category="现场工作对话"
+                          />
+                        ))}
+                      </div>
+                    </div>
+                    <Button
+                      type="button"
+                      variant={isPlaying ? 'destructive' : 'outline'}
+                      size="sm"
+                      onClick={() => playText(key, line.en)}
+                      className="shrink-0 gap-1.5"
+                    >
+                      {isPlaying ? <Square className="size-3.5 fill-current" /> : <Volume2 className="size-3.5" />}
+                      {isPlaying && playingRound > 0 ? `${playingRound}/${repeatCount}` : '朗读'}
+                    </Button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="border-primary/20">
+        <CardContent className="p-4 space-y-4">
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="font-semibold text-foreground">低水压、供水端与应急响应对话</h2>
+            <Badge variant="secondary">{ALARM_WATER_SUPPLY_DIALOGUE.length}句</Badge>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            覆盖传感器排查、水箱检查、边界供水压力、手动补水及应急流程。
+          </p>
+          <div className="grid gap-3">
+            {ALARM_WATER_SUPPLY_DIALOGUE.map((line: AlarmChatLine) => {
+              const key = `water-supply-dialogue-${line.id}`;
               const isPlaying = playingKey === key;
               return (
                 <div key={line.id} className="rounded-lg border border-border/50 bg-muted/10 p-3">

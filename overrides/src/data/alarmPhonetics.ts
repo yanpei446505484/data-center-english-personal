@@ -85,6 +85,11 @@ export const ALARM_WORD_IPA: Record<string, string> = {
   treat: '/triːt/', network: '/ˈnetwɜːk/', cable: '/ˈkeɪbəl/', loose: '/luːs/',
   hi: '/haɪ/', sorry: '/ˈsɒri/', bother: '/ˈbɒðə/', lark: '/lɑːk/',
   mind: '/maɪnd/', "i've": '/aɪv/',
+  cocc: '/ˌsiː əʊ siː ˈsiː/', buildings: '/ˈbɪldɪŋz/', affecting: '/əˈfektɪŋ/',
+  tanks: '/tæŋks/', concerned: '/kənˈsɜːnd/', originates: '/əˈrɪdʒɪneɪts/',
+  activate: '/ˈæktɪveɪt/', 'supply-side': '/səˈplaɪ saɪd/', topping: '/ˈtɒpɪŋ/',
+  boundary: '/ˈbaʊndəri/', top: '/tɒp/', affects: '/əˈfekts/', reduced: '/rɪˈdjuːst/',
+  brief: '/briːf/', li: '/liː/',
 };
 
 const WORD_PATTERN = /[A-Za-z]+(?:[’'][A-Za-z]+)*(?:-[A-Za-z]+)*/g;
